@@ -63,7 +63,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
             <h1>your business</h1>
             <Input>
             <label>Name:</label><br />
-          <input type="text" name="name" value={name}/><br />
+          <input  type="text" name="name" value={name}/><br />
             <label>Time Zone:</label><br />
           <select name="timeZone" value={timeZone}><br />
             <option value="">Select Time Zone</option>

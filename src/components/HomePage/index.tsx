@@ -9,8 +9,15 @@ import {
 } from "./styles";
 import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.png";
 import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
+import mail from '../../assets/HomePgImage/mail.png';
+import book from '../../assets/HomePgImage/books.png';
+import desk from '../../assets/HomePgImage/desk.png'
+import creator from '../../assets/HomePgImage/creator.png'
 import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png";
+import crm from '../../assets/HomePgImage/crm.png';
 import Navbar from "../Navbar/Navbar";
+
+
 // import Redux from "../../Redux";
 // import { CheckRedux } from "../../CheckRedux";
 
@@ -64,33 +71,40 @@ function index() {
           {" "}
           {/* <CheckRedux /> */}
           <div className="feature">
-            <p style={{ marginTop: 20 }}>FEATURED APPS</p>
-            <ul style={{ listStyle: "none" }}>
-              <li>
-                <img src="" alt="" />
-                CRM <br /> Comprehensive CRM platform for customer-facing teams.
+            <p style={{ marginTop: "20px", marginLeft: "50px" }}>FEATURED APPS</p>
+            <ul style={{ listStyle: "none", margin: "20px 20px 20px 50px" }}>
+              <li style={{display:"flex", flexDirection: "row", marginBottom: "50px"}}>
+                <img src={crm} alt="" />
+                 <span><b>CRM</b><br />
+                   Comprehensive CRM platform<br /> for customer-facing teams.</span>
               </li>
-              <li>
-                <img src="" alt="" />
-                Desk <br />
+
+              <li style={{display:"flex", flexDirection: "row",marginBottom: "50px"}}>
+                <img src={mail}  alt="" />
+                <span><b>Desk</b> <br />
                 Helpdesk software to deliver <br />
-                great customer support.
+                great customer support.</span>
               </li>
-              <li>
-                <img src="" alt="" />
-                Mail <br /> Secure email service for your <br /> business.
+
+              <li style={{display:"flex", flexDirection: "row",marginBottom: "50px"}}>
+                <img src={book} alt="" />
+                <span><b>Mail</b> <br /> Secure email service for your <br /> business.</span>
               </li>
-              <li>
-                <img src="" alt="" />
-                Books <br />
-                Powerful financial platform for <br /> growing businesses.
+
+              <li style={{display:"flex", flexDirection: "row", marginBottom: "50px"}}>
+                <img src={desk} alt="" />
+                <span><b>Books</b> <br />
+                Powerful financial platform for <br /> growing businesses.</span>
               </li>
-              <li>
-                <img src="" alt="" />
-                Assist <br />
+
+              <li style={{display:"flex", flexDirection: "row", marginBottom: "50px"}}>
+                <img src={creator} alt="" />
+                <span><b>Assist </b><br />
                 Remote support and <br /> unattended remote access <br />{" "}
-                software.
+                software.</span>
               </li>
+              <hr />
+              <h4 style={{marginTop: "30px", color: "#056cb8", fontFamily:"sans-serif"}}>EXPLORE ALL PRODUCTS</h4>
             </ul>
           </div>
         </Feature>
