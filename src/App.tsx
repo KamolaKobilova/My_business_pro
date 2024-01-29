@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,6 +15,7 @@ import SignUpForm from "./Pages/SignUp/SignUpForm";
 import HomePage from "./components/HomePage";
 import { CalendarComponent } from "./Pages/MainHomePage/Calendar/CalendarComponent";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
+import { MyProfile } from "./Pages/MainHomePage/MyProfile.tsx";
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
                 <>
                   <Route path="/main-home-page" element={<MainHomePage />} />
                   <Route path="/calendar" element={<CalendarComponent />} />
+                  <Route path="/my-profile" element={<MyProfile />} />
                 </>
               ) : (
                 <Route path="*" element={<Navigate to="/sign-in" replace />} />

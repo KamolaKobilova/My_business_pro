@@ -3,7 +3,7 @@ import React, { FormEvent, useState, useEffect, useReducer } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useMutation } from "react-query";
-
+import { Input, Button } from "antd";
 import SignInCarousel from "./SignInCarousel";
 import {
   Container,
@@ -102,7 +102,7 @@ const SignIn: React.FC = () => {
             <h1>Sign in</h1>
             <p>to access the home page </p>
             <form onSubmit={handleEmailSignIn}>
-              <input
+              <Input
                 type="email"
                 id="email"
                 name="email"
@@ -111,7 +111,7 @@ const SignIn: React.FC = () => {
                 placeholder="Enter your email"
                 required
               />
-              <input
+              <Input
                 type="password"
                 id="password"
                 name="password"
@@ -120,9 +120,9 @@ const SignIn: React.FC = () => {
                 placeholder="Enter your password"
                 required
               />
-              <button type="submit" disabled={isLoading}>
+              <Button type="primary" htmlType="submit" disabled={isLoading}>
                 {isLoading ? "Signing In..." : "Sign In"}
-              </button>
+              </Button>
             </form>
             <h3>Or</h3>
             <StyledGoogleButton />
