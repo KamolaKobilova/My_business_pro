@@ -1,43 +1,26 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { Form, Input, Button, Checkbox } from "antd";
+import React, { useEffect } from "react";
+import { Form, Input, Button, Checkbox, message } from "antd";
 
 import { NavbarSignUp } from "./NavbarSignUp";
 import { useHook } from "./useHook";
-// interface SignUpFormProps {
-//   onSignUpSuccess: (token: string) => void;
-// }
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm: React.FC = () => {
-  // const handleSignUp = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://icare-api-3zia.onrender.com/api/auth/sign-up",
-  //       formData
-  //     );
-  //     const token = response.data.token;
-  //     console.log(token);
+  const { handleSignUp, error } = useHook();
+  const navigate = useNavigate()
 
-  //     onSignUpSuccess(token);
-  //   } catch (error) {
-  //     console.error("Sign-up failed:", "Unknown error");
-  //   }
-  // };
-
-  // const [formData, setFormData] = useState({
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  // });
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-  const { handleSignUp } = useHook();
+  useEffect(() => {
+    if(error) {
+      message.open({
+        type: 'error',
+        content: error?.data?.msg
+      })
+      if (error?.data?.msg.includes("E11000")) {
+        navigate("/sign-in")
+      }
+    }
+  }, [error])
+  
   return (
     <>
       <NavbarSignUp />
@@ -62,10 +45,19 @@ const SignUpForm: React.FC = () => {
           onFinish={handleSignUp}
         >
           <Form.Item
-            label="Full Name"
-            name="fullName"
+            label="First Name"
+            name="firstName"
             rules={[
-              { required: true, message: "Please enter your full name!" },
+              { required: true, message: "Please enter your first name!" },
+            ]}
+          >
+            <Input style={{ height: "45px" }} />
+          </Form.Item>
+          <Form.Item
+            label="Last Name"
+            name="lastName"
+            rules={[
+              { required: true, message: "Please enter your last name!" },
             ]}
           >
             <Input style={{ height: "45px" }} />
@@ -81,7 +73,15 @@ const SignUpForm: React.FC = () => {
           >
             <Input style={{ height: "45px" }} />
           </Form.Item>
-
+          <Form.Item
+            label="Phone Number"
+            name="phone"
+            rules={[
+              { required: true, message: "Please enter your phone number!" },
+            ]}
+          >
+            <Input style={{ width: "100%", height: "45px" }} />
+          </Form.Item>
           <Form.Item
             label="Password"
             name="password"

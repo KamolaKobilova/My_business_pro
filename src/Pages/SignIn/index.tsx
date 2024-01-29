@@ -76,7 +76,7 @@ const SignIn: React.FC = () => {
 
   useEffect(() => {
     if (state.redirectToHome && !isLoading && !isError) {
-      navigate("/main-home-page");
+      // navigate("/main-home-page");
     }
   }, [state.redirectToHome, isLoading, isError, navigate]);
 

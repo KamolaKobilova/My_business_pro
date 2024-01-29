@@ -14,6 +14,7 @@ import SignIn from "./Pages/SignIn";
 import HomePage from "./components/HomePage";
 import { CalendarComponent } from "./Pages/MainHomePage/Calendar/CalendarComponent";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
+import SignUpForm from "./Pages/SignUp/SignUpForm";
 const queryClient = new QueryClient();
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
             <Routes>
               {isUserAuthenticated ? (
                 <>
-                  <Route path="/main-home-page" element={<MainHomePage />} />
+                  <Route path="/" element={<MainHomePage />} />
                   <Route path="/calendar" element={<CalendarComponent />} />
                 </>
               ) : (
@@ -56,6 +57,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUpForm />} />
             </Routes>
           </Router>
         </QueryClientProvider>

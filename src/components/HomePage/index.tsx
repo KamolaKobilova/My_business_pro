@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyledDiv,
   Button,
@@ -11,10 +11,27 @@ import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.pn
 import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
 import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png";
 import Navbar from "../Navbar/Navbar";
+import { useSignInMutation } from "../../features/apiSlice";
+import { setToken } from "../../redux/authSlice";
+import { useDispatch } from "react-redux";
 // import Redux from "../../Redux";
 // import { CheckRedux } from "../../CheckRedux";
 
-function index() {
+function HomePage() {
+  const [signIn, { isError, data, isLoading, isSuccess }] = useSignInMutation();
+  const dispatch = useDispatch();
+  const handleSignIn = async () => {
+    await signIn({
+      email: "sanjarbekweb@gmail.com",
+      password: "123456",
+    });
+  };
+  useEffect(() => {
+    if (data) {
+      dispatch(setToken(data?.token));
+    }
+  }, [data]);
+
   return (
     <>
       <Navbar />
@@ -29,7 +46,7 @@ function index() {
               you work. Designed for businesses of all sizes, built <br /> by a
               company that values your privacy{" "}
             </p>
-            <Button>
+            <Button onClick={handleSignIn}>
               Get Started For Free <br />
               <img src="" alt="" />{" "}
             </Button>
@@ -99,4 +116,4 @@ function index() {
   );
 }
 
-export default index;
+export default HomePage;

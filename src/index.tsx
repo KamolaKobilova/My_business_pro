@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import App2 from "./App2";
 import { QueryClient, QueryClientProvider } from "react-query";
+import App2 from "./App2";
 const queryClient = new QueryClient()
 
 ReactDOM.render(
