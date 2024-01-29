@@ -93,7 +93,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Container>
-      <Back>
+      < Back>
         <SignInBlock>
           <InputBlock>
             <NavLink to="/">
@@ -129,7 +129,7 @@ const SignIn: React.FC = () => {
           </InputBlock>
           <SignInCarousel />
         </SignInBlock>
-      </Back>
+      </>
     </Container>
   );
 };

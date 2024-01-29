@@ -1,4 +1,3 @@
-import React, { Children } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,14 +7,14 @@ import {
 
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { setToken } from "./store/authslice";
-import store, { RootState } from "./store/store";
+import { setToken } from "./redux/authSlice";
+import store, { RootState } from "./redux/store";
 import SignIn from "./Pages/SignIn";
-import SignUpForm from "./Pages/SignUp/SignUpForm";
+// import SignUpForm from "./Pages/SignUp/SignUpForm";
 import HomePage from "./components/HomePage";
 import { CalendarComponent } from "./Pages/MainHomePage/Calendar/CalendarComponent";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
-import { MyProfile } from "./Pages/MainHomePage/MyProfile.tsx";
+import SignUpForm from "./Pages/SignUp/SignUpForm";
 const queryClient = new QueryClient();
 
 function App() {
@@ -48,7 +47,7 @@ function App() {
             <Routes>
               {isUserAuthenticated ? (
                 <>
-                  <Route path="/main-home-page" element={<MainHomePage />} />
+                  <Route path="/" element={<MainHomePage />} />
                   <Route path="/calendar" element={<CalendarComponent />} />
                   <Route path="/my-profile" element={<MyProfile />} />
                 </>
@@ -59,6 +58,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUpForm />} />
             </Routes>
           </Router>
         </QueryClientProvider>
