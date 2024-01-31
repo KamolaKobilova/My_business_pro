@@ -3,44 +3,52 @@ import {
   ModalOverlay,
   ModalContent,
   ModalCloseButton,
-  ModalContainer,Header, Title, Input, ButtonNext
+  ModalContainer,Header, Title, ButtonNext
 } from "./BookingStyles";
-import logo from '../../../assets/BookingPage/logo.png'
+import logo from '../../../assets/BookingPage/logo.png';
+import { Form, Input, Button, Steps, Select } from 'antd';
+import { Store } from 'antd/lib/form/interface';
+import {ExclamationCircleOutlined} from "@ant-design/icons"
 
 interface CalendarModalProps {
   onClose: () => void;
 }
+const { Step } = Steps;
+const { Option } = Select;
 
 export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [form] = Form.useForm();
 
-  const [formData, setFormData] = useState({
-    step: 1,
-    name: '',
-    timeZone: '',
-    currency: '',
-  });
-  const { step, name, timeZone, currency } = formData;
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1);
+  };
 
-  // const handleChange = (e) => {
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-  //   if (e.target.name === 'name' && e.target.value.trim() !== '' && step === 1) {
-  //     setFormData({ ...formData, step: step + 1 });
-  //   } else if (e.target.name === 'timeZone' && e.target.value.trim() !== '' && step === 2) {
-  //     setFormData({ ...formData, step: step + 1 });
-  //   } else if (e.target.name === 'currency' && e.target.value.trim() !== '' && step === 3) {
-  //     // You can add additional conditions or validation as needed
-  //     setFormData({ ...formData, step: step + 1 });
-  //   }
-  // };
+  const prevStep = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
+  const onFinish = (values: Store) => {
+    // 'values' is now of type 'Store', representing the form values
+    console.log('Form submitted with values:', values);
+    // Handle form submission logic here
+  };
+
      
-
+  const currencyOptions = [
+    { value: 'UZS', label: 'UZS - Uzbekistan Sum' },
+    { value: 'USD', label: 'USD - United States Dollar' },
+    { value: 'EUR', label: 'EUR - Euro' },
+    
+    // Add more currency options as needed
+  ];
 
 
 
   return (
     <ModalOverlay>
       <ModalContent>
-        <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
+        <ModalCloseButton onClick={onClose} style={{position: "absolute", top:"215px", right:"370px"}}>&times;</ModalCloseButton>
         <ModalContainer>
           
           <div className="switch-block">
@@ -50,35 +58,127 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
            </Header>
            <Title>
              <h3 style={{color: "#333333", fontFamily:"Inter", marginLeft:20, fontSize:18}}>Hi there, <span>User</span></h3>
-            <p style={{marginLeft:20, marginTop: 20}}>
-              Welcome to <span>Zoho Bookings.</span> We’ll help you find the perfect time
-              with your clients. Give us a little information about your
-              business to start with and we’ll fit you right in.
-            </p>
+                  <p style={{marginLeft:20, marginTop: 20}}>
+                     Welcome to <span>Zoho Bookings.</span> We’ll help you find the perfect time
+                     with your clients. Give us a little information about your
+                     business to start with and we’ll fit you right in.
+                 </p>
+            <Steps current={currentStep} size="small" style={{display:"flex", flexDirection:'column', marginTop:"40px"}}>
+                <Step title="Business Details" />
+                <Step title="Your availability" />
+                <Step title="Create service" />
+           </Steps>
            </Title>
            
           </div>
           <div className="input-block">
             <h3>Tell us</h3>
             <h1>your business</h1>
-            <Input>
-            <label>Name:</label><br />
-          <input  type="text" name="name" value={name}/><br />
-            <label>Time Zone:</label><br />
-          <select name="timeZone" value={timeZone}><br />
-            <option value="">Select Time Zone</option>
-            <option value="GMT">GMT</option>
-            <option value="UTC">UTC</option>
-            {/* Add more time zones as needed */}
-          </select><br />
-          <label>Currency:</label>
-          <select name="currency" value={currency}>
-            <option value="">Select Currency</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-          </select>
-            </Input>
-            <ButtonNext>Next</ButtonNext>
+            <span>
+            <Form form={form} onFinish={onFinish}>
+     
+
+      <div style={{ marginTop: '16px' }}>
+        {currentStep === 0 && (
+          <>
+            <Form.Item
+              name={['input1']}
+              label="Business Name"
+              rules={[{ required: true, message: 'Please input Field 1!' }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+              
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label={
+                <span>
+                  Time Zone  <span><ExclamationCircleOutlined style={{color: "rgb(204, 204, 204)"}}/></span>
+                </span>
+              }
+              name={['input2' ]}
+              rules={[{ required: true, message: 'Please select Time Zone!' }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Select placeholder="Select Time Zone">
+                <Option value="UTC">UTC</Option>
+                <Option value="GMT">GMT</Option>
+              
+              </Select>
+            </Form.Item>
+            <Form.Item
+             label={
+              <span>
+                Currency <span><ExclamationCircleOutlined style={{color: "rgb(204, 204, 204)"}}/></span>
+              
+              </span>
+            }
+              name={[ 'input3']}
+              rules={[{ required: true, message: 'Please select Currency!' }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+            >
+              <Select placeholder="Select Currency">
+                {currencyOptions.map((currency) => (
+                  <Option key={currency.value} value={currency.value}>
+                    {currency.label}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" onClick={nextStep}>
+                Next
+              </Button>
+            </Form.Item>
+          </>
+        )}
+
+        {currentStep === 1 && (
+          <>
+            <Form.Item
+              name="field2"
+              label="Field 2"
+              rules={[{ required: true, message: 'Please input Field 2!' }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" onClick={prevStep}>
+                Previous
+              </Button>
+              <Button type="primary" onClick={nextStep}>
+                Next
+              </Button>
+            </Form.Item>
+          </>
+        )}
+
+        {currentStep === 2 && (
+          <>
+            <Form.Item
+              name="field3"
+              label="Field 3"
+              rules={[{ required: true, message: 'Please input Field 3!' }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" onClick={prevStep}>
+                Previous
+              </Button>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </div>
+    </Form>
+            </span>
+          
           </div>
           
         </ModalContainer>
