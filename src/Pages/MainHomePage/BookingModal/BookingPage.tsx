@@ -29,9 +29,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
   };
 
   const onFinish = (values: Store) => {
-    // 'values' is now of type 'Store', representing the form values
     console.log('Form submitted with values:', values);
-    // Handle form submission logic here
   };
 
      
@@ -40,7 +38,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
     { value: 'USD', label: 'USD - United States Dollar' },
     { value: 'EUR', label: 'EUR - Euro' },
     
-    // Add more currency options as needed
+    
   ];
 
 
@@ -63,10 +61,10 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
                      with your clients. Give us a little information about your
                      business to start with and we’ll fit you right in.
                  </p>
-            <Steps current={currentStep} size="small" style={{display:"flex", flexDirection:'column', marginTop:"40px"}}>
-                <Step title="Business Details" />
-                <Step title="Your availability" />
-                <Step title="Create service" />
+            <Steps current={currentStep} size="small" style={{display:"flex", flexDirection:'column', marginTop:"40px", width:"250px", height:"120px"}}>
+                <Step title="Business Details" style={{marginLeft:"20px"}}/>
+                <Step title="Your availability"style={{marginLeft:"8px"}} />
+                <Step title="Create service" style={{marginLeft:"8px"}}/>
            </Steps>
            </Title>
            
@@ -105,7 +103,6 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
               <Select placeholder="Select Time Zone">
                 <Option value="UTC">UTC</Option>
                 <Option value="GMT">GMT</Option>
-              
               </Select>
             </Form.Item>
             <Form.Item
