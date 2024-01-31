@@ -1,26 +1,41 @@
-import { RouterProvider } from "react-router-dom";
+// App2.tsx
 
-import { Provider, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { RouterProvider } from "react-router-dom";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import store, { RootState } from "./redux/store";
+import { store, persistor, RootState } from "./redux/store";
 import { publicRouter, router } from "./router";
+import { setToken } from "./redux/authSlice";
+
 const queryClient = new QueryClient();
 
 function App2() {
-  const token = useSelector((state: RootState) => state.auth.token);
-  const isUserAuthenticated = token;
-console.log("token", token);
+  const dispatch = useDispatch();
+  const storedToken = localStorage.getItem("token");
+  const reduxToken = useSelector((state: RootState) => state.auth.token);
+  const isUserAuthenticated = !!reduxToken;
+
+  useEffect(() => {
+    if (storedToken && storedToken !== reduxToken) {
+      dispatch(setToken(storedToken));
+    }
+  }, [storedToken, reduxToken, dispatch]);
 
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider
-            router={isUserAuthenticated ? router : publicRouter}
-          />
+          <PersistGate loading={null} persistor={persistor}>
+            <RouterProvider
+              router={isUserAuthenticated ? router : publicRouter}
+            />
+          </PersistGate>
         </QueryClientProvider>
       </Provider>
     </>
   );
 }
+
 export default App2;

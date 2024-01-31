@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   StyledDiv,
   Button,
@@ -11,27 +11,8 @@ import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.pn
 import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
 import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png";
 import Navbar from "../Navbar/Navbar";
-import { useSignInMutation } from "../../features/apiSlice";
-import { setToken } from "../../redux/authSlice";
-import { useDispatch } from "react-redux";
-// import Redux from "../../Redux";
-// import { CheckRedux } from "../../CheckRedux";
 
 function HomePage() {
-  const [signIn, { isError, data, isLoading, isSuccess }] = useSignInMutation();
-  const dispatch = useDispatch();
-  const handleSignIn = async () => {
-    await signIn({
-      email: "sanjarbekweb@gmail.com",
-      password: "123456",
-    });
-  };
-  useEffect(() => {
-    if (data) {
-      dispatch(setToken(data?.token));
-    }
-  }, [data]);
-
   return (
     <>
       <Navbar />
@@ -39,18 +20,17 @@ function HomePage() {
         <div className="main_left">
           <StyledDiv className="text">
             <h2>
-              Your life's work, <br /> powered by our life's work
+              Your life&apos;s work, <br /> powered by our life&apos;s work
             </h2>
             <p>
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a
               company that values your privacy{" "}
             </p>
-            <Button onClick={handleSignIn}>
+            <Button>
               Get Started For Free <br />
               <img src="" alt="" />{" "}
             </Button>
-            {/* <Redux></Redux> */}
           </StyledDiv>
           <Picture>
             <img src={image} alt="" />
@@ -79,7 +59,6 @@ function HomePage() {
         </div>
         <Feature className="main_right">
           {" "}
-          {/* <CheckRedux /> */}
           <div className="feature">
             <p style={{ marginTop: 20 }}>FEATURED APPS</p>
             <ul style={{ listStyle: "none" }}>
