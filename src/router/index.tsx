@@ -1,19 +1,17 @@
-import React from "react-router-dom";
+import React, { Navigate } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "../Pages/SignIn";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
-import { MainHomePage } from "../Pages/MainHomePage/MainHomePage";
 import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
 import { MyProfile } from "../Pages/MainHomePage/MyProfile.tsx";
+import { MainHomePage } from "../Pages/MainHomePage/MainHomePage";
 
 export const router = createBrowserRouter([
+  { path: "/", element: <CalendarComponent /> },
+
   {
-    path: "/",
-    element: <MainHomePage />,
-  },
-  {
-    path: "/calendar",
+    path: "calendar",
     element: <CalendarComponent />,
   },
 
@@ -25,6 +23,10 @@ export const router = createBrowserRouter([
   {
     path: "/user",
     element: "Bilmayman",
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" replace />,
   },
 ]);
 export const publicRouter = createBrowserRouter([
@@ -39,6 +41,10 @@ export const publicRouter = createBrowserRouter([
   {
     path: "/users",
     element: "salom",
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" replace />,
   },
   {
     path: "/sign-up",

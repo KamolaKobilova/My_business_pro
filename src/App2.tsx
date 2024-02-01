@@ -1,5 +1,3 @@
-// App2.tsx
-
 import React, { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { Provider, useDispatch, useSelector } from "react-redux";
@@ -8,26 +6,27 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { store, persistor, RootState } from "./redux/store";
 import { publicRouter, router } from "./router";
 import { setToken } from "./redux/authSlice";
+import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
 
 const queryClient = new QueryClient();
 
 function App2() {
   const dispatch = useDispatch();
-  const storedToken = localStorage.getItem("token");
-  const reduxToken = useSelector((state: RootState) => state.auth.token);
-  const isUserAuthenticated = !!reduxToken;
+  const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
-    if (storedToken && storedToken !== reduxToken) {
-      dispatch(setToken(storedToken));
-    }
-  }, [storedToken, reduxToken, dispatch]);
+    dispatch(setToken(storedToken));
+  }, [storedToken, dispatch]);
+
+  const reduxToken = useSelector((state: RootState) => state.auth.token);
+  const isUserAuthenticated = !!reduxToken;
 
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <PersistGate loading={null} persistor={persistor}>
+            {isUserAuthenticated && <MainHomePage />}
             <RouterProvider
               router={isUserAuthenticated ? router : publicRouter}
             />

@@ -19,14 +19,14 @@ export const HomePageNav = () => {
   return (
     <div>
       <Navbar>
-        <NavLink to="/calendar">
+        <a href="/calendar">
           <NavButton>Calendar</NavButton>
-        </NavLink>
+        </a>
         <NavButton>Services</NavButton>
         <NavButton>Staff</NavButton>
-        <NavLink to="/my-profile">
+        <a href="/my-profile">
           <NavButton>My profile</NavButton>
-        </NavLink>
+        </a>
         <NavButton onClick={handleOpenModal}>Booking page</NavButton>
         {isModalOpen && <CalendarModal onClose={handleCloseModal} />}
       </Navbar>

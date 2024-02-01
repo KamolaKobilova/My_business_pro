@@ -6,9 +6,6 @@ import {
   ScrollingBlockWrp,
   ScrollingBlockContent,
 } from "./stylesForMyProfile";
-export const MyProfileLogic = () => {
-  return <div>MyProfileLogic</div>;
-};
 
 export const ButtonContainer = () => {
   const [activeButton, setActiveButton] = useState<number | null>(null);

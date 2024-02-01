@@ -35,7 +35,6 @@ const SignIn = () => {
   useEffect(() => {
     if (data) {
       dispatch(setToken(data?.token));
-      navigate("/");
     } else if (error) {
       console.error("Sign-in failed. Please try again.", error);
     }
