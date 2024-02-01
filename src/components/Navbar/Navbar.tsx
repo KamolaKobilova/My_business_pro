@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+
 import {
   StyledLink,
   NavbarContainer,
@@ -14,26 +14,14 @@ import {
 } from "./StylesForNavbar/Styles";
 // import { StyledButton } from "../Navbar/StylesForNavbar/";
 import SideBar from "./SideBar";
-import { setToken } from "../../redux/authSlice";
-import { RootState } from "../../redux/store";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isSvgHovered, setSvgHovered] = useState(false);
-  const dispatch = useDispatch();
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
-
-  // const storedToken = localStorage.getItem("authToken");
-
-  // if (storedToken) {
-  //   dispatch(setToken(storedToken));
-  // }
-
-  // const token = useSelector((state: RootState) => state.auth.token);
-  // const isUserAuthenticated = !!token;
 
   return (
     <>

@@ -1,9 +1,7 @@
-import axios from "axios";
-import React, { FormEvent, useState, useEffect, useReducer } from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useMutation } from "react-query";
-
+import { Input, Button, Form } from "antd";
 import SignInCarousel from "./SignInCarousel";
 import {
   Container,
@@ -12,84 +10,35 @@ import {
   InputBlock,
   StyledGoogleButton,
 } from "./StylesForSignIn/styles";
-import signInReducer, { initialState } from "../../redux/signInReducer";
+
 import { setToken } from "../../redux/authSlice";
+import { useSignInMutation } from "../../features/apiSlice";
 
-type SignInFormData = {
-  email: string;
-  password: string;
-};
-
-const signInFn = async (formData: SignInFormData) => {
-  try {
-    const response = await axios.post(
-      "https://icare-api-3zia.onrender.com/api/auth/login",
-      formData
-    );
-
-    if (!response.data.token) {
-      throw new Error("Token not received from the server");
-    }
-
-    return response.data.token;
-  } catch (error: any) {
-    throw new Error(`Error signing in: ${error.message}`);
-  }
-};
-
-const SignIn: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [state, dispatchSignIn] = useReducer(signInReducer, initialState);
-
-  const {
-    mutate: signInMutation,
-    isLoading,
-    isError,
-  } = useMutation((formData: SignInFormData) => signInFn(formData), {
-    onSuccess: (token: string) => {
-      dispatch(setToken(token));
-      dispatchSignIn({ type: "SET_REDIRECT_TO_HOME", payload: true });
-
-      localStorage.setItem("authToken", token);
-    },
-    onError: (error: Error) => {
-      console.error(error.message);
-    },
-  });
-
-  useEffect(() => {
-    const checkToken = async () => {
-      const storedToken = localStorage.getItem("authToken");
-
-      if (storedToken) {
-        dispatch(setToken(storedToken));
-        dispatchSignIn({ type: "SET_REDIRECT_TO_HOME", payload: true });
-      }
-    };
-
-    checkToken();
-  }, [dispatch, dispatchSignIn]);
-
-  useEffect(() => {
-    if (state.redirectToHome && !isLoading && !isError) {
-      // navigate("/main-home-page");
-    }
-  }, [state.redirectToHome, isLoading, isError, navigate]);
-
-  const handleEmailSignIn = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const formData: SignInFormData = {
-      email: "sanjarbekweb@gmail.com",
-      password: "123456",
-    };
-
-    signInMutation(formData);
+  const [signIn, { data, error, isLoading }] = useSignInMutation();
+  type FieldType = {
+    email: string;
+    password: string;
   };
+  const handleSignIn = async (formData: FieldType) => {
+    // console.log(formData, "formData");
+
+    try {
+      await signIn(formData);
+    } catch (error: any) {
+      console.error("Sign-in failed. Please try again.", error);
+    }
+  };
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setToken(data?.token));
+    } else if (error) {
+      console.error("Sign-in failed. Please try again.", error);
+    }
+  }, [data, error, dispatch, navigate]);
 
   return (
     <Container>
@@ -101,29 +50,29 @@ const SignIn: React.FC = () => {
             </NavLink>
             <h1>Sign in</h1>
             <p>to access the home page </p>
-            <form onSubmit={handleEmailSignIn}>
-              <input
-                type="email"
-                id="email"
+            <Form onFinish={handleSignIn}>
+              <Form.Item<FieldType>
+                label="Email"
                 name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-              />
-              <input
-                type="password"
-                id="password"
+                rules={[
+                  { required: true, message: "Please input your email!" },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item<FieldType>
+                label="Password"
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-              />
-              <button type="submit" disabled={isLoading}>
+                rules={[
+                  { required: true, message: "Please input your password!" },
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+              <Button type="primary" htmlType="submit" disabled={isLoading}>
                 {isLoading ? "Signing In..." : "Sign In"}
-              </button>
-            </form>
+              </Button>
+            </Form>
             <h3>Or</h3>
             <StyledGoogleButton />
           </InputBlock>

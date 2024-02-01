@@ -14,7 +14,7 @@ export const useHook = () => {
     // let cachedChat = useSelector((state) => state.chatAndMessages);
     // let activeChatId = useSelector((state) => state.activeChat);
 
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
     // let getChatTab = useGetChatTabQuery();
     // const { data, isLoading, refetch } = useChat();
     const handleSignIn = async (formData: FormEventHandler<HTMLFormElement>) => {
