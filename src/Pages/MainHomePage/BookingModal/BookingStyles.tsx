@@ -6,12 +6,38 @@ export const Navbar = styled.nav`
   max-width: 1920px;
   margin: 0 auto;
   display: flex;
-  gap: 20px;
+  /* gap: 20px; */
   background-color: ${mainPurple};
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+
+  .navbar-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-right: 18px;
+  }
+  .navbar-buttons .navbar {
+    display: flex;
+    gap: 20px;
+  }
+  .navbar-buttons .push-settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .navbar-buttons .push-settings .user-image {
+    border: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+  }
 `;
 export const ButtonNext = styled.nav`
   display: flex;
@@ -142,5 +168,3 @@ export const ModalContainer = styled.div`
   .input-block h3 {
   }
 `;
-
-
