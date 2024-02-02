@@ -178,58 +178,59 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
           <Button
             type={selectedDays.includes('Monday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Monday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Monday
           </Button>
           <Button
             type={selectedDays.includes('Tuesday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Tuesday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Tuesday
           </Button>
           <Button
             type={selectedDays.includes('Wednesday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Wednesday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Wednesday
           </Button>
           <Button
             type={selectedDays.includes('Thursday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Thursday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Thursday
           </Button>
           <Button
             type={selectedDays.includes('Friday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Friday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px",marginTop:"12px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Friday
           </Button>
           <Button
             type={selectedDays.includes('Saturday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Saturday')}
-            style={{ marginRight: '5px' }}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Saturday
           </Button>
           <Button
             type={selectedDays.includes('Sunday') ? 'primary' : 'default'}
             onClick={() => handleDayClick('Sunday')}
+            style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
           >
             Sunday
           </Button>
         </div>
       </Form.Item>
             <Form.Item>
-              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"95px", left:"8px", backgroundColor:"#4F4A7B"}}>
+              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"70px", left:"8px", backgroundColor:"#4F4A7B"}}>
                 Previous
               </Button>
-              <Button type="primary" onClick={nextStep}style={{width:"100px", position:"relative", top:"95px", left:"190px", backgroundColor:"#4F4A7B"}}>
+              <Button type="primary" onClick={nextStep}style={{width:"100px", position:"relative", top:"70px", left:"190px", backgroundColor:"#4F4A7B"}}>
                 Next
               </Button>
             </Form.Item>
