@@ -6,7 +6,7 @@ import {
   ModalContainer,Header, Title, ButtonNext
 } from "./BookingStyles";
 import logo from '../../../assets/BookingPage/logo.png';
-import { Form, Input, Button, Steps, Select } from 'antd';
+import { Form, Input, Button, Steps, Select, TimePicker, InputNumber, Space } from 'antd';
 import { Store } from 'antd/lib/form/interface';
 import {ExclamationCircleOutlined} from "@ant-design/icons"
 
@@ -18,6 +18,7 @@ const { Option } = Select;
 
 export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [form] = Form.useForm();
 
   const nextStep = () => {
@@ -40,7 +41,14 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
     
     
   ];
-
+   ////////Field 2///
+   const handleDayClick = (day: string) => {
+    if (selectedDays.includes(day)) {
+      setSelectedDays(selectedDays.filter((selectedDay) => selectedDay !== day));
+    } else {
+      setSelectedDays([...selectedDays, day]);
+    }
+  };
 
 
   return (
@@ -69,7 +77,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
            </Title>
            
           </div>
-          <div className="input-block">
+          <div className="input-block" style={{marginLeft:"10px"}}>
             <h3>Tell us</h3>
             <h1>your business</h1>
             <span>
@@ -79,15 +87,15 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
       <div style={{ marginTop: '16px' }}>
         {currentStep === 0 && (
           <>
+         
             <Form.Item
               name={['input1']}
               label="Business Name"
               rules={[{ required: true, message: 'Please input Field 1!' }]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
-              
             >
-              <Input />
+              <Input style={{height:"35px"}} />
             </Form.Item>
             <Form.Item
               label={
@@ -100,7 +108,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Select placeholder="Select Time Zone">
+              <Select placeholder="Select Time Zone" style={{height:"35px"}}>
                 <Option value="UTC">UTC</Option>
                 <Option value="GMT">GMT</Option>
               </Select>
@@ -117,7 +125,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
             >
-              <Select placeholder="Select Currency">
+              <Select placeholder="Select Currency" style={{height:"35px"}}>
                 {currencyOptions.map((currency) => (
                   <Option key={currency.value} value={currency.value}>
                     {currency.label}
@@ -126,7 +134,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
               </Select>
             </Form.Item>
             <Form.Item>
-              <Button type="primary" onClick={nextStep}>
+              <Button type="primary" onClick={nextStep} style={{width:"100px", position:"relative", top:"35px", left:"190px", backgroundColor:"#4F4A7B"}}>
                 Next
               </Button>
             </Form.Item>
@@ -136,17 +144,92 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
         {currentStep === 1 && (
           <>
             <Form.Item
-              name="field2"
-              label="Field 2"
-              rules={[{ required: true, message: 'Please input Field 2!' }]}
-            >
-              <Input />
-            </Form.Item>
+        name="field2"
+        label="Field 2"
+        rules={[{ required: true, message: 'Please input Field 2!' }]}
+        labelCol={{ span: 24 }}
+        wrapperCol={{ span: 24 }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <TimePicker
+            format="HH:mm"
+            style={{ width: '190px', height: '40px' }}
+            placeholder="Start Time"
+            
+          />
+          <TimePicker
+            format="HH:mm"
+            style={{ width: '190px', height: '40px' }}
+            placeholder="End Time"
+            
+          />
+        </div>
+      </Form.Item>
+
+      <Form.Item
+        name="weekdays"
+        label="Select Weekdays"
+        rules={[{ required: true, message: 'Please select weekdays!' }]}
+        labelCol={{ span: 24 }}
+        wrapperCol={{ span: 24 }}
+        
+      >
+        <div>
+          <Button
+            type={selectedDays.includes('Monday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Monday')}
+            style={{ marginRight: '5px' }}
+          >
+            Monday
+          </Button>
+          <Button
+            type={selectedDays.includes('Tuesday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Tuesday')}
+            style={{ marginRight: '5px' }}
+          >
+            Tuesday
+          </Button>
+          <Button
+            type={selectedDays.includes('Wednesday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Wednesday')}
+            style={{ marginRight: '5px' }}
+          >
+            Wednesday
+          </Button>
+          <Button
+            type={selectedDays.includes('Thursday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Thursday')}
+            style={{ marginRight: '5px' }}
+          >
+            Thursday
+          </Button>
+          <Button
+            type={selectedDays.includes('Friday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Friday')}
+            style={{ marginRight: '5px' }}
+          >
+            Friday
+          </Button>
+          <Button
+            type={selectedDays.includes('Saturday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Saturday')}
+            style={{ marginRight: '5px' }}
+          >
+            Saturday
+          </Button>
+          <Button
+            type={selectedDays.includes('Sunday') ? 'primary' : 'default'}
+            onClick={() => handleDayClick('Sunday')}
+          >
+            Sunday
+          </Button>
+        </div>
+      </Form.Item>
             <Form.Item>
-              <Button type="primary" onClick={prevStep}>
+              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"95px", left:"8px", backgroundColor:"#4F4A7B"}}>
                 Previous
               </Button>
-              <Button type="primary" onClick={nextStep}>
+              <Button type="primary" onClick={nextStep}style={{width:"100px", position:"relative", top:"95px", left:"190px", backgroundColor:"#4F4A7B"}}>
                 Next
               </Button>
             </Form.Item>
@@ -156,17 +239,49 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
         {currentStep === 2 && (
           <>
             <Form.Item
-              name="field3"
-              label="Field 3"
-              rules={[{ required: true, message: 'Please input Field 3!' }]}
+              name={['input3']}
+              label="Service Name"
+              rules={[{ required: true, message: 'Please input Field !' }]}
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+              style={{ width: '370px' }}
+              
             >
               <Input />
             </Form.Item>
+            <Form.Item
+        name="field2"
+        label="Duration"
+        rules={[{ required: true, message: 'Please fill this!' }]}
+        labelCol={{ span: 24 }}
+        wrapperCol={{ span: 24 }}
+      >
+        <Space>
+          <InputNumber
+            min={0}
+            max={24}
+            placeholder="Hours"
+            style={{ width: '180px' }}
+            // You can customize other props as needed
+            // defaultValue={0}
+            // onChange={(value) => console.log(value)}
+          />
+          <InputNumber
+            min={0}
+            max={59}
+            placeholder="Minutes"
+            style={{ width: '180px' }}
+            // You can customize other props as needed
+            // defaultValue={0}
+            // onChange={(value) => console.log(value)}
+          />
+        </Space>
+      </Form.Item>
             <Form.Item>
-              <Button type="primary" onClick={prevStep}>
+              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"130px", left:"8px", backgroundColor:"#4F4A7B"}}>
                 Previous
               </Button>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit"style={{width:"100px", position:"relative", top:"130px", left:"150px", backgroundColor:"#4F4A7B"}}>
                 Submit
               </Button>
             </Form.Item>
