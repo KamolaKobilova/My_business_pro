@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
-import { FullPageCalendar } from "./StylesForCalendar";
+import { FullPageCalendar, StyledCalendar } from "./StylesForCalendar";
 export const CalendarComponent = () => {
   const [date, setDate] = useState(new Date());
 
@@ -11,7 +10,7 @@ export const CalendarComponent = () => {
   return (
     <>
       <FullPageCalendar>
-        <Calendar
+        <StyledCalendar
           className="custom-calendar"
           onChange={onChange}
           value={date}
