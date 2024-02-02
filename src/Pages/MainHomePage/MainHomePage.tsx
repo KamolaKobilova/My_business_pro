@@ -1,5 +1,5 @@
 import React from "react";
-import { HomePageNav } from "./BookingModal/HomePageNav";
+import { HomePageNav } from "./HomePageNav";
 
 export const MainHomePage = () => {
   return <HomePageNav />;

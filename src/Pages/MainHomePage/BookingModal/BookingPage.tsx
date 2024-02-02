@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   ModalOverlay,
   ModalContent,
@@ -56,7 +56,6 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
       <ModalContent>
         <ModalCloseButton onClick={onClose} style={{position: "absolute", top:"215px", right:"370px"}}>&times;</ModalCloseButton>
         <ModalContainer>
-          
           <div className="switch-block">
            <Header>
            <img src={logo} alt="" style={{width:60}} />
@@ -294,11 +293,8 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
             </span>
           
           </div>
-          
         </ModalContainer>
       </ModalContent>
     </ModalOverlay>
   );
 };
-
-
