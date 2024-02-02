@@ -61,8 +61,11 @@ export const Feature = styled.div`
       width: 70px;
     }
   }
-  h2 {
+  h4 {
     color: #056cb8;
+  }
+  span {
+    font-family: sans-serif
   }
 `;
 
