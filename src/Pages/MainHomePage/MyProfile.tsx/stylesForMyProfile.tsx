@@ -8,8 +8,8 @@ export const Back = styled.div`
 export const Container = styled.div`
   display: flex;
   max-width: 1500px;
-  height: 700px;
-  margin: 20px auto;
+  height: 645px;
+  margin: 80px auto 20px;
   border: 1px solid white;
   border-radius: 10px;
   background-color: white;
@@ -22,12 +22,27 @@ export const ProfileSide = styled.div`
     padding:20 10px;
     margin-top:60px;
     width:400px;
+
 .img-block{
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:10px
 
+}
+.img-block .photo{
+  width:70px;
+  height:70px;
+  border-radius:40px;
+  border:1px solid #ddd;
+  display:flex;
+  align-items:center;
+}
+.img-block img {
+  border:1px solid #ddd;
+  width:70px;
+  height:70px;
+  border-radius:40px;
 }
 
 .button-block{
@@ -49,7 +64,7 @@ export const Button = styled.div<{ active: boolean }>`
 export const ScrollingBlockWrp = styled.div`
   width: 920px;
   height: 550px;
-  margin: 80px 0 0 50px;
+  margin: 50px 0 0 50px;
   border-radius: 30px;
   box-shadow: 0 0 10px 5px #eeeeee;
   overflow: hidden;
