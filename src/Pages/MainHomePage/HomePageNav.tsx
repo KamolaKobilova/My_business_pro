@@ -1,17 +1,25 @@
 import React from "react";
 import { Drawer } from "antd";
-import { NavButton, Navbar } from "./BookingModal/BookingStyles";
+import {
+  NavButton,
+  Navbar,
+  DrawerContent,
+  LogOutButton,
+} from "./BookingModal/BookingStyles";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { CalendarModal } from "./BookingModal/BookingPage";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/authSlice";
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerVisible, setDrawerVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
     console.log("modal open");
@@ -28,6 +36,10 @@ export const HomePageNav = () => {
 
   const onCloseDrawer = () => {
     setDrawerVisible(false);
+  };
+  const handleLogout = () => {
+    dispatch(logout());
+    onCloseDrawer();
   };
 
   return (
@@ -64,7 +76,15 @@ export const HomePageNav = () => {
         onClose={onCloseDrawer}
         visible={isDrawerVisible}
       >
-        <p>Drawer content</p>
+        <DrawerContent>
+          <div className="user">
+            <img alt="user" src="" />
+          </div>
+          <p>Dinora</p>
+          <p>email</p>
+          <p>time</p>
+          <LogOutButton onClick={handleLogout}>Log out</LogOutButton>
+        </DrawerContent>
       </Drawer>
     </div>
   );
