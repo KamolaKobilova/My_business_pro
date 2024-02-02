@@ -245,24 +245,25 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
               rules={[{ required: true, message: 'Please input Field !' }]}
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
-              style={{ width: '370px' }}
+              style={{ width: '370px'}}
               
             >
-              <Input />
+              <Input style={{ width: '370px', height:"40px"}}/>
             </Form.Item>
             <Form.Item
-        name="field2"
-        label="Duration"
-        rules={[{ required: true, message: 'Please fill this!' }]}
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
+             name="field2"
+             label="Duration"
+             rules={[{ required: true, message: 'Please fill this!' }]}
+             labelCol={{ span: 24 }}
+             wrapperCol={{ span: 24 }}
       >
         <Space>
           <InputNumber
             min={0}
             max={24}
             placeholder="Hours"
-            style={{ width: '180px' }}
+            style={{ width: '180px', height:"40px" }}
+
             // You can customize other props as needed
             // defaultValue={0}
             // onChange={(value) => console.log(value)}
@@ -271,7 +272,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
             min={0}
             max={59}
             placeholder="Minutes"
-            style={{ width: '180px' }}
+            style={{ width: '180px', height:"40px" }}
             // You can customize other props as needed
             // defaultValue={0}
             // onChange={(value) => console.log(value)}
@@ -279,10 +280,10 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
         </Space>
       </Form.Item>
             <Form.Item>
-              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"130px", left:"8px", backgroundColor:"#4F4A7B"}}>
+              <Button type="primary" onClick={prevStep}style={{width:"100px", position:"relative", top:"120px", left:"8px", backgroundColor:"#4F4A7B"}}>
                 Previous
               </Button>
-              <Button type="primary" htmlType="submit"style={{width:"100px", position:"relative", top:"130px", left:"150px", backgroundColor:"#4F4A7B"}}>
+              <Button type="primary" htmlType="submit"style={{width:"100px", position:"relative", top:"120px", left:"150px", backgroundColor:"#4F4A7B"}}>
                 Submit
               </Button>
             </Form.Item>
