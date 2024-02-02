@@ -165,6 +165,34 @@ export const ModalContainer = styled.div`
     color: ${mainPurple};
     margin-top: 0;
   }
-  .input-block h3 {
+`;
+export const DrawerContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  .user {
+    border: 1px solid #ddd;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
   }
+  .user img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+`;
+export const LogOutButton = styled.button`
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  color: white;
+  background-color: ${mainPurple};
+  border: none;
+  cursor: pointer;
 `;
