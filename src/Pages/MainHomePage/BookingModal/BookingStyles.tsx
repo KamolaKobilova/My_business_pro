@@ -7,7 +7,6 @@ export const Navbar = styled.nav`
   display: flex;
   gap: 20px;
   background-color: ${mainPurple};
-  
 `;
  export const ButtonNext = styled.nav`
    display: flex;
@@ -65,27 +64,15 @@ export const Header = styled.div`
 
 export const NavButton = styled.button`
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   background-color: ${mainPurple};
   border: none;
-  width: 100px;
+  width: 150px;
   height: 60px;
   &:hover {
-    border-bottom: 2px solid red;
+    border-bottom: 4px solid red;
   }
- 
 `;
-export const NavRight = styled.button`
-  font-size: 15px;
-  background-color: ${mainPurple};
-  border: none;
-  width: 35px;
-  height: 60px;
-  &:hover {
-    
-    border-bottom: 2px solid red;
-  }
-`
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -155,3 +142,5 @@ export const ModalContainer = styled.div`
   .input-block h3 {
   }
 `;
+
+
