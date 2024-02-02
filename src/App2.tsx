@@ -7,6 +7,7 @@ import { store, persistor, RootState } from "./redux/store";
 import { publicRouter, router } from "./router";
 import { setToken } from "./redux/authSlice";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
+import Appointment from "./Pages/MainHomePage/BookingModal/Appointment";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ function App2() {
 
   return (
     <>
+   
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <PersistGate loading={null} persistor={persistor}>
