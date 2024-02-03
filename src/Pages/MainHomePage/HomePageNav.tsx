@@ -1,24 +1,17 @@
 import React from "react";
-import { Drawer } from "antd";
-import {
-  NavButton,
-  Navbar,
-  DrawerContent,
-  LogOutButton,
-} from "./BookingModal/BookingStyles";
 import { useState } from "react";
-import { CalendarModal } from "./BookingModal/BookingPage";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { logout } from "../../redux/authSlice";
+import { IoIosNotificationsOutline } from "react-icons/io";
+
+import { NavButton, Navbar } from "./BookingModal/BookingStyles";
+import { CalendarModal } from "./BookingModal/BookingPage";
+import { ProfileDrawer } from "./ProfileDrawer";
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerVisible, setDrawerVisible] = useState(false);
-  const dispatch = useDispatch();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -32,14 +25,6 @@ export const HomePageNav = () => {
 
   const showDrawer = () => {
     setDrawerVisible(true);
-  };
-
-  const onCloseDrawer = () => {
-    setDrawerVisible(false);
-  };
-  const handleLogout = () => {
-    dispatch(logout());
-    onCloseDrawer();
   };
 
   return (
@@ -68,24 +53,10 @@ export const HomePageNav = () => {
           </div>
         </div>
       </Navbar>
-
-      <Drawer
-        title="User Menu"
-        placement="right"
-        closable={false}
-        onClose={onCloseDrawer}
-        visible={isDrawerVisible}
-      >
-        <DrawerContent>
-          <div className="user">
-            <img alt="user" src="" />
-          </div>
-          <p>Dinora</p>
-          <p>email</p>
-          <p>time</p>
-          <LogOutButton onClick={handleLogout}>Log out</LogOutButton>
-        </DrawerContent>
-      </Drawer>
+      <ProfileDrawer
+        isDrawerVisible={isDrawerVisible}
+        setDrawerVisible={setDrawerVisible}
+      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Calendar from "react-calendar";
+import { Select } from "antd";
 export const FullPageCalendar = styled.div`
   margin-top: 50px;
   height: auto;
@@ -62,4 +63,33 @@ export const StyledCalendar = styled(Calendar)`
     color: #333;
     font-size: 20px;
   }
+`;
+export const InputBlock = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 40px 100px 100px 50px;
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .name p {
+    color: #656464;
+    font-size: 20px;
+  }
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+`;
+export const CustomSelect = styled.div``;
+
+export const SelectOptions = styled(Select)`
+  position: absolute;
+  top: 100%;
+  width: 500px;
 `;
