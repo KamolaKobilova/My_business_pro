@@ -5,7 +5,7 @@ import { Drawer } from "antd";
 import { logout } from "../../redux/authSlice";
 import { LogOutButton, DrawerContent } from "./BookingModal/BookingStyles";
 
-export const ProfileDrawer = (isDrawerVisible: any, setDrawerVisible: any) => {
+export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
   const dispatch = useDispatch();
 
   const onCloseDrawer = () => {
