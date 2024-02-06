@@ -116,7 +116,6 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
              label={
               <span>
                 Currency <span><ExclamationCircleOutlined style={{color: "rgb(204, 204, 204)"}}/></span>
-              
               </span>
             }
               name={[ 'input3']}
