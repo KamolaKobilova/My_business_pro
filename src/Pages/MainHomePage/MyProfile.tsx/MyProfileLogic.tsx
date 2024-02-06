@@ -5,22 +5,22 @@ import {
   ScrollingBlockWrp,
   ScrollingBlockContent,
 } from "./stylesForMyProfile";
-
+import { FaRegClock } from "react-icons/fa";
 export const GeneralInformation = () => {
   return (
     <>
-      <ScrollingBlockWrp>
+      <ScrollingBlockWrp variant="little">
         <div className="header">
           <h3>Set up your profile</h3>
         </div>
         <ScrollingBlock>
           <ScrollingBlockContent>
-            <h3>Name:</h3>
-            <p>Dinora</p>
+            <h3>Name</h3>
+            <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Email:</h3>
-            <p>Dinora</p>
+            <h3>Email</h3>
+            <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Contact number</h3>
@@ -32,23 +32,23 @@ export const GeneralInformation = () => {
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Role</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Email</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Birth date</h3>
-            <p>Dinora</p>
+            <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Status</h3>
-            <p>Dinora</p>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Birth date</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Sex</h3>
+            <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Additional information</h3>
-            <p>Dinora</p>
+            <p></p>
           </ScrollingBlockContent>
         </ScrollingBlock>
       </ScrollingBlockWrp>
@@ -63,41 +63,52 @@ export const WorkHours = () => {
           <h3>Change work hours</h3>
         </div>
         <ScrollingBlock>
+          <div className="internal-header">
+            <h3>Work hours</h3>
+          </div>
           <ScrollingBlockContent>
-            <h3>Name:</h3>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Monday</p>
+            </div>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Tuesday</p>
+            </div>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Wednesday</p>
+            </div>
             <p>Dinora</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Email:</h3>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Thursday</p>
+            </div>
             <p>Dinora</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Contact number</h3>
-            <p>Dinora</p>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Friday</p>
+            </div>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Minor work space</h3>
-            <p>Dinora</p>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Saturday</p>
+            </div>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Role</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Email</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Birth date</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Status</h3>
-            <p>Dinora</p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Additional information</h3>
-            <p>Dinora</p>
+            <div className="hour">
+              <FaRegClock size={20} color="grey" />
+              <p>Sunday</p>
+            </div>
           </ScrollingBlockContent>
         </ScrollingBlock>
       </ScrollingBlockWrp>
@@ -122,5 +133,26 @@ export const Settings = () => {
         <h3>Manage page elements</h3>
       </div>
     </ScrollingBlockWrp>
+
+    //     <div className="first">
+    //         <p>1</p>
+    //  <p>1</p>
+    //          <p>1</p>
+    //          <p>1</p>
+    //          <p>1</p>
+    //          <p>1</p>
+    //          <p>1</p>
+    //          <p>1</p>
+    //     </div>
+    //     <div className="second">
+    //            <p>2</p>
+    //  <p>3</p>
+    //          <p>4</p>
+    //          <p>5</p>
+    //          <p>6</p>
+    //          <p>7</p>
+    //          <p>8</p>
+    //          <p>9</p>
+    //     </div>
   );
 };

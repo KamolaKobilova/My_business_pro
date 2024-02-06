@@ -5,11 +5,11 @@ export const Back = styled.div`
   background-color: #ebe8fd;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{ variant?: string }>`
   display: flex;
-  max-width: 1500px;
-  height: 645px;
-  margin: 80px auto 20px;
+  max-width: ${(props) => (props.variant === "little" ? "1150px " : "1500px")};
+  height: auto;
+  margin: 80px 20px 20px;
   border: 1px solid white;
   border-radius: 10px;
   background-color: white;
@@ -50,21 +50,22 @@ export const ProfileSide = styled.div`
 }
 `;
 
-export const Button = styled.div<{ active: boolean }>`
+export const Button = styled.div<{ active: boolean; variant?: string }>`
   width: 300px;
   height: 20px;
   background-color: ${(props) => (props.active ? "#eeeeee" : "white")};
   border: ${(props) =>
     props.active ? "1px solid #dbd9d9" : " 1px solid white"};
-  /* text-align: center; */
+
   padding: 8px 0 8px 20px;
   align-items: center;
 `;
 
-export const ScrollingBlockWrp = styled.div`
-  width: 920px;
-  height: 550px;
-  margin: 50px 0 0 50px;
+export const ScrollingBlockWrp = styled.div<{ variant?: string }>`
+  width: ${(props) => (props.variant === "little" ? "950px " : "1050px")};
+  height: 700px;
+  margin: ${(props) =>
+    props.variant === "little" ? "50px 20px 40px" : "50px 0 40px 0"};
   border-radius: 30px;
   box-shadow: 0 0 10px 5px #eeeeee;
   overflow: hidden;
@@ -78,19 +79,37 @@ export const ScrollingBlockWrp = styled.div`
   }
 `;
 
-export const ScrollingBlock = styled.div`
-  width: 850px;
-  height: auto;
+export const ScrollingBlock = styled.div<{ variant?: string }>`
+  display: flex;
+  flex-direction: column;
+  width: ${(props) => (props.variant === "little" ? "700px " : "980px;")};
+  height: 800px;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 10px 25px;
+  .internal-header {
+    width: 980px;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+  }
 `;
 
 export const ScrollingBlockContent = styled.div`
   display: flex;
   align-items: center;
   padding: 20px 0;
+  gap: 50px;
   border-bottom: 1px solid #ccc;
-
-  gap: 30px;
+  .hour {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+  }
+  h3 {
+    flex: 1;
+  }
+  p {
+    flex: 3;
+  }
 `;

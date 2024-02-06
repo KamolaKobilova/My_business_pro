@@ -6,6 +6,7 @@ import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
 import { MyProfile } from "../Pages/MainHomePage/MyProfile.tsx";
 import { MainHomePage } from "../Pages/MainHomePage/MainHomePage";
+import { ServicesPage } from "../Pages/MainHomePage/ServicesPage";
 
 export const router = createBrowserRouter([
   { path: "/", element: <CalendarComponent /> },
@@ -21,8 +22,8 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: "/user",
-    element: "Bilmayman",
+    path: "/services",
+    element: <ServicesPage />,
   },
   {
     path: "*",
