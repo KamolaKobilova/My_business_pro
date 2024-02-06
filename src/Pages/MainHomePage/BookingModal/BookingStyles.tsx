@@ -90,14 +90,16 @@ export const Header = styled.div`
 `;
 
 export const NavButton = styled.button`
-  color: white;
-  font-size: 20px;
+ 
+  font-size: 17px;
+  font-family: sans-serif;
   background-color: ${mainPurple};
   border: none;
   width: 150px;
   height: 60px;
   &:hover {
-    border-bottom: 4px solid red;
+    border-bottom: 2px solid red;
+   
   }
 `;
 
@@ -196,3 +198,5 @@ export const LogOutButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+
