@@ -5,9 +5,12 @@ import { FaPlus } from "react-icons/fa";
 import { IoMdPerson } from "react-icons/io";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
-import { NavButton, Navbar } from "./BookingModal/BookingStyles";
-import { CalendarModal } from "./BookingModal/BookingPage";
-import { ProfileDrawer } from "./ProfileDrawer";
+import {
+  NavButton,
+  Navbar,
+} from "../Pages/MainHomePage/BookingModal/BookingStyles";
+import { CalendarModal } from "../Pages/MainHomePage/BookingModal/BookingPage";
+import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer";
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,7 +38,9 @@ export const HomePageNav = () => {
             <a href="/calendar">
               <NavButton>Calendar</NavButton>
             </a>
-            <NavButton>Services</NavButton>
+            <a href="/services">
+              <NavButton>Services</NavButton>
+            </a>
             <NavButton>Staff</NavButton>
             <a href="/my-profile">
               <NavButton>My profile</NavButton>

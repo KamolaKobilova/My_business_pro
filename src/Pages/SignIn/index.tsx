@@ -34,6 +34,8 @@ const SignIn = () => {
 
   useEffect(() => {
     if (data) {
+      console.log(data, "data");
+
       dispatch(setToken(data?.token));
     } else if (error) {
       console.error("Sign-in failed. Please try again.", error);

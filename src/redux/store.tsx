@@ -3,11 +3,11 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./authSlice";
 import { apiSlice } from "../features/apiSlice";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 const persistConfig = {
-  key: "root",
+  key: "auth",
   storage,
-  whitelist: ["auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);
@@ -26,3 +26,4 @@ export type AppDispatch = typeof store.dispatch;
 export default store;
 export { store };
 export const persistor = persistStore(store);
+setupListeners(store.dispatch);
