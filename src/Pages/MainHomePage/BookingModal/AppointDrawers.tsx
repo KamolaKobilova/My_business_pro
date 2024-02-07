@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {  Input, Select,DatePicker, TimePicker } from 'antd';
-import { CheckSquareOutlined, FieldTimeOutlined, BellOutlined, AppstoreOutlined } from '@ant-design/icons';
-import './style.css'
+import './styles.css'
 
 function AppointDrawer() {
 

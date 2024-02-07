@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Drawer, Input, Select } from 'antd';
 import {PlusSquareOutlined} from "@ant-design/icons";
 import { ProfileDrawer } from '../../ProfileDrawer';
-import AppointDrawer from '../AppointDrawer';
+import AppointDrawer from '../AppointDrawers';
 import { CheckSquareOutlined, FieldTimeOutlined, BellOutlined, AppstoreOutlined } from '@ant-design/icons';
 import '../../Navbar.css'
 
