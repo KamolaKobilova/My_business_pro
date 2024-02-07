@@ -2,37 +2,33 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
-import { IoMdPerson } from "react-icons/io";
+import { IoMdPerson} from "react-icons/io";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { Menu, Dropdown } from 'antd';
+import { Menu, Dropdown, Drawer, Button } from 'antd';
 import './Navbar.css'
 import { NavButton, Navbar } from "./BookingModal/BookingStyles";
 import { CalendarModal } from "./BookingModal/BookingPage";
 import { ProfileDrawer } from "./ProfileDrawer";
 import logo from '../../assets/BookingPage/booking.png';
-import {PlusOutlined, BellOutlined, SettingOutlined,CheckSquareOutlined,FieldTimeOutlined,AppstoreOutlined} from "@ant-design/icons";
+import MenuWithDrawer from './BookingModal/constants/menuContsants'
+import {PlusOutlined} from "@ant-design/icons";
 
 
 
-const menu = (
-  <Menu style={{width:"260px", height:"400px"}}>
-       <Menu.Item key="1"><CheckSquareOutlined style={{marginRight:"5px"}}/>Appointment</Menu.Item>
-       <Menu.Item key="2"><FieldTimeOutlined style={{marginRight:"5px"}}/>Add break & Block time</Menu.Item>
-       <Menu.Item key="3"><BellOutlined style={{marginRight:"5px"}}/>Add special working hours</Menu.Item>
-       <div style={{width:"200px", marginLeft:"28px"}}> <hr /></div>
-       <Menu.Item key="5"><AppstoreOutlined/>Workspaces</Menu.Item>
-       <Menu.Item key="6">Staff</Menu.Item>
-       <Menu.Item key="7">Service</Menu.Item>
-       <Menu.Item key="8">Customer</Menu.Item>
-       <Menu.Item key="4">Resources</Menu.Item>
-  </Menu>
-);
+// const {menu} = MenuWithDrawer
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerVisible, setDrawerVisible] = useState(false);
   
-
+  const menu = (
+    <Menu style={{width:"290px", height:"100px"}}>
+     
+      <Menu.Item key="1" style={{backgroundColor:"#efebeb"}}>Notification!<AiOutlineSetting style={{marginLeft:"170px"}}/></Menu.Item>
+      
+      <Menu.Item key="2" style={{marginTop:"10px"}}><p>You haven't any reveived messages yet.</p></Menu.Item>
+    </Menu>
+  );
 
 
 
@@ -72,7 +68,7 @@ export const HomePageNav = () => {
            }}
           
           />
-            <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
+            <Dropdown overlay={<MenuWithDrawer/>} placement="bottomRight" trigger={['click']}>
           <PlusOutlined className="plusOutLined"
             style={{
               fontSize: '24px',
@@ -81,9 +77,11 @@ export const HomePageNav = () => {
          
           />
         </Dropdown>
-            <IoIosNotificationsOutline size={25} className="bell" />
+        <Dropdown overlay={menu} trigger={['click']}>
+        <IoIosNotificationsOutline size={25}  className="navItem"/>
+    </Dropdown>
             <div className="user-image">
-              <IoMdPerson size={28} color="white" onClick={showDrawer} />
+              <IoMdPerson size={28} color="white" onClick={showDrawer}/>
             </div>
           </div>
         </div>

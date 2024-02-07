@@ -3,6 +3,7 @@
 }
 .plusOutLined:hover {
     color: #F8F8F8;
+    
 }
 .airOut {
    color: #D3D3D3;
@@ -21,4 +22,8 @@
 }
 .navItem:hover {
     color: #F8F8F8;
+}
+.custom-close-icon {
+  position: relative;
+  left: 820px;
 }
