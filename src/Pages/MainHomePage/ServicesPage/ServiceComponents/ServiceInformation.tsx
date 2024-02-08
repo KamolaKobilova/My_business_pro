@@ -1,11 +1,10 @@
-import React from "react";
 import {
   ScrollingBlock,
   ScrollingBlockContent,
   ScrollingBlockWrp,
-} from "../MyProfile/stylesForMyProfile";
+} from "../../MyProfile/stylesForMyProfile";
 
-export const ServiceInf = () => {
+export const ServiceInformation = () => {
   return (
     <>
       <ScrollingBlockWrp variant="little">
@@ -72,51 +71,5 @@ export const ServiceInf = () => {
         </ScrollingBlock>
       </ScrollingBlockWrp>
     </>
-  );
-};
-export const StaffAssig = () => {
-  return (
-    <ScrollingBlockWrp variant="little">
-      <div className="header">
-        <h3>Staff Assigned</h3>
-      </div>
-    </ScrollingBlockWrp>
-  );
-};
-export const ServiceAvailability = () => {
-  return (
-    <ScrollingBlockWrp variant="little">
-      <div className="header">
-        <h3>Service Availability</h3>
-      </div>
-    </ScrollingBlockWrp>
-  );
-};
-export const ServiceNotifications = () => {
-  return (
-    <ScrollingBlockWrp variant="little">
-      <div className="header">
-        <h3>Configure Notifications</h3>
-      </div>
-    </ScrollingBlockWrp>
-  );
-};
-
-export const ServicePreferences = () => {
-  return (
-    <ScrollingBlockWrp variant="little">
-      <div className="header">
-        <h3>Set Service Preferences</h3>
-      </div>
-    </ScrollingBlockWrp>
-  );
-};
-export const BookingForm = () => {
-  return (
-    <ScrollingBlockWrp variant="little">
-      <div className="header">
-        <h3>Know Your Customers</h3>
-      </div>
-    </ScrollingBlockWrp>
   );
 };

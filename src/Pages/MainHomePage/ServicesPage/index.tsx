@@ -4,16 +4,15 @@ import {
   ProfileSide,
   Button,
 } from "../MyProfile/stylesForMyProfile";
-import {
-  BookingForm,
-  ServiceAvailability,
-  ServiceInf,
-  ServiceNotifications,
-  ServicePreferences,
-  StaffAssig,
-} from "./ServicesPageLogic";
+
 import services from "../../../assets/users/service.png";
 import { MainContainer, SideContainer } from "./stylesForServices";
+import { ServiceInformation } from "./ServiceComponents/ServiceInformation";
+import { StaffAssigned } from "./ServiceComponents/StaffAssigned";
+import { ServiceAvailability } from "./ServiceComponents/Avability";
+import { ServiceNotifications } from "./ServiceComponents/Notifications";
+import { ServicePreferences } from "./ServiceComponents/Preferences";
+import { BookingForm } from "./ServiceComponents/BookinfForm";
 
 export const ServicesPage = () => {
   const [photo, setPhoto] = useState("");
@@ -108,8 +107,8 @@ export const ServicesPage = () => {
               </Button>
             </div>
           </ProfileSide>
-          {activeButton === 1 && <ServiceInf />}
-          {activeButton === 2 && <StaffAssig />}
+          {activeButton === 1 && <ServiceInformation />}
+          {activeButton === 2 && <StaffAssigned />}
           {activeButton === 3 && <ServiceAvailability />}
           {activeButton === 4 && <ServiceNotifications />}
           {activeButton === 5 && <ServicePreferences />}

@@ -1,27 +1,15 @@
-import React, { useState } from "react";
-import { Modal, Input, Select, DatePicker, Button } from "antd";
+import React from "react";
+import { Modal, Input, Select, DatePicker, Button, Form } from "antd";
 import { ModalContent } from "./stylesForModal";
 
 const { Option } = Select;
+const { Item } = Form;
 
 const AddStaffModal = ({ isOpen, onClose }: any) => {
-  const [staffData, setStaffData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    role: "staff",
-    dob: null,
-    gender: "male",
-    assignedServices: [],
-  });
+  const [form] = Form.useForm();
 
-  const handleChange = (name: string, value: any) => {
-    setStaffData({ ...staffData, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    // Отправить данные на сервер
-    console.log("Отправленные данные:", staffData);
+  const handleSubmit = (values: any) => {
+    console.log("Submitted values:", values);
     onClose();
   };
 
@@ -34,51 +22,52 @@ const AddStaffModal = ({ isOpen, onClose }: any) => {
         <Button key="cancel" onClick={onClose}>
           Cancel
         </Button>,
-        <Button key="submit" type="primary" onClick={handleSubmit}>
+        <Button key="submit" type="primary" onClick={() => form.submit()}>
           Add
         </Button>,
       ]}
     >
-      <ModalContent>
-        <Input
-          placeholder="Name"
-          value={staffData.name}
-          onChange={(e) => handleChange("name", e.target.value)}
-        />
-        <Input
-          placeholder="Email"
-          value={staffData.email}
-          onChange={(e) => handleChange("email", e.target.value)}
-        />
-        <Input
-          placeholder="Phone Number"
-          value={staffData.phoneNumber}
-          onChange={(e) => handleChange("phoneNumber", e.target.value)}
-        />
-        <Select
-          placeholder="Role"
-          value={staffData.role}
-          onChange={(value) => handleChange("role", value)}
-        >
-          <Option value="staff">Staff</Option>
-          <Option value="manager">Manager</Option>
-        </Select>
-        <div style={{ marginBottom: "20px" }}>
-          <DatePicker
-            placeholder="Date of Birth"
-            value={staffData.dob}
-            onChange={(date) => handleChange("dob", date)}
-          />{" "}
-        </div>
-        <Select
-          placeholder="Gender"
-          value={staffData.gender}
-          onChange={(value) => handleChange("gender", value)}
-        >
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-        </Select>
-      </ModalContent>
+      <Form
+        form={form}
+        onFinish={handleSubmit}
+        initialValues={{
+          role: "staff",
+          gender: "male",
+        }}
+      >
+        <ModalContent>
+          <Item
+            name="name"
+            rules={[{ required: true, message: "Please enter name" }]}
+          >
+            <Input placeholder="Name" />
+          </Item>
+          <Item
+            name="email"
+            rules={[{ required: true, message: "Please enter email" }]}
+          >
+            <Input placeholder="Email" />
+          </Item>
+          <Item name="phoneNumber">
+            <Input placeholder="Phone Number" />
+          </Item>
+          <Item name="role">
+            <Select placeholder="Role">
+              <Option value="staff">Staff</Option>
+              <Option value="manager">Manager</Option>
+            </Select>
+          </Item>
+          <Item name="dob">
+            <DatePicker placeholder="Date of Birth" />
+          </Item>
+          <Item name="gender">
+            <Select placeholder="Gender">
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
+            </Select>
+          </Item>
+        </ModalContent>
+      </Form>
     </Modal>
   );
 };

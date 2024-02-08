@@ -9,7 +9,7 @@ import {
 } from "../ServicesPage/stylesForServices";
 import user from "../../../assets/users/user.png";
 import AddStaffModal from "../../../components/AddStaffmodal";
-import { StaffContainer } from "./StaffPageLogic";
+import { StaffContainer } from "./StaffComponents/StaffContainer";
 
 export const StaffPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

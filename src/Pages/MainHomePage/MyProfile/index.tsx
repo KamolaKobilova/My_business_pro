@@ -1,26 +1,28 @@
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Container, ProfileSide, Button } from "./stylesForMyProfile";
-import {
-  GeneralInformation,
-  WorkHours,
-  Services,
-  Settings,
-} from "./MyProfileLogic";
+import { GeneralInformation } from "./MyProfileComponents/GeneralInformation";
+import { WorkHours } from "./MyProfileComponents/WorkHours";
+import { Services } from "./MyProfileComponents/Services";
+import { Settings } from "./MyProfileComponents/Settings";
+
 import user from "../../../assets/users/user.png";
 
 export const MyProfile = () => {
   const [photo, setPhoto] = useState("");
   const [activeButton, setActiveButton] = useState<number | null>(1);
-  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedPhoto = event.target.files?.[0];
 
+  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedPhoto = event.target.files;
+    if (!selectedPhoto || !selectedPhoto.length) return;
+
+    const photoFile = selectedPhoto[0];
     if (selectedPhoto) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPhoto(reader.result as string);
       };
-      reader.readAsDataURL(selectedPhoto);
+      reader.readAsDataURL(photoFile);
     }
   };
 
