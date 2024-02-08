@@ -3,17 +3,7 @@ import {
   ScrollingBlock,
   ScrollingBlockContent,
   ScrollingBlockWrp,
-} from "../MyProfile.tsx/stylesForMyProfile";
-
-// export const ServicesPageLogic = () => {
-//   return (
-//     <>
-//           <ScrollingBlockWrp variant="little">
-
-//       </ScrollingBlockWrp>
-//     </>
-//   );
-// };
+} from "../MyProfile/stylesForMyProfile";
 
 export const ServiceInf = () => {
   return (
@@ -24,11 +14,11 @@ export const ServiceInf = () => {
         </div>
         <ScrollingBlock variant="little">
           <ScrollingBlockContent>
-            <h3>Name</h3>
+            <h3>Name Of The Service</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Email Address</h3>
+            <h3>Allocated Workspace</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
@@ -36,31 +26,47 @@ export const ServiceInf = () => {
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Primary Workspace</h3>
+            <h3>Service Type</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Role</h3>
+            <h3>Preferred Meeting Mode</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Designation</h3>
+            <h3>Reference Color</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Date of Birth</h3>
+            <h3>Duration</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Gender</h3>
+            <h3>Price</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Pre-buffer</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Post-buffer</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Include Buffer Time In Calendar Invite</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Description</h3>
+            <p></p>
+          </ScrollingBlockContent>
+          <ScrollingBlockContent>
+            <h3>Visibility</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Status</h3>
-            <p></p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Additional Information</h3>
             <p></p>
           </ScrollingBlockContent>
         </ScrollingBlock>

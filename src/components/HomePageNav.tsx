@@ -41,7 +41,9 @@ export const HomePageNav = () => {
             <a href="/services">
               <NavButton>Services</NavButton>
             </a>
-            <NavButton>Staff</NavButton>
+            <a href="/staff">
+              <NavButton>Staff</NavButton>
+            </a>
             <a href="/my-profile">
               <NavButton>My profile</NavButton>
             </a>

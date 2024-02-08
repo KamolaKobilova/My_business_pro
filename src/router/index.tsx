@@ -4,9 +4,9 @@ import SignIn from "../Pages/SignIn";
 import SignUpForm from "../Pages/SignUp/SignUpForm";
 import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
-import { MyProfile } from "../Pages/MainHomePage/MyProfile.tsx";
-import { MainHomePage } from "../Pages/MainHomePage/MainHomePage";
+import { MyProfile } from "../Pages/MainHomePage/MyProfile";
 import { ServicesPage } from "../Pages/MainHomePage/ServicesPage";
+import { StaffPage } from "../Pages/MainHomePage/StaffPage";
 
 export const router = createBrowserRouter([
   { path: "/", element: <CalendarComponent /> },
@@ -25,6 +25,11 @@ export const router = createBrowserRouter([
     path: "/services",
     element: <ServicesPage />,
   },
+  {
+    path: "/staff",
+    element: <StaffPage />,
+  },
+
   {
     path: "*",
     element: <Navigate to="/" replace />,

@@ -5,7 +5,8 @@ import {
   ScrollingBlockWrp,
   ScrollingBlockContent,
 } from "./stylesForMyProfile";
-import { FaRegClock } from "react-icons/fa";
+import { FaRegClock, FaPencilAlt } from "react-icons/fa";
+
 export const GeneralInformation = () => {
   return (
     <>
@@ -27,7 +28,7 @@ export const GeneralInformation = () => {
             <p>Dinora</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Minor work space</h3>
+            <h3>Primary work space</h3>
             <p>Dinora</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
@@ -43,7 +44,7 @@ export const GeneralInformation = () => {
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
-            <h3>Sex</h3>
+            <h3>Gender</h3>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>

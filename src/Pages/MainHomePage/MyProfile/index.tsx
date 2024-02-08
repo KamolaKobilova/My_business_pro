@@ -7,6 +7,7 @@ import {
   Services,
   Settings,
 } from "./MyProfileLogic";
+import user from "../../../assets/users/user.png";
 
 export const MyProfile = () => {
   const [photo, setPhoto] = useState("");
@@ -26,6 +27,7 @@ export const MyProfile = () => {
   const handlePlusClick = () => {
     document.getElementById("photoInput")?.click();
   };
+
   const handleButtonClick = (buttonId: number) => {
     setActiveButton(buttonId);
   };
@@ -40,7 +42,7 @@ export const MyProfile = () => {
                   <img alt="Profile photo" src={photo} />
                 ) : (
                   <div className="placeholder">
-                    <FaPlus size={15} color="black" />
+                    <img src={user} alt="user" />
                   </div>
                 )}
               </div>

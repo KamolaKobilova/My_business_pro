@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { GeneralInformation } from "../MyProfile.tsx/MyProfileLogic";
 import {
   Container,
   ProfileSide,
   Button,
-} from "../MyProfile.tsx/stylesForMyProfile";
+} from "../MyProfile/stylesForMyProfile";
 import {
   BookingForm,
   ServiceAvailability,
@@ -13,7 +12,9 @@ import {
   ServicePreferences,
   StaffAssig,
 } from "./ServicesPageLogic";
+import services from "../../../assets/users/service.png";
 import { MainContainer, SideContainer } from "./stylesForServices";
+
 export const ServicesPage = () => {
   const [photo, setPhoto] = useState("");
   const [activeButton, setActiveButton] = useState<number | null>(1);
@@ -46,14 +47,14 @@ export const ServicesPage = () => {
         </SideContainer>
         <Container variant="little">
           <ProfileSide>
-            <div className="img-block">
+            <div className="img-block-service">
               <div className="image-container">
-                <div className="photo" onClick={handlePlusClick}>
+                <div className="service-photo" onClick={handlePlusClick}>
                   {photo ? (
-                    <img alt="Profile photo" src={photo} />
+                    <img alt="service photo" src={photo} />
                   ) : (
-                    <div className="placeholder">
-                      {/* <FaPlus size={15} color="black" /> */}
+                    <div className="service-placeholder">
+                      <img src={services} alt="services" />
                     </div>
                   )}
                 </div>
