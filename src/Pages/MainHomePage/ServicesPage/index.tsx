@@ -18,15 +18,16 @@ export const ServicesPage = () => {
   const [photo, setPhoto] = useState("");
   const [activeButton, setActiveButton] = useState<number | null>(1);
   const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedPhoto = event.target.files?.[0];
+    const selectedPhoto = event.target.files;
+    if (!selectedPhoto || !selectedPhoto.length) return;
 
-    if (selectedPhoto) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhoto(reader.result as string);
-      };
-      reader.readAsDataURL(selectedPhoto);
-    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (typeof reader.result === "string") {
+        setPhoto(reader.result);
+      }
+    };
+    reader.readAsDataURL(selectedPhoto[0]);
   };
 
   const handlePlusClick = () => {
@@ -50,7 +51,7 @@ export const ServicesPage = () => {
               <div className="image-container">
                 <div className="service-photo" onClick={handlePlusClick}>
                   {photo ? (
-                    <img alt="service photo" src={photo} />
+                    <img src={photo} alt="service photo" />
                   ) : (
                     <div className="service-placeholder">
                       <img src={services} alt="services" />

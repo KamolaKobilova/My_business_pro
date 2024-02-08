@@ -15,12 +15,3 @@ export const ModalContent = styled.div`
     margin-bottom: 20px;
   }
 `;
-// export const AddButton = styled(Button)`
-//   background-color: #4f4a7b;
-//   border-color: #4f4a7b;
-
-//   &:hover {
-//     background-color: #bcb7eb;
-//     border-color: #887ee3;
-//   }
-// `;

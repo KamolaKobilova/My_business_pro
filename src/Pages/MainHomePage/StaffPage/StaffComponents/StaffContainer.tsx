@@ -8,25 +8,14 @@ import user from "../assets/user.png";
 import { StaffInformation } from "./StaffInformation";
 import { WorkingHours } from "./WorkingHours";
 import { AssignedServices } from "./AssignedServices";
+import PhotoInput from "../../../../components/PhotoSelector";
 
 export const StaffContainer = () => {
   const [photo, setPhoto] = useState("");
   const [activeButton, setActiveButton] = useState<number | null>(1);
 
-  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedPhoto = event.target.files?.[0];
-    if (selectedPhoto) {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        setPhoto(reader.result as string);
-      };
-
-      reader.readAsDataURL(selectedPhoto);
-    }
-  };
-  const handlePlusClick = () => {
-    document.getElementById("photoInput")?.click();
+  const handlePhotoChange = (photoData: any) => {
+    setPhoto(photoData);
   };
 
   const handleButtonClick = (buttonId: number) => {
@@ -37,24 +26,7 @@ export const StaffContainer = () => {
     <Container variant="little">
       <ProfileSide>
         <div className="img-block">
-          <div className="image-container">
-            <div className="photo" onClick={handlePlusClick}>
-              {photo ? (
-                <img alt="staff photo" src={photo} />
-              ) : (
-                <div className="placeholder">
-                  <img src={user} alt="staff" />
-                </div>
-              )}
-            </div>
-            <input
-              id="photoInput"
-              type="file"
-              accept="image/*"
-              onChange={handlePhotoChange}
-              style={{ display: "none" }}
-            />
-          </div>
+          <PhotoInput onChange={handlePhotoChange} photo={photo} />
           <h3>dinora</h3>
           <p>Super admin</p>
         </div>

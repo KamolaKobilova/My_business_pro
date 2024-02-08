@@ -1,33 +1,17 @@
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
 import { Container, ProfileSide, Button } from "./stylesForMyProfile";
 import { GeneralInformation } from "./MyProfileComponents/GeneralInformation";
 import { WorkHours } from "./MyProfileComponents/WorkHours";
 import { Services } from "./MyProfileComponents/Services";
 import { Settings } from "./MyProfileComponents/Settings";
-
-import user from "../../../assets/users/user.png";
+import PhotoInput from "../../../components/PhotoSelector";
 
 export const MyProfile = () => {
   const [photo, setPhoto] = useState("");
   const [activeButton, setActiveButton] = useState<number | null>(1);
 
-  const handlePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedPhoto = event.target.files;
-    if (!selectedPhoto || !selectedPhoto.length) return;
-
-    const photoFile = selectedPhoto[0];
-    if (selectedPhoto) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPhoto(reader.result as string);
-      };
-      reader.readAsDataURL(photoFile);
-    }
-  };
-
-  const handlePlusClick = () => {
-    document.getElementById("photoInput")?.click();
+  const handlePhotoChange = (photoData: any) => {
+    setPhoto(photoData);
   };
 
   const handleButtonClick = (buttonId: number) => {
@@ -38,24 +22,7 @@ export const MyProfile = () => {
       <Container>
         <ProfileSide>
           <div className="img-block">
-            <div className="image-container">
-              <div className="photo" onClick={handlePlusClick}>
-                {photo ? (
-                  <img alt="Profile photo" src={photo} />
-                ) : (
-                  <div className="placeholder">
-                    <img src={user} alt="user" />
-                  </div>
-                )}
-              </div>
-              <input
-                id="photoInput"
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                style={{ display: "none" }}
-              />
-            </div>
+            <PhotoInput onChange={handlePhotoChange} photo={photo} />
             <h3>dinora</h3>
             <p>Super admin</p>
           </div>

@@ -13,30 +13,23 @@ import { StaffContainer } from "./StaffComponents/StaffContainer";
 
 export const StaffPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState<number | null>(1);
+  const [isActive, setActive] = useState<number | null>(1);
   const handleButtonClick = (buttonId: number) => {
-    setActiveButton(buttonId);
+    setActive(buttonId);
   };
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
+  const toggleModal = () => setIsModalOpen((state) => !state);
   return (
     <>
       <MainContainer>
         <SideContainer>
           <div className="header">
             <h3>Staff</h3>
-            <StaffBUtton onClick={openModal}>
+            <StaffBUtton onClick={toggleModal}>
               <FaPlus size={14} />
             </StaffBUtton>
           </div>
           <StaffUser
-            active={activeButton === 1}
+            active={isActive === 1}
             onClick={() => handleButtonClick(1)}
           >
             <img alt="staff-user" src={user} />
@@ -46,9 +39,9 @@ export const StaffPage = () => {
             </div>
           </StaffUser>
         </SideContainer>
-        {activeButton === 1 && <StaffContainer />}
+        {isActive === 1 && <StaffContainer />}
       </MainContainer>
-      <AddStaffModal isOpen={isModalOpen} onClose={closeModal} />
+      <AddStaffModal isOpen={isModalOpen} onClose={toggleModal} />
     </>
   );
 };
