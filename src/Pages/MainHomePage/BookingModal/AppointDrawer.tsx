@@ -41,11 +41,11 @@ const AppointDrawer: React.FC = () => {
   
 
   return (
-    <div className="input_forms">
-      <div>
-        <p>Workspace</p>
+    <div className="input_forms" >
+      <div className='input_items' style={{display:"flex", alignItems:"center", marginTop:"30px"}}>
+        <p style={{fontSize:"16px"}}>Workspace</p>
         <Select
-          style={{ width: 200 }}
+         style={{ width: "342px", height:"40px",marginLeft:"70px"}}
           value={firstSelectValue}
           onChange={handleFirstSelectChange}
         >
@@ -55,10 +55,10 @@ const AppointDrawer: React.FC = () => {
         </Select>
       </div>
 
-      <div>
-        <p>Service</p>
+      <div className='input_items'  style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+        <p style={{fontSize:"16px"}}>Service</p>
         <Select
-          style={{ width: 200 }}
+           style={{ width: "342px", height:"40px",marginLeft:"95px"}}
           value={secondSelectValue}
           onChange={handleSecondSelectChange}
         >
@@ -68,10 +68,10 @@ const AppointDrawer: React.FC = () => {
         </Select>
       </div>
 
-      <div>
-        <p>Assign Items</p>
+      <div className='input_items' style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+        <p style={{fontSize:"16px"}}>Assign Staff</p>
         <Select
-          style={{ width: 200 }}
+           style={{ width: "342px", height:"40px", marginBottom:"24px",marginLeft:"70px"}}
           value={thirdSelectValue}
           onChange={handleThirdSelectChange}
         >
@@ -85,8 +85,8 @@ const AppointDrawer: React.FC = () => {
         
 
         <div className="inlinePickerContainer">
-          <div className="inlinePicker">
-            <h3>Date Input:</h3>
+          <div  className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+            <p>Date Input:</p>
             <DatePicker
               style={{ width: '150px' }}
               value={selectedDate}
@@ -94,8 +94,8 @@ const AppointDrawer: React.FC = () => {
             />
           </div>
 
-          <div className="inlinePicker">
-            <h3>Time Input:</h3>
+          <div className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+            <p>Time Input:</p>
             <TimePicker
               style={{ width: '150px' }}
               value={selectedTime}

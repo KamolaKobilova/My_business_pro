@@ -10,3 +10,11 @@
   .inlinePickerContainer {
     width:300px;
   }
+  .input_items {
+    display: "flex";
+    align-items: center;
+    margin-left:90px;
+    margin-bottom: 24px;
+    
+  } 
+ 
