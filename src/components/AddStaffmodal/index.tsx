@@ -5,11 +5,15 @@ import { ModalContent } from "./stylesForModal";
 const { Option } = Select;
 const { Item } = Form;
 
+const initialValues = {
+  role: "staff",
+  gender: "male",
+};
+
 const AddStaffModal = ({ isOpen, onClose }: any) => {
   const [form] = Form.useForm();
 
   const handleSubmit = (values: any) => {
-    console.log("Submitted values:", values);
     onClose();
   };
 
@@ -22,19 +26,12 @@ const AddStaffModal = ({ isOpen, onClose }: any) => {
         <Button key="cancel" onClick={onClose}>
           Cancel
         </Button>,
-        <Button key="submit" type="primary" onClick={() => form.submit()}>
+        <Button key="submit" type="primary" onClick={form.submit}>
           Add
         </Button>,
       ]}
     >
-      <Form
-        form={form}
-        onFinish={handleSubmit}
-        initialValues={{
-          role: "staff",
-          gender: "male",
-        }}
-      >
+      <Form form={form} onFinish={handleSubmit} initialValues={initialValues}>
         <ModalContent>
           <Item
             name="name"

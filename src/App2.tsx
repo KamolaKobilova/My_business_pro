@@ -10,18 +10,15 @@ import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
 const queryClient = new QueryClient();
 
 function App2() {
-  const reduxToken = useSelector((state: RootState) => state.auth.token);
-  const isUserAuthenticated = !!reduxToken;
+  const token = useSelector((state: RootState) => state.auth.token);
 
   return (
     <>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <PersistGate loading={null} persistor={persistor}>
-            {isUserAuthenticated && <MainHomePage />}
-            <RouterProvider
-              router={isUserAuthenticated ? router : publicRouter}
-            />
+            {token && <MainHomePage />}
+            <RouterProvider router={token ? router : publicRouter} />
           </PersistGate>
         </QueryClientProvider>
       </Provider>

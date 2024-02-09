@@ -1,59 +1,49 @@
 import { useState } from "react";
+import { Tabs } from "antd";
 import {
   Button,
   Container,
   ProfileSide,
 } from "../../MyProfile/stylesForMyProfile";
-import user from "../assets/user.png";
+
 import { StaffInformation } from "./StaffInformation";
 import { WorkingHours } from "./WorkingHours";
 import { AssignedServices } from "./AssignedServices";
 import PhotoInput from "../../../../components/PhotoSelector";
 
+const { TabPane } = Tabs;
+
 export const StaffContainer = () => {
   const [photo, setPhoto] = useState("");
-  const [activeButton, setActiveButton] = useState<number | null>(1);
+  const [activeTab, setActiveTab] = useState("1");
 
-  const handlePhotoChange = (photoData: any) => {
-    setPhoto(photoData);
-  };
-
-  const handleButtonClick = (buttonId: number) => {
-    setActiveButton(buttonId);
+  const handleTabChange = (key: string) => {
+    setActiveTab(key);
   };
 
   return (
     <Container variant="little">
       <ProfileSide>
         <div className="img-block">
-          <PhotoInput onChange={handlePhotoChange} photo={photo} />
+          <PhotoInput onChange={setPhoto} photo={photo} />
           <h3>dinora</h3>
           <p>Super admin</p>
         </div>
         <div className="button-block">
-          <Button
-            active={activeButton === 1}
-            onClick={() => handleButtonClick(1)}
+          <Tabs
+            activeKey={activeTab}
+            onChange={handleTabChange}
+            tabPosition="left"
           >
-            Staff Information
-          </Button>
-          <Button
-            active={activeButton === 2}
-            onClick={() => handleButtonClick(2)}
-          >
-            Working Hours
-          </Button>
-          <Button
-            active={activeButton === 3}
-            onClick={() => handleButtonClick(3)}
-          >
-            Assigned Services
-          </Button>
+            <TabPane tab="Staff Information" key="1" />
+            <TabPane tab="Working Hours" key="2" />
+            <TabPane tab="Assigned Services" key="3" />
+          </Tabs>
         </div>
       </ProfileSide>
-      {activeButton === 1 && <StaffInformation />}
-      {activeButton === 2 && <WorkingHours />}
-      {activeButton === 3 && <AssignedServices />}
+      {activeTab === "1" && <StaffInformation />}
+      {activeTab === "2" && <WorkingHours />}
+      {activeTab === "3" && <AssignedServices />}
     </Container>
   );
 };

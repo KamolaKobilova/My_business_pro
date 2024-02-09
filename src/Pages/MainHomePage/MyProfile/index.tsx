@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Tabs } from "antd";
 import { Container, ProfileSide, Button } from "./stylesForMyProfile";
 import { GeneralInformation } from "./MyProfileComponents/GeneralInformation";
 import { WorkHours } from "./MyProfileComponents/WorkHours";
@@ -6,58 +7,43 @@ import { Services } from "./MyProfileComponents/Services";
 import { Settings } from "./MyProfileComponents/Settings";
 import PhotoInput from "../../../components/PhotoSelector";
 
+const { TabPane } = Tabs;
+
 export const MyProfile = () => {
   const [photo, setPhoto] = useState("");
-  const [activeButton, setActiveButton] = useState<number | null>(1);
+  const [activeTab, setActiveTab] = useState("1");
 
-  const handlePhotoChange = (photoData: any) => {
-    setPhoto(photoData);
+  const handleTabChange = (key: string) => {
+    setActiveTab(key);
   };
 
-  const handleButtonClick = (buttonId: number) => {
-    setActiveButton(buttonId);
-  };
   return (
-    <>
-      <Container>
-        <ProfileSide>
-          <div className="img-block">
-            <PhotoInput onChange={handlePhotoChange} photo={photo} />
-            <h3>dinora</h3>
-            <p>Super admin</p>
-          </div>
-          <div className="button-block">
-            <Button
-              active={activeButton === 1}
-              onClick={() => handleButtonClick(1)}
-            >
-              General Information
-            </Button>
-            <Button
-              active={activeButton === 2}
-              onClick={() => handleButtonClick(2)}
-            >
-              Work Hours
-            </Button>
-            <Button
-              active={activeButton === 3}
-              onClick={() => handleButtonClick(3)}
-            >
-              Services
-            </Button>
-            <Button
-              active={activeButton === 4}
-              onClick={() => handleButtonClick(4)}
-            >
-              Booking Page Settings
-            </Button>
-          </div>
-        </ProfileSide>
-        {activeButton === 1 && <GeneralInformation />}
-        {activeButton === 2 && <WorkHours />}
-        {activeButton === 3 && <Services />}
-        {activeButton === 4 && <Settings />}
-      </Container>
-    </>
+    <Container>
+      <ProfileSide>
+        <div className="img-block">
+          <PhotoInput onChange={setPhoto} photo={photo} />
+          <h3>dinora</h3>
+          <p>Super admin</p>
+        </div>
+        <div className="button-block">
+          <Tabs
+            activeKey={activeTab}
+            onChange={handleTabChange}
+            tabPosition="left"
+          >
+            <TabPane tab="General Information" key="1" />
+            <TabPane tab="Work Hours" key="2" />
+            <TabPane tab="Services" key="3" />
+            <TabPane tab="Booking Page Settings" key="4" />
+          </Tabs>
+        </div>
+      </ProfileSide>
+      <div>
+        {activeTab === "1" && <GeneralInformation />}
+        {activeTab === "2" && <WorkHours />}
+        {activeTab === "3" && <Services />}
+        {activeTab === "4" && <Settings />}
+      </div>
+    </Container>
   );
 };

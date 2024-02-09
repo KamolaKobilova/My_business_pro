@@ -23,8 +23,8 @@ export const WorkingHours = () => {
           <h3>Change work hours</h3>
         </div>
         <ScrollingBlock variant="little">
-          {daysOfWeek.map((day, index) => (
-            <ScrollingBlockContent key={index}>
+          {daysOfWeek.map((day) => (
+            <ScrollingBlockContent key={day}>
               <div className="hour">
                 <FaRegClock size={20} color="grey" />
                 <p>{day}</p>

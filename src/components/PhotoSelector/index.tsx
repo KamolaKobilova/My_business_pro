@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import user from "../../Pages/MainHomePage/StaffPage/assets/user.png";
+
 const PhotoInput = ({ onChange, photo }: any) => {
   const handlePhotoChange = (event: any) => {
     const selectedPhoto = event.target.files;
