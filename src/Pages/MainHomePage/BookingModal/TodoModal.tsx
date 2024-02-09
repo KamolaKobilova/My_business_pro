@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Select, Input, Button, Modal } from 'antd';
-import profile from '../../../assets/BookingPage/profile.jpeg'
+import profile from '../../../assets/BookingPage/profile.jpeg';
+import uzbekFlag from '../../../assets/BookingPage/flag.png';
+import './todoModal.css'
 
 interface TodoItem {
   id: number;
@@ -44,11 +46,6 @@ const CustomSelect: React.FC = () => {
     setTodoItems([]);
   };
 
-  const handleSaveList = () => {
-  
-    console.log("Todo List:", todoItems);
-  };
-
   return (
     <div>
       <Select
@@ -59,7 +56,7 @@ const CustomSelect: React.FC = () => {
           <Option key={item.id} value={item.name}>
             <div style={{display:"flex", alignItems:"center"}}>
               <img src={profile} alt="" style={{width:"20px"}}/>
-           <p style={{marginLeft:"8px"}}>{item.name}</p> 
+              <p style={{marginLeft:"8px"}}>{item.name}</p> 
             </div>
           </Option>
         ))}
@@ -71,42 +68,65 @@ const CustomSelect: React.FC = () => {
       </Select>
 
       <Modal
-        title="List"
+        title={<div className="customTitle">+ New Customer</div>} 
         visible={showTodoListModal}
         onCancel={() => setShowTodoListModal(false)}
         footer={[
-          <Button key="clear" onClick={handleClearList}>
-           Clear
-          </Button>,
-          <Button key="save" onClick={handleSaveList}>
-            Save
-          </Button>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Button key="clear" className='antBtn' onClick={handleClearList} style={{width:"270px",height:"50px", marginTop:"20px", borderRadius:"0", marginLeft:"1"}}>
+             Clear
+            </Button>
+            <Button type="primary" className='antBtn' key="save" onClick={handleTaskSubmit} style={{width:"270px",height:"50px", marginTop:"20px", borderRadius:"0"}}>
+             Save
+            </Button>
+          </div>
         ]}
+        width={500}
       >
-        <Input
-          placeholder="Name"
-          value={nameValue}
-          onChange={(e) => setNameValue(e.target.value)}
-          style={{ marginTop: '10px' }}
-        />
-        <Input
-          placeholder="Elektron pochta"
-          value={emailValue}
-          onChange={(e) => setEmailValue(e.target.value)}
-          style={{ marginTop: '10px' }}
-        />
-        <Input
-          placeholder="Phone"
-          value={phoneValue}
-          onChange={(e) => setPhoneValue(e.target.value)}
-          style={{ marginTop: '10px' }}
-        />
-        <Button type="primary" onClick={handleTaskSubmit} style={{ marginTop: '10px' }}>
-          Add
-        </Button>
+        
+        <div className='main'>
+
+        <div style={{display:"flex", alignItems:"center"}}>
+          <p style={{marginLeft:"20px", fontSize:"18px"}}>Name</p>
+          <Input
+           placeholder="Name"
+           value={nameValue}
+           onChange={(e) => setNameValue(e.target.value)}
+           style={{ marginTop: '30px', width:"250px", height:"40px", marginLeft:"40px", marginBottom:"15px" }}
+          />
+        </div>
+        <div style={{display:"flex", alignItems:"center"}}>
+          <p style={{marginLeft:"20px", fontSize:"18px"}}>Email</p>
+          <Input
+              placeholder="Email"
+              value={emailValue}
+              onChange={(e) => setEmailValue(e.target.value)}
+              style={{ marginTop: '10px', width:"250px", height:"40px", marginLeft:"44px", marginBottom:"15px" }}
+          />
+        </div>
+        <div style={{display:"flex", alignItems:"center"}}>
+          <p style={{marginLeft:"20px", fontSize:"18px"}}>Phone</p>
+          <Input
+              placeholder="Phone"
+              value={phoneValue}
+              onChange={(e) => {
+                   let newValue = e.target.value;
+                   if (!newValue.startsWith('+998')) {
+                     newValue = '+998' + newValue;
+                   }
+                   setPhoneValue(newValue);
+              }}
+              style={{ marginTop: '10px', width:"250px", height:"40px", marginLeft:"40px", marginBottom:"20px" }} 
+              prefix={<img src={uzbekFlag} alt="Uzbekistan Flag" style={{ width: '20px', height: 'auto', marginRight: '5px' }} />} 
+          />
+        </div>
+        </div>
       </Modal>
     </div>
   );
 };
+
+
+
 
 export default CustomSelect;

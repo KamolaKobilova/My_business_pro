@@ -6,7 +6,6 @@ export const Navbar = styled.nav`
   max-width: 1920px;
   margin: 0 auto;
   display: flex;
-  /* gap: 20px; */
   background-color: ${mainPurple};
   position: fixed;
   top: 0;
@@ -119,8 +118,6 @@ export const ModalContent = styled.div`
   background: #fff;
   height: auto;
   width: 800px;
-  /* width: auto; */
-  /* padding: 20px; */
   border-radius: 10px;
 `;
 

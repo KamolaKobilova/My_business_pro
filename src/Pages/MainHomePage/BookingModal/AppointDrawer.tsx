@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Select, DatePicker, TimePicker, Button, Modal, List, Input } from 'antd';
-import TodoList from './TodoModal'; // Import the TodoList component
+import { Select, DatePicker, TimePicker } from 'antd';
 import TodoModal from './TodoModal';
-import { CheckSquareOutlined, FieldTimeOutlined, BellOutlined, AppstoreOutlined } from '@ant-design/icons';
 import './style.css';
 
 const { Option } = Select;
@@ -19,8 +17,7 @@ const AppointDrawer: React.FC = () => {
   const [thirdSelectValue, setThirdSelectValue] = useState<any>(undefined);
   const [selectedDate, setSelectedDate] = useState<any>(null);
   const [selectedTime, setSelectedTime] = useState<any>(null);
-  const [isTodoListVisible, setIsTodoListVisible] = useState<boolean>(false); // State for TodoList visibility
-
+ 
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
@@ -41,49 +38,7 @@ const AppointDrawer: React.FC = () => {
     setThirdSelectValue(value);
   };
 
-  const handleOpenTodoList = () => {
-    setIsTodoListVisible(true); // Set the state to show TodoList modal
-  };
-
-  const handleCloseTodoList = () => {
-    setIsTodoListVisible(false); // Set the state to hide TodoList modal
-  };
-  //////////////
-  const [showTodoList, setShowTodoList] = useState(false);
-  const [todoItems, setTodoItems] = useState<TodoItem[]>([]);
-  const [nameValue, setNameValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
-  const [phoneValue, setPhoneValue] = useState('');
-  const [nextId, setNextId] = useState(1);
-
-  const handleInputClick = () => {
-    setShowTodoList(true);
-  };
-
-  const handleTaskSubmit = () => {
-    if (nameValue.trim() !== '' && emailValue.trim() !== '' && phoneValue.trim() !== '') {
-      const newItem: TodoItem = {
-        id: nextId,
-        name: nameValue,
-        email: emailValue,
-        phone: phoneValue
-      };
-      setTodoItems([...todoItems, newItem]);
-      setNameValue('');
-      setEmailValue('');
-      setPhoneValue('');
-      setNextId(nextId + 1);
-    }
-  };
-
-  const handleClearList = () => {
-    setTodoItems([]);
-  };
-
-  const handleSaveList = () => {
-    // Your save logic here
-    console.log("Saving the to-do list:", todoItems);
-  };
+  
 
   return (
     <div className="input_forms">
@@ -127,7 +82,7 @@ const AppointDrawer: React.FC = () => {
       </div>
 
       <div>
-        <h2>Date and Time Input Examples</h2>
+        
 
         <div className="inlinePickerContainer">
           <div className="inlinePicker">

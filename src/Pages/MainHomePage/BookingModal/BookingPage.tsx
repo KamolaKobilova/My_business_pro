@@ -6,9 +6,13 @@ import {
   ModalContainer,Header, Title, ButtonNext
 } from "./BookingStyles";
 import logo from '../../../assets/BookingPage/logo.png';
-import { Form, Input, Button, Steps, Select, TimePicker, InputNumber, Space } from 'antd';
-import { Store } from 'antd/lib/form/interface';
-import {ExclamationCircleOutlined} from "@ant-design/icons"
+import { Form, Input, Button,
+ Steps, Select, TimePicker,
+  InputNumber, Space } from 'antd';
+import { 
+  Store } from 'antd/lib/form/interface';
+import 
+  {ExclamationCircleOutlined} from "@ant-design/icons";
 
 interface CalendarModalProps {
   onClose: () => void;
@@ -262,18 +266,14 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
             placeholder="Hours"
             style={{ width: '180px', height:"40px" }}
 
-            // You can customize other props as needed
-            // defaultValue={0}
-            // onChange={(value) => console.log(value)}
+            
           />
           <InputNumber
             min={0}
             max={59}
             placeholder="Minutes"
             style={{ width: '180px', height:"40px" }}
-            // You can customize other props as needed
-            // defaultValue={0}
-            // onChange={(value) => console.log(value)}
+            
           />
         </Space>
       </Form.Item>

@@ -1,21 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
-import { FaPlus } from "react-icons/fa";
 import { IoMdPerson} from "react-icons/io";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { Menu, Dropdown, Drawer, Button } from 'antd';
-import './Navbar.css'
 import { NavButton, Navbar } from "./BookingModal/BookingStyles";
 import { CalendarModal } from "./BookingModal/BookingPage";
 import { ProfileDrawer } from "./ProfileDrawer";
 import logo from '../../assets/BookingPage/booking.png';
 import MenuWithDrawer from "./BookingModal/constan/menuConstants";
 import {PlusOutlined} from "@ant-design/icons";
+import './Navbar.css'
 
 
 
-// const {menu} = MenuWithDrawer
+
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
