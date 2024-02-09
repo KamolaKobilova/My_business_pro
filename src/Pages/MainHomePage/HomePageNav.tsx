@@ -10,7 +10,7 @@ import { NavButton, Navbar } from "./BookingModal/BookingStyles";
 import { CalendarModal } from "./BookingModal/BookingPage";
 import { ProfileDrawer } from "./ProfileDrawer";
 import logo from '../../assets/BookingPage/booking.png';
-import MenuWithDrawer from "./BookingModal/constants/menuConstants";
+import MenuWithDrawer from "./BookingModal/constan/menuConstants";
 import {PlusOutlined} from "@ant-design/icons";
 
 

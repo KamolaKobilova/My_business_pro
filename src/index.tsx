@@ -6,6 +6,7 @@ import store from "./redux/store";
 import { QueryClient, QueryClientProvider } from "react-query";
 import App2 from "./App2";
 
+
 const queryClient = new QueryClient();
 
 const domNode = document.getElementById("root")!;
@@ -17,6 +18,7 @@ const root = createRoot(domNode);
 root.render(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
+    
       <App2 />
     </Provider>
   </QueryClientProvider>

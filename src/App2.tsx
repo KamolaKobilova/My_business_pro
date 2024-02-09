@@ -8,6 +8,8 @@ import { publicRouter, router } from "./router";
 import { setToken } from "./redux/authSlice";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
 
+
+
 const queryClient = new QueryClient();
 
 function App2() {
@@ -23,6 +25,8 @@ function App2() {
 
   return (
     <>
+
+   
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <PersistGate loading={null} persistor={persistor}>
