@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Select, DatePicker, TimePicker } from 'antd';
+import { Select, DatePicker, TimePicker, Input, Button, message,Checkbox } from 'antd';
 import TodoModal from './TodoModal';
 import './style.css';
+
 
 const { Option } = Select;
 interface TodoItem {
@@ -37,8 +38,19 @@ const AppointDrawer: React.FC = () => {
   const handleThirdSelectChange = (value: any) => {
     setThirdSelectValue(value);
   };
+  const [isChecked, setIsChecked] = useState(false);
 
-  
+  const handleCheckboxChange = (e:any) => {
+    setIsChecked(e.target.checked);
+  };
+
+  const handleSendNotification = () => {
+    if (isChecked) {
+      message.success('Notification sent to customer!');
+    } else {
+      message.warning('Please check the checkbox to send notification.');
+    }
+  };
 
   return (
     <div className="input_forms" >
@@ -86,28 +98,47 @@ const AppointDrawer: React.FC = () => {
 
         <div className="inlinePickerContainer">
           <div  className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
-            <p>Date Input:</p>
+            <p>Date & Time</p>
             <DatePicker
-              style={{ width: '150px' }}
+              style={{ width: '178px', height:"40px", marginRight:"10px", marginLeft:"82px" }}
               value={selectedDate}
               onChange={handleDateChange}
             />
-          </div>
-
-          <div className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
-            <p>Time Input:</p>
             <TimePicker
-              style={{ width: '150px' }}
+              style={{ width: '178px', height:"40px" }}
               value={selectedTime}
               onChange={handleTimeChange}
             />
           </div>
         </div>
 
-       
+        
       </div>
-
+      
+    <div className='input_items'style={{ width: "342px", height:"40px",marginLeft:"40px", display:"flex",alignItems:"center"}}>
+     
     <TodoModal/>
+    
+    </div>
+    <div style={{display:"flex", alignItems:"center"}}>
+   <p style={{marginLeft:"100px"}}>Notes</p>
+    <Input.TextArea 
+      placeholder="Appoint description here" 
+      autoSize={{ minRows: 3, maxRows: 6 }}
+      style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 
+    />
+    </div>
+    <div style={{marginLeft:"235px", marginTop:"20px"}}>
+      <Checkbox onChange={handleCheckboxChange}>Send Notification</Checkbox>
+      <Button type="primary" onClick={handleSendNotification}>
+        Send
+      </Button>
+    </div>
+    <div className='btns'>
+
+    <Button style={{backgroundColor:"#edebeb", borderColor:"#edebeb"}}><p>Cancel</p></Button>
+    <Button style={{backgroundColor:"#4F4A7B", color:"white"}}><p>Add Appointment</p></Button>
+    </div>
     </div>
   );
 };

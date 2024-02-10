@@ -48,11 +48,16 @@ const CustomSelect: React.FC = () => {
 
   return (
     <div>
+     
+     
+
       <Select
         placeholder="Type and enter"
-        style={{ width: 200 }}
+        style={{  width: "342px", height:"40px", marginLeft:"197px" }}
       >
+      
         {todoItems.map(item => (
+            
           <Option key={item.id} value={item.name}>
             <div style={{display:"flex", alignItems:"center"}}>
               <img src={profile} alt="" style={{width:"20px"}}/>
@@ -66,6 +71,7 @@ const CustomSelect: React.FC = () => {
           </Button>
         </Option>
       </Select>
+    
 
       <Modal
         title={<div className="customTitle">+ New Customer</div>} 

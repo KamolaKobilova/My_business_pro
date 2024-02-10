@@ -17,4 +17,12 @@
     margin-bottom: 24px;
     
   } 
- 
+ .btns button{
+  width: 420px;
+  margin-top: 270px;
+  height: 50px;
+  padding-bottom: 0;
+ }
+ .btns button p {
+  font-size: 17px;
+ }
