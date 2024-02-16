@@ -47,11 +47,8 @@ const CustomSelect: React.FC = () => {
   };
 
   return (
-    <div>
-     
-     
-
-      <Select
+    <>
+    <Select
         placeholder="Type and enter"
         style={{  width: "342px", height:"40px", marginLeft:"197px" }}
       >
@@ -128,7 +125,7 @@ const CustomSelect: React.FC = () => {
         </div>
         </div>
       </Modal>
-    </div>
+    </>
   );
 };
 

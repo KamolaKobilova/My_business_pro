@@ -13,12 +13,12 @@ interface TodoItem {
 }
 
 const AppointDrawer: React.FC = () => {
-  const [firstSelectValue, setFirstSelectValue] = useState<any>(undefined);
+  const [firstSelectValue, setFirstSelectValue] = useState<TodoItem[]>([]);
   const [secondSelectValue, setSecondSelectValue] = useState<any>(undefined);
   const [thirdSelectValue, setThirdSelectValue] = useState<any>(undefined);
   const [selectedDate, setSelectedDate] = useState<any>(null);
   const [selectedTime, setSelectedTime] = useState<any>(null);
- 
+  const [inputArea, setInputArea] = useState<any>(null)
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
@@ -61,7 +61,7 @@ const AppointDrawer: React.FC = () => {
           value={firstSelectValue}
           onChange={handleFirstSelectChange}
         >
-          <Option value="option1">Option 1</Option>
+          <Option value="option1">alicode</Option>
           <Option value="option2">Option 2</Option>
           <Option value="option3">Option 3</Option>
         </Select>
@@ -123,6 +123,7 @@ const AppointDrawer: React.FC = () => {
     <div style={{display:"flex", alignItems:"center"}}>
    <p style={{marginLeft:"100px"}}>Notes</p>
     <Input.TextArea 
+       value={inputArea}
       placeholder="Appoint description here" 
       autoSize={{ minRows: 3, maxRows: 6 }}
       style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 

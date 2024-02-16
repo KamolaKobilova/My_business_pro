@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 export const Back = styled.div`
-background-image:url('/assets/SignInImg/bg.svg')
+background-image:url('/assets/SignInImg/bg.svg');
   max-width: 1920px;
 `;
 export const SignInBlock = styled.div`
