@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const ProfileSide = styled.div`
-    display:flex:
+    display:flex;
     flex-direction:column;
     padding:20 10px;
     margin-top:60px;

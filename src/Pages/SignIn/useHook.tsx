@@ -11,12 +11,10 @@ interface SignInFormData {
 export const useHook = () => {
     const [signIn, { data, error, isLoading }] = useSignInMutation();
 
-    // let cachedChat = useSelector((state) => state.chatAndMessages);
-    // let activeChatId = useSelector((state) => state.activeChat);
+
 
     const dispatch = useDispatch();
-    // let getChatTab = useGetChatTabQuery();
-    // const { data, isLoading, refetch } = useChat();
+   
     const handleSignIn = async (formData: FormEventHandler<HTMLFormElement>) => {
         signIn(formData);
     }
