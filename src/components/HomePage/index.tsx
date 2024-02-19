@@ -29,10 +29,10 @@ function HomePage() {
       <div className="container">
         <div className="main_left">
           <StyledDiv className="text">
-            <h2 style={{fontFamily:"sans-serif", marginBottom:"18px"}}>
-              Your life&apos;s work, <br /> powered by our life&apos;s work
-            </h2>
-            <p style={{marginBottom:"20px", fontFamily:"sans-serif"}}>
+            <p style={{fontFamily:"sans-serif", marginBottom:"30px", fontSize:"50px"}}>
+              Your life's work, <br /> powered by our life's work
+            </p>
+            <p style={{marginBottom:"35px", fontFamily:"sans-serif", fontSize:"25px"}}>
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a
               company that values your privacy{" "}
