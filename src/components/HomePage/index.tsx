@@ -6,7 +6,7 @@ import {
   Picture,
   Feature,
   Region,
-} from "./styles";
+} from "./stylesForHome";
 import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.png";
 import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
 import mail from '../../assets/HomePgImage/mail.png';
@@ -16,32 +16,32 @@ import creator from '../../assets/HomePgImage/creator.png'
 import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png";
 import crm from '../../assets/HomePgImage/crm.png';
 import Navbar from "../Navbar/Navbar";
+import  './style.css'
 
 
-// import Redux from "../../Redux";
-// import { CheckRedux } from "../../CheckRedux";
+
 
 function HomePage() {
   return (
-    <>
+    <div style={{backgroundColor:"#F8F9FB"}}>
       <Navbar />
-      <Container className="container">
+      <div className="container">
         <div className="main_left">
           <StyledDiv className="text">
-            <h2>
+            <h2 style={{fontFamily:"sans-serif", marginBottom:"18px"}}>
               Your life&apos;s work, <br /> powered by our life&apos;s work
             </h2>
-            <p>
+            <p style={{marginBottom:"20px", fontFamily:"sans-serif"}}>
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a
               company that values your privacy{" "}
             </p>
             <Button>
-              Get Started For Free <br />
+             <p style={{fontSize:"15px"}}>Get Started For Free</p>  <br />
               <img src="" alt="" />{" "}
             </Button>
           </StyledDiv>
-          <Picture>
+          <Picture style={{marginTop:"230px"}}>
             <img src={image} alt="" />
           </Picture>
           <Region className="region">
@@ -67,7 +67,7 @@ function HomePage() {
           </Region>
         </div>
         <Feature className="main_right">
-          {" "}
+          
           <div className="feature">
             <p style={{ marginTop: "20px", marginLeft: "50px" }}>FEATURED APPS</p>
             <ul style={{ listStyle: "none", margin: "20px 20px 20px 50px" }}>
@@ -106,8 +106,8 @@ function HomePage() {
             </ul>
           </div>
         </Feature>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 }
 

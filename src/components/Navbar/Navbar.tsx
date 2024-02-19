@@ -11,9 +11,10 @@ import {
   AdditionalLinksContainer,
   AccauntBlock,
   Block,
-} from "./StylesForNavbar/Styles";
-// import { StyledButton } from "../Navbar/StylesForNavbar/";
+ 
+} from "./StylesForNavbar/index";
 import SideBar from "./SideBar";
+import './button.css'
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -71,15 +72,11 @@ const Navbar = () => {
           </NavbarContainer>
           <AccauntBlock>
             <NavLink to="/sign-in" style={{ textDecoration: "none" }}>
-              <StyledLink variant="error"> Sign in</StyledLink>
+              <StyledLink><div className="btns">SIGN IN</div> </StyledLink>
             </NavLink>
             <NavLink to="/sign-up" style={{ textDecoration: "none" }}>
-              <StyledLink variant="error"> Sign Up</StyledLink>
+              <StyledLink variant="error"><button style={{width:"90px", height:"35px",border:"1px solid red", cursor:"pointer"}} className="bt">SIGN UP</button></StyledLink>
             </NavLink>
-            {/* <NavLink>
-            <StyledLink variant="error"> Sign Up</StyledLink>
-            </NavLink> */}
-            {/* <StyledButton variant="error">Sign up</StyledButton> */}
           </AccauntBlock>
         </Block>
       </MainContainer>

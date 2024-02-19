@@ -9,7 +9,7 @@ const colors = {
 export const MainContainer = styled.div`
   max-width: 1920px;
   margin: 0 auto;
-  background-color: ${colors.back};
+  background-color: #F8F9FB;
   position: fixed;
   top: 0;
   width: 100%;
@@ -26,20 +26,23 @@ export const NavbarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left:"-20px";
 `;
 
 export const LogoBlock = styled.div`
   display: flex;
   align-items: center;
+  
   gap: 12px;
 `;
 
 export const StyledLink = styled.a<{ variant?: string }>`
   color: #010101;
-  font-size: 24px;
+  font-size: 20px;
+  font-family: "sans-serif";
   text-decoration: none;
   border-bottom: ${(props) =>
-    props.variant === "border" ? "1px solid  black " : "none"};
+  props.variant === "border" ? "1px solid  black " : "none"};
   &:hover {
     color: ${(props) =>
       props.variant === "error" ? " red " : `${colors.hoverText}`};

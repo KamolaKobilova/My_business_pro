@@ -22,13 +22,14 @@ export const Button = styled.button`
   padding: 17px 23px 17px 30px;
   justify-content: flex-end;
   align-items: flex-start;
-  gap: 13.8px;
-  flex-shrink: 0;
+  gap: 13.8px; 
+  flex-shrink: 0; 
   width: 220px;
   border-radius: 2px;
   background-color: #f60014;
   border-color: #f60014;
   color: #ffffff;
+  box-shadow: none;
 `;
 export const Container = styled.div`
   background: #f8f9fb;
@@ -45,7 +46,7 @@ export const Feature = styled.div`
   flex-shrink: 0;
   position: absolute;
   top: 170px;
-  margin-left: 1000px;
+  margin-left: 1100px;
   border-radius: 5px;
   border: 1px solid #e7ebf0;
   background: #fff;
@@ -74,6 +75,6 @@ export const Region = styled.div`
   height: 205.3px;
   flex-shrink: 0;
   background-color: #ffffff;
-  margin-left: 260px;
+  margin-left: 350px;
   margin-top: 120px;
 `;

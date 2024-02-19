@@ -1,0 +1,16 @@
+.btns{
+    
+font-size: 15px;
+color: black;
+  
+}
+
+
+.btns:hover{
+  color: rgb(0, 200, 255);
+ 
+}
+.bt:hover {
+    background-color: red;
+    color: white;
+}

@@ -4,7 +4,7 @@ import {
   DropdownContent,
   IconsForNavbar,
   DropdownMiniBlock,
-} from "../StylesForNavbar/Styles";
+} from "../StylesForNavbar/index";
 
 type SideBarProps = {
   isMenuOpen: boolean;
