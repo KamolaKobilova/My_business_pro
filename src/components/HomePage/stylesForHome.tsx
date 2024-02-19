@@ -30,6 +30,7 @@ export const Button = styled.button`
   border-color: #f60014;
   color: #ffffff;
   box-shadow: none;
+  cursor: pointer;
 `;
 export const Container = styled.div`
   background: #f8f9fb;
@@ -74,7 +75,5 @@ export const Region = styled.div`
   width: 1107px;
   height: 205.3px;
   flex-shrink: 0;
-  background-color: #ffffff;
-  margin-left: 350px;
-  margin-top: 120px;
+  margin-left: 300px;
 `;

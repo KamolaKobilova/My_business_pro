@@ -51,17 +51,20 @@ function HomePage() {
                 listStyle: "none",
                 display: "flex",
                 flexDirection: "row",
+                
               }}
             >
-              <li>
+              <li className="coverr">
                 <img src={zoho} alt="" />
               </li>
-              <li>
+               <hr/>
+              <li className="cover">
                 <p>A complete solution for every billing requirement.</p>
                 <br />
-                <button>Try now</button>
+              <NavLink to='https://www.zoho.com/workplace/?ireft=nhome&src=home1' style={{textDecoration:"none"}}><button>TRY NOW</button></NavLink>  
+               
               </li>
-              <li>
+              <li className="covers">
                 <img src={girl} alt="" />
               </li>
             </ul>
