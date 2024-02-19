@@ -17,13 +17,14 @@ import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.
 import crm from '../../assets/HomePgImage/crm.png';
 import Navbar from "../Navbar/Navbar";
 import  './style.css'
+import { NavLink } from "react-router-dom";
 
 
 
 
 function HomePage() {
   return (
-    <div style={{backgroundColor:"#F8F9FB"}}>
+    <div>
       <Navbar />
       <div className="container">
         <div className="main_left">
@@ -102,7 +103,12 @@ function HomePage() {
                 software.</span>
               </li>
               <hr />
-              <h4 style={{marginTop: "30px", color: "#056cb8", fontFamily:"sans-serif"}}>EXPLORE ALL PRODUCTS</h4>
+
+             <NavLink to="https://www.zoho.com/all-products.html?ireft=nhome&src=home1" 
+               style={{textDecoration:"none"}}>
+              <h4 style={{marginTop: "30px", color: "#056cb8", fontFamily:"sans-serif"}}>
+                EXPLORE ALL PRODUCTS</h4>
+              </NavLink> 
             </ul>
           </div>
         </Feature>

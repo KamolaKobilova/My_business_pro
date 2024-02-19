@@ -70,7 +70,7 @@ const Navbar = () => {
               </LogoBlock>
             </div>
           </NavbarContainer>
-          <AccauntBlock>
+          <AccauntBlock className="block">
             <NavLink to="/sign-in" style={{ textDecoration: "none" }}>
               <StyledLink><div className="btns">SIGN IN</div> </StyledLink>
             </NavLink>
