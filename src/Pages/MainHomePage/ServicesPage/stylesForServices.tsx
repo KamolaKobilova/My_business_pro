@@ -52,5 +52,6 @@ export const StaffUser = styled.div<{ active: boolean }>`
     flex-direction: column;
     gap: 10px;
     margin-left: 10px;
+    flex: 1;
   }
 `;

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Tabs } from "antd";
 import {
   Button,
@@ -14,6 +15,8 @@ import PhotoInput from "../../../../components/PhotoSelector";
 const { TabPane } = Tabs;
 
 export const StaffContainer = () => {
+  const staffData = useSelector((state: any) => state.staff.staffData);
+  const activeIndex = useSelector((state: any) => state.staff.activeIndex);
   const [photo, setPhoto] = useState("");
   const [activeTab, setActiveTab] = useState("1");
 
@@ -26,8 +29,8 @@ export const StaffContainer = () => {
       <ProfileSide>
         <div className="img-block">
           <PhotoInput onChange={setPhoto} photo={photo} />
-          <h3>dinora</h3>
-          <p>Super admin</p>
+          <h3>{staffData[activeIndex]?.name}</h3>
+          <p>{staffData[activeIndex]?.role}</p>
         </div>
         <div className="button-block">
           <Tabs
@@ -41,7 +44,9 @@ export const StaffContainer = () => {
           </Tabs>
         </div>
       </ProfileSide>
-      {activeTab === "1" && <StaffInformation />}
+      {activeTab === "1" && (
+        <StaffInformation staffData={staffData} activeIndex={activeIndex} />
+      )}
       {activeTab === "2" && <WorkingHours />}
       {activeTab === "3" && <AssignedServices />}
     </Container>

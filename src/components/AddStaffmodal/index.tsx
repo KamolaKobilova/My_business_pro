@@ -10,10 +10,13 @@ const initialValues = {
   gender: "male",
 };
 
-const AddStaffModal = ({ isOpen, onClose }: any) => {
+const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
   const [form] = Form.useForm();
 
   const handleSubmit = (values: any) => {
+    values.dob = values.dob.format("YYYY-MM-DD");
+    onAdd(values);
+    form.resetFields();
     onClose();
   };
 

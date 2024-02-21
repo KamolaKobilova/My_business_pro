@@ -1,10 +1,13 @@
+import { ContactsOutlined } from "@material-ui/icons";
 import {
   ScrollingBlock,
   ScrollingBlockContent,
   ScrollingBlockWrp,
 } from "../../MyProfile/stylesForMyProfile";
 
-export const StaffInformation = () => {
+export const StaffInformation = ({ staffData, activeIndex }: any) => {
+  // const dateOfBirth = new Date(staffData[activeIndex]?.dob);
+  // const formattedDateOfBirth = dateOfBirth.toISOString().split("T")[0];
   return (
     <>
       <ScrollingBlockWrp variant="little">
@@ -14,15 +17,15 @@ export const StaffInformation = () => {
         <ScrollingBlock variant="little">
           <ScrollingBlockContent>
             <h3>Name</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.name}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Email Address</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.email}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Contact Number</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.phoneNumber}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Primary Workspace</h3>
@@ -30,7 +33,7 @@ export const StaffInformation = () => {
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Role</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.role}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Designation</h3>
@@ -38,15 +41,14 @@ export const StaffInformation = () => {
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Date of Birth</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.dob}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Gender</h3>
-            <p></p>
+            <p>{staffData[activeIndex]?.gender}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Status</h3>
-            <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Additional Information</h3>

@@ -2,20 +2,32 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./authSlice";
+import { staffSlice } from "./StaffPageReducer/authSlice";
 import { apiSlice } from "../features/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
-const persistConfig = {
+const persistAuthConfig = {
   key: "auth",
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer);
+
+const persistStaffConfig = {
+  key: "staff",
+  storage,
+};
+
+const persistedStaffReducer = persistReducer(
+  persistStaffConfig,
+  staffSlice.reducer
+);
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
-    auth: persistedReducer,
+    auth: persistedAuthReducer,
+    staff: persistedStaffReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
