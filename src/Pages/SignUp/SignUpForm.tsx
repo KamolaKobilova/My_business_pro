@@ -1,26 +1,34 @@
 import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox, message } from "antd";
-
 import { NavbarSignUp } from "./NavbarSignUp";
-import { useHook } from "./useHook";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../../redux/authSlice";
+import { useSignUpMutation } from "../../features/apiSlice";
 
 const SignUpForm: React.FC = () => {
-  const { handleSignUp, error } = useHook();
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [signUp, { data, error, isLoading }] = useSignUpMutation();
+
+  const onFinish = async (values: any) => {
+    try {
+      await signUp(values);
+      message.success("Sign up successfully!");
+    } catch (error) {
+      console.error("Sign-up failed. Please try again.", error);
+    }
+  };
 
   useEffect(() => {
-    if(error) {
-      message.open({
-        type: 'error',
-        content: error?.data?.msg
-      })
-      if (error?.data?.msg.includes("E11000")) {
-        navigate("/sign-in")
-      }
+    if (data) {
+      dispatch(setToken(data?.token));
+      navigate("/");
+    } else if (error) {
+      console.error("Sign-up failed. Please try again.", error);
     }
-  }, [error])
-  
+  }, [data, error, dispatch, navigate]);
+
   return (
     <>
       <NavbarSignUp />
@@ -42,7 +50,7 @@ const SignUpForm: React.FC = () => {
           initialValues={{ remember: true }}
           style={{ maxWidth: "500px", margin: "auto" }}
           layout="vertical"
-          onFinish={handleSignUp}
+          onFinish={onFinish}
         >
           <Form.Item
             label="First Name"
@@ -107,8 +115,9 @@ const SignUpForm: React.FC = () => {
               }}
               type="primary"
               htmlType="submit"
+              disabled={isLoading}
             >
-              SIGN UP FREE
+              {isLoading ? "Signing Up..." : "SIGN UP FREE"}
             </Button>
           </Form.Item>
         </Form>
