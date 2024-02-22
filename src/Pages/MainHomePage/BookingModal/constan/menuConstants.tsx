@@ -3,8 +3,6 @@ import { Menu, Drawer, Input, Select } from 'antd';
 import { PlusSquareOutlined } from "@ant-design/icons";
 import { ProfileDrawer } from '../../ProfileDrawer';
 import AppointDrawer from '../AppointDrawer';
-import { CheckSquareOutlined, FieldTimeOutlined, BellOutlined, AppstoreOutlined } from '@ant-design/icons';
-import '../../Navbar.css';
 import app from '../assets/app.png';
 import addBr from '../assets/addBr.png';
 import addSp from '../assets/addS.png';
@@ -13,12 +11,8 @@ import staff from '../assets/Staff.png';
 import service from '../assets/serv.png';
 import customer from '../assets/cus.png';
 import res from '../assets/res.png'
+import '../../Navbar.css';
 
-[{
-    key: '1',
-    icon: <img src={app} alt="" style={{ width: "30px", marginRight: "8px" }} />,
-    title: 'Appointment'
-}]
 
 export const MenuWithDrawer = () => {
     const [drawerVisible, setDrawerVisible] = useState(false);
@@ -87,19 +81,16 @@ export const MenuWithDrawer = () => {
             </Menu.Item>
         </Menu>
     );
-    const { Option } = Select;
+  
 
     const [inputValue, setInputValue] = useState('');
-    const [selectValue, setSelectValue] = useState(undefined);
+
 
     const handleInputChange = (e: any) => {
         setInputValue(e.target.value);
     };
 
-    const handleSelectChange = (value: any) => {
-        setSelectValue(value);
-    };
-
+  
 
     return (
         <>
@@ -107,7 +98,10 @@ export const MenuWithDrawer = () => {
             <Drawer
                 title={
                     <div style={{ display: "flex", alignItems: "center" }}>
-                        <PlusSquareOutlined style={{ marginRight: "10px", fontSize: "27px", display: "flex", alignItems: "center", color: "white", backgroundColor: "orange" }} />
+                        <PlusSquareOutlined style={{ marginRight: "10px",
+                          fontSize: "27px", display: "flex",
+                          alignItems: "center", color: "white",
+                          backgroundColor: "orange" }} />
                         New Appointment
                     </div>
                 }
