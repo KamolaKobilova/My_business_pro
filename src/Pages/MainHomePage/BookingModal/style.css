@@ -17,6 +17,11 @@
     margin-bottom: 24px;
     
   } 
+  .btns {
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+  }
  .btns button{
   width: 420px;
   margin-top: 270px;

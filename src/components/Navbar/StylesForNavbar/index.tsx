@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import  {Button}  from "antd";
 
 const colors = {
   back: "#e7ebf0",
@@ -29,6 +30,8 @@ export const NavbarContainer = styled.div`
   margin-left:"-20px";
 `;
 
+
+
 export const LogoBlock = styled.div`
   display: flex;
   align-items: center;
@@ -48,6 +51,17 @@ export const StyledLink = styled.a<{ variant?: string }>`
       props.variant === "error" ? " red " : `${colors.hoverText}`};
   }
 `;
+export const Button_up = styled.button`
+  width:"320px";
+  height:"35px";
+  border:"1px solid red";
+  cursor: pointer;
+  /* &:hover{
+    width: 200px;
+    background-color: red;
+    color: white;
+  } */
+`
 
 export const ArrowIcon = styled.span`
   cursor: pointer;

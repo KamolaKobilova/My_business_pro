@@ -23,7 +23,6 @@ const SignIn = () => {
     password: string;
   };
   const handleSignIn = async (formData: FieldType) => {
-    // console.log(formData, "formData");
 
     try {
       await signIn(formData);

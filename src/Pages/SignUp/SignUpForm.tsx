@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Form, Input, Button, Checkbox, message } from "antd";
-
 import { NavbarSignUp } from "./NavbarSignUp";
 import { useHook } from "./useHook";
 import { useNavigate } from "react-router-dom";
+import { ProfileDrawer } from "../MainHomePage/ProfileDrawer";
 
 const SignUpForm: React.FC = () => {
-  const { handleSignUp, error } = useHook();
+  const { handleSignUp, error, isSignedUp, isLoading } = useHook();
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,6 +20,13 @@ const SignUpForm: React.FC = () => {
       }
     }
   }, [error])
+
+  useEffect(() => {
+    if (isSignedUp) {
+      navigate("/ProfileDrawer");
+    }
+  }, [isSignedUp, navigate]);
+  
   
   return (
     <>
@@ -106,10 +113,12 @@ const SignUpForm: React.FC = () => {
                 fontFamily: "semiBold",
               }}
               type="primary"
-              htmlType="submit"
+              disabled={isLoading}
             >
-              SIGN UP FREE
+              {/* {isLoading ? "Signing Up..." : "SIGN UP FOR FREE"} */}
+             SIGN UP FREE
             </Button>
+           
           </Form.Item>
         </Form>
       </div>

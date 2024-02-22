@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import {
   FullPageCalendar,
-  InputBlock,
+ 
   StyledCalendar,
-  CustomSelect,
+ 
 } from "./StylesForCalendar";
-import { Drawer, Button, Select } from "antd";
+import { Button} from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
-const { Option } = Select;
+
 
 export const CalendarComponent = () => {
   const [date, setDate] = useState(new Date());

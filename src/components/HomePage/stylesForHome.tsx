@@ -16,6 +16,17 @@ export const StyledDiv = styled.div`
   font-size: 30px;
 `;
 
+export const Text = styled.div`
+  font-family:"sans-serif";
+   margin-bottom:"30px";
+   font-size:"60px";
+`
+ export const StyledText = styled.div`
+  margin-bottom:"30px";
+  font-family:"sans-serif";
+  font-size:"15px";
+
+ `
 export const Button = styled.button`
   display: inline-flex;
   height: 50px;

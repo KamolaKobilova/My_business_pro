@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { Button } from "antd";
 import {
   StyledLink,
   NavbarContainer,
@@ -11,7 +11,7 @@ import {
   AdditionalLinksContainer,
   AccauntBlock,
   Block,
- 
+
 } from "./StylesForNavbar/index";
 import SideBar from "./SideBar";
 import './button.css'
@@ -72,10 +72,10 @@ const Navbar = () => {
           </NavbarContainer>
           <AccauntBlock className="block">
             <NavLink to="/sign-in" style={{ textDecoration: "none" }}>
-              <StyledLink><div className="btns">SIGN IN</div> </StyledLink>
+              <Button>SIGN IN </Button>
             </NavLink>
             <NavLink to="/sign-up" style={{ textDecoration: "none" }}>
-              <StyledLink variant="error"><button style={{width:"90px", height:"35px",border:"1px solid red", cursor:"pointer"}} className="bt">SIGN UP</button></StyledLink>
+              <Button>SIGN UP</Button>
             </NavLink>
           </AccauntBlock>
         </Block>

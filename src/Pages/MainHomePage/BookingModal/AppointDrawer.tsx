@@ -18,7 +18,22 @@ const AppointDrawer: React.FC = () => {
   const [thirdSelectValue, setThirdSelectValue] = useState<any>(undefined);
   const [selectedDate, setSelectedDate] = useState<any>(null);
   const [selectedTime, setSelectedTime] = useState<any>(null);
-  const [inputArea, setInputArea] = useState<any>(null)
+  const [inputArea, setInputArea] = useState<any>(null);
+
+  const handleAddAppointment = () => {
+    
+    console.log("First Select Value:", firstSelectValue);
+    console.log("Second Select Value:", secondSelectValue);
+    console.log("Third Select Value:", thirdSelectValue);
+    console.log("Selected Date:", selectedDate);
+    console.log("Selected Time:", selectedTime);
+    console.log("Input Area Value:", inputArea);
+    console.log("Is Checked:", isChecked);
+  };
+
+
+
+
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
@@ -123,7 +138,7 @@ const AppointDrawer: React.FC = () => {
     <div style={{display:"flex", alignItems:"center"}}>
    <p style={{marginLeft:"100px"}}>Notes</p>
     <Input.TextArea 
-       value={inputArea}
+      value={inputArea}
       placeholder="Appoint description here" 
       autoSize={{ minRows: 3, maxRows: 6 }}
       style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 
@@ -136,9 +151,8 @@ const AppointDrawer: React.FC = () => {
       </Button>
     </div>
     <div className='btns'>
-
     <Button style={{backgroundColor:"#edebeb", borderColor:"#edebeb"}}><p>Cancel</p></Button>
-    <Button style={{backgroundColor:"#4F4A7B", color:"white"}}><p>Add Appointment</p></Button>
+    <Button style={{backgroundColor:"#4F4A7B", color:"white"}} onClick={handleAddAppointment}><p>Add Appointment</p></Button>
     </div>
     </div>
   );

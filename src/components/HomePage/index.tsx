@@ -2,10 +2,11 @@ import React from "react";
 import {
   StyledDiv,
   Button,
-  Container,
   Picture,
   Feature,
   Region,
+  Text,
+  
 } from "./stylesForHome";
 import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.png";
 import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
@@ -29,9 +30,9 @@ function HomePage() {
       <div className="container">
         <div className="main_left">
           <StyledDiv className="text">
-            <p style={{fontFamily:"sans-serif", marginBottom:"30px", fontSize:"50px"}}>
+            <Text style={{fontFamily:"sans-serif", marginBottom:"30px", fontSize:"50px"}}>
               Your life's work, <br /> powered by our life's work
-            </p>
+            </Text>
             <p style={{marginBottom:"35px", fontFamily:"sans-serif", fontSize:"25px"}}>
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a

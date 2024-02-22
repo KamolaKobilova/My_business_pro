@@ -1,19 +1,5 @@
-.btns{
-width: 70px;
-font-size: 15px;
-color: black;
-  
-}
 
 
-.btns:hover{
-  color: rgb(0, 200, 255);
- 
-}
-.bt:hover {
-    background-color: red;
-    color: white;
-}
 .block {
     margin-left: 500px;
 }
