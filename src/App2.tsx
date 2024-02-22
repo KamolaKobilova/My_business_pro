@@ -24,9 +24,6 @@ function App2() {
   const isUserAuthenticated = !!reduxToken;
 
   return (
-    <>
-
-   
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <PersistGate loading={null} persistor={persistor}>
@@ -37,7 +34,6 @@ function App2() {
           </PersistGate>
         </QueryClientProvider>
       </Provider>
-    </>
   );
 }
 
