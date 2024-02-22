@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { Form, Input, Button, Checkbox, message } from "antd";
+import { Form, Input, Checkbox, message } from "antd";
 import { NavbarSignUp } from "./NavbarSignUp";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "../../redux/authSlice";
 import { useSignUpMutation } from "../../features/apiSlice";
+import { AntButton, AntInput, PasswordInpt } from "./StylesForSignUp";
 
 const SignUpForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const SignUpForm: React.FC = () => {
               { required: true, message: "Please enter your first name!" },
             ]}
           >
-            <Input style={{ height: "45px" }} />
+            <AntInput />
           </Form.Item>
           <Form.Item
             label="Last Name"
@@ -68,7 +69,7 @@ const SignUpForm: React.FC = () => {
               { required: true, message: "Please enter your last name!" },
             ]}
           >
-            <Input style={{ height: "45px" }} />
+            <AntInput />
           </Form.Item>
 
           <Form.Item
@@ -79,7 +80,7 @@ const SignUpForm: React.FC = () => {
               { type: "email", message: "Please enter a valid email address!" },
             ]}
           >
-            <Input style={{ height: "45px" }} />
+            <AntInput />
           </Form.Item>
           <Form.Item
             label="Phone Number"
@@ -88,14 +89,14 @@ const SignUpForm: React.FC = () => {
               { required: true, message: "Please enter your phone number!" },
             ]}
           >
-            <Input style={{ width: "100%", height: "45px" }} />
+            <AntInput />
           </Form.Item>
           <Form.Item
             label="Password"
             name="password"
             rules={[{ required: true, message: "Please enter your password!" }]}
           >
-            <Input.Password style={{ height: "45px" }} />
+            <PasswordInpt />
           </Form.Item>
 
           <Form.Item>
@@ -105,20 +106,9 @@ const SignUpForm: React.FC = () => {
             <Checkbox style={{ margin: "10px 10px 10px 0" }}>
               I agree to the Terms of Service and Privacy Policy.
             </Checkbox>
-            <Button
-              style={{
-                height: "45px",
-                width: "100%",
-                backgroundColor: "#F0483E",
-                fontSize: "15px",
-                fontFamily: "semiBold",
-              }}
-              type="primary"
-              htmlType="submit"
-              loading={isLoading}
-            >
+            <AntButton type="primary" htmlType="submit" loading={isLoading}>
               SIGN UP FREE
-            </Button>
+            </AntButton>
           </Form.Item>
         </Form>
       </div>
