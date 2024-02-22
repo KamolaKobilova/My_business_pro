@@ -11,6 +11,7 @@ import {
 } from "../Pages/MainHomePage/BookingModal/BookingStyles";
 import { CalendarModal } from "../Pages/MainHomePage/BookingModal/BookingPage";
 import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer";
+import { Link } from "react-router-dom";
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

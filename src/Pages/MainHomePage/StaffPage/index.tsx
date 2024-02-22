@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "antd";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,7 @@ export const StaffPage = () => {
   const dispatch = useDispatch();
   const staffData = useSelector((state: any) => state.staff.staffData);
   const activeIndex = useSelector((state: any) => state.staff.activeIndex);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen((state) => !state);
   const handleAddStaff = (staffMember: any) => {
@@ -67,7 +67,7 @@ export const StaffPage = () => {
         {activeIndex !== null && <StaffContainer />}
       </MainContainer>
       <AddStaffModal
-        isOpen={isModalOpen}
+        isOpen={modal}
         onClose={toggleModal}
         onAdd={handleAddStaff}
       />
