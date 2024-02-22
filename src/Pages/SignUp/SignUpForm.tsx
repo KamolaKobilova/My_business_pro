@@ -14,7 +14,6 @@ const SignUpForm: React.FC = () => {
   const onFinish = async (values: any) => {
     try {
       await signUp(values);
-      message.success("Sign up successfully!");
     } catch (error) {
       console.error("Sign-up failed. Please try again.", error);
     }
@@ -24,6 +23,7 @@ const SignUpForm: React.FC = () => {
     if (data) {
       dispatch(setToken(data?.token));
       navigate("/");
+      message.success("Sign up successfully!");
     } else if (error) {
       console.error("Sign-up failed. Please try again.", error);
     }
@@ -115,9 +115,9 @@ const SignUpForm: React.FC = () => {
               }}
               type="primary"
               htmlType="submit"
-              disabled={isLoading}
+              loading={isLoading}
             >
-              {isLoading ? "Signing Up..." : "SIGN UP FREE"}
+              SIGN UP FREE
             </Button>
           </Form.Item>
         </Form>
