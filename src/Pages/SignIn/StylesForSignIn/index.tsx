@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Carousel } from "react-responsive-carousel";
 import GoogleButton from "react-google-button";
+import { Input } from "antd";
 const colors = {
   back: "#fcfcfc",
 };
@@ -36,16 +37,9 @@ export const InputBlock = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 20px;
     margin-top: 40px;
   }
-  input {
-    width: 350px;
-    height: 35px;
-    padding-left: 10px;
-    border-radius: 3px;
-    outline: none;
-  }
+
   button {
     width: 360px;
     height: 40px;
@@ -64,6 +58,29 @@ export const InputBlock = styled.div`
     margin-top: 20px;
   }
 `;
+export const StyledInput = styled(Input)`
+  width: 350px;
+  height: 38px;
+  padding-left: 10px;
+  border-radius: 3px;
+  outline: none;
+  label {
+    display: flex;
+    flex: 1;
+  }
+`;
+export const PasswordInput = styled(Input.Password)`
+  width: 350px;
+  height: 38px;
+  padding-left: 10px;
+  border-radius: 3px;
+  outline: none;
+  label {
+    display: flex;
+    flex: 1;
+  }
+`;
+
 export const StyledCard = styled.div`
   padding: 10px;
   display: flex;
