@@ -58,7 +58,7 @@ export const InputBlock = styled.div`
     margin-top: 20px;
   }
 `;
-export const StyledInput = styled(Input)`
+export const CustomInput = styled(Input)`
   width: 350px;
   height: 38px;
   padding-left: 10px;
@@ -69,7 +69,7 @@ export const StyledInput = styled(Input)`
     flex: 1;
   }
 `;
-export const PasswordInput = styled(Input.Password)`
+export const CustomPasswordInput = styled(Input.Password)`
   width: 350px;
   height: 38px;
   padding-left: 10px;

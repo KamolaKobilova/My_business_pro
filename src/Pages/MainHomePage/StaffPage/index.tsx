@@ -23,7 +23,7 @@ interface StaffMember {
   role?: string;
 }
 
-export const StaffPage: React.FC = () => {
+export const StaffPage = () => {
   const dispatch = useDispatch();
   const staffData = useSelector((state: RootState) => state.staff.staffData);
   const activeIndex = useSelector(
@@ -50,9 +50,7 @@ export const StaffPage: React.FC = () => {
               <FaPlus size={14} />
             </StaffBUtton>
           </div>
-          {staffData.length === 0 ? (
-            <p>Add staff</p>
-          ) : (
+          {staffData.length ? (
             staffData.map((staff: StaffMember, index: number) => (
               <div key={index}>
                 <StaffUser
@@ -70,9 +68,11 @@ export const StaffPage: React.FC = () => {
                 </StaffUser>
               </div>
             ))
+          ) : (
+            <p>Add staff</p>
           )}
         </SideContainer>
-        {activeIndex !== null && <StaffContainer />}
+        {activeIndex && <StaffContainer />}
       </MainContainer>
       <AddStaffModal
         isOpen={modal}

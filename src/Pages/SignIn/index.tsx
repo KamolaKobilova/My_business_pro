@@ -12,7 +12,7 @@ import {
 } from "./StylesForSignIn/styles";
 import { setToken } from "../../redux/authSlice";
 import { useSignInMutation } from "../../features/apiSlice";
-import { PasswordInput, StyledInput } from "./StylesForSignIn";
+import { CustomInput, CustomPasswordInput } from "./StylesForSignIn";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -35,7 +35,6 @@ const SignIn = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data, "data");
       dispatch(setToken(data?.token));
     } else if (error) {
       toast.error("Sign-in failed. Please try again.");
@@ -63,7 +62,7 @@ const SignIn = () => {
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
               >
-                <StyledInput />
+                <CustomInput />
               </Form.Item>
               <Form.Item<FieldType>
                 label="Password"
@@ -74,7 +73,7 @@ const SignIn = () => {
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
               >
-                <PasswordInput />
+                <CustomPasswordInput />
               </Form.Item>
               <Button type="primary" htmlType="submit" loading={isLoading}>
                 Sign in
