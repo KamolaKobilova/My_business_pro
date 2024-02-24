@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { setToken } from "../../redux/authSlice";
 import { useSignUpMutation } from "../../features/apiSlice";
 import { AntButton, AntInput, PasswordInpt } from "./StylesForSignUp";
+import { SIGNUP_FIELDS } from "./constants";
 
 const SignUpForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -30,32 +31,6 @@ const SignUpForm: React.FC = () => {
     }
   }, [data, error, dispatch, navigate]);
 
-  const inputFields = [
-    {
-      label: "First Name",
-      name: "firstName",
-      rules: [{ required: true, message: "Please enter your first name!" }],
-    },
-    {
-      label: "Last Name",
-      name: "lastName",
-      rules: [{ required: true, message: "Please enter your last name!" }],
-    },
-    {
-      label: "Email",
-      name: "email",
-      rules: [
-        { required: true, message: "Please enter your email!" },
-        { type: "email", message: "Please enter a valid email address!" },
-      ],
-    },
-    {
-      label: "Phone Number",
-      name: "phone",
-      rules: [{ required: true, message: "Please enter your phone number!" }],
-    },
-  ];
-
   return (
     <>
       <NavbarSignUp />
@@ -79,28 +54,17 @@ const SignUpForm: React.FC = () => {
           layout="vertical"
           onFinish={onFinish}
         >
-          {inputFields.map((field) => (
+          {SIGNUP_FIELDS.map((field) => (
             <Form.Item
               key={field.name}
               label={field.label}
               name={field.name}
-              rules={[
-                {
-                  required: true,
-                  message: ` Please enter your ${field.label} `,
-                },
-              ]}
+              rules={field.rules}
             >
-              <AntInput />
+              {field.element || <AntInput />}
             </Form.Item>
           ))}
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please enter your password!" }]}
-          >
-            <PasswordInpt />
-          </Form.Item>
+
           <Form.Item>
             <p style={{ fontFamily: "sans-serif" }}>
               Your data will be stored in the US data center.
