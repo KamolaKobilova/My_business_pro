@@ -196,4 +196,21 @@ export const LogOutButton = styled.button`
   cursor: pointer;
 `;
 
+export const SelectItems = styled.div`
+   display: flex;
+   align-items: center;
+   margin-top: 25px;
+   margin-left: 90px;
+   margin-bottom: 30px;
+`
+
+export const SelectItem = styled.div`
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
+   margin-left: 40px;
+   margin-bottom: 30px
+
+
+`
 

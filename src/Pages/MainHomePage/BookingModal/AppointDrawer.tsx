@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Select, DatePicker, TimePicker, Input, Button, message,Checkbox } from 'antd';
 import TodoModal from './TodoModal';
+import { SelectItems, SelectItem} from './BookingStyles'
 import './style.css';
 
 
@@ -69,7 +70,7 @@ const AppointDrawer: React.FC = () => {
 
   return (
     <div className="input_forms" >
-      <div className='input_items' style={{display:"flex", alignItems:"center", marginTop:"30px"}}>
+      <SelectItems>
         <p style={{fontSize:"16px"}}>Workspace</p>
         <Select
          style={{ width: "342px", height:"40px",marginLeft:"70px"}}
@@ -80,9 +81,9 @@ const AppointDrawer: React.FC = () => {
           <Option value="option2">Option 2</Option>
           <Option value="option3">Option 3</Option>
         </Select>
-      </div>
+      </SelectItems>
 
-      <div className='input_items'  style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+      <SelectItems>
         <p style={{fontSize:"16px"}}>Service</p>
         <Select
            style={{ width: "342px", height:"40px",marginLeft:"95px"}}
@@ -93,9 +94,8 @@ const AppointDrawer: React.FC = () => {
           <Option value="option2">Option 2</Option>
           <Option value="option3">Option 3</Option>
         </Select>
-      </div>
-
-      <div className='input_items' style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
+      </SelectItems>
+      <SelectItems>
         <p style={{fontSize:"16px"}}>Assign Staff</p>
         <Select
            style={{ width: "342px", height:"40px", marginBottom:"24px",marginLeft:"70px"}}
@@ -106,8 +106,7 @@ const AppointDrawer: React.FC = () => {
           <Option value="option2">Option 2</Option>
           <Option value="option3">Option 3</Option>
         </Select>
-      </div>
-
+      </SelectItems>
       <div>
         
 
@@ -126,15 +125,11 @@ const AppointDrawer: React.FC = () => {
             />
           </div>
         </div>
-
-        
       </div>
-      
-    <div className='input_items'style={{ width: "342px", height:"40px",marginLeft:"40px", display:"flex",alignItems:"center"}}>
-     
-    <TodoModal/>
-    
-    </div>
+     <SelectItem className='todo'>
+        <TodoModal/>
+     </SelectItem>
+ 
     <div style={{display:"flex", alignItems:"center"}}>
    <p style={{marginLeft:"100px"}}>Notes</p>
     <Input.TextArea 
