@@ -16,11 +16,19 @@ import {
   deleteStaffMember,
   addStaffMember,
 } from "../../../redux/StaffPageReducer/authSlice";
+import { RootState } from "../../../redux/store";
 
-export const StaffPage = () => {
+interface StaffMember {
+  name?: string;
+  role?: string;
+}
+
+export const StaffPage: React.FC = () => {
   const dispatch = useDispatch();
-  const staffData = useSelector((state: any) => state.staff.staffData);
-  const activeIndex = useSelector((state: any) => state.staff.activeIndex);
+  const staffData = useSelector((state: RootState) => state.staff.staffData);
+  const activeIndex = useSelector(
+    (state: RootState) => state.staff.activeIndex
+  );
   const [modal, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen((state) => !state);
@@ -45,7 +53,7 @@ export const StaffPage = () => {
           {staffData.length === 0 ? (
             <p>Add staff</p>
           ) : (
-            staffData.map((staff: any, index: number) => (
+            staffData.map((staff: StaffMember, index: number) => (
               <div key={index}>
                 <StaffUser
                   active={activeIndex === index}

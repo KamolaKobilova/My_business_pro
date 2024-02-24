@@ -5,51 +5,31 @@ import {
 } from "../../MyProfile/stylesForMyProfile";
 
 export const StaffInformation = ({ staffData, activeIndex }: any) => {
+  const informationFields = [
+    { title: "Name", key: "name" },
+    { title: "Email Address", key: "email" },
+    { title: "Contact Number", key: "phoneNumber" },
+    { title: "Primary Workspace", key: "primaryWorkspace" },
+    { title: "Role", key: "role" },
+    { title: "Designation", key: "designation" },
+    { title: "Date of Birth", key: "dob" },
+    { title: "Gender", key: "gender" },
+    { title: "Status", key: "status" },
+    { title: "Additional Information", key: "additionalInformation" },
+  ];
+
   return (
     <ScrollingBlockWrp variant="little">
       <div className="header">
         <h3>Set Up Staff Profile</h3>
       </div>
       <ScrollingBlock variant="little">
-        <ScrollingBlockContent>
-          <h3>Name</h3>
-          <p>{staffData[activeIndex]?.name}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Email Address</h3>
-          <p>{staffData[activeIndex]?.email}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Contact Number</h3>
-          <p>{staffData[activeIndex]?.phoneNumber}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Primary Workspace</h3>
-          <p></p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Role</h3>
-          <p>{staffData[activeIndex]?.role}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Designation</h3>
-          <p></p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Date of Birth</h3>
-          <p>{staffData[activeIndex]?.dob}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Gender</h3>
-          <p>{staffData[activeIndex]?.gender}</p>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Status</h3>
-        </ScrollingBlockContent>
-        <ScrollingBlockContent>
-          <h3>Additional Information</h3>
-          <p></p>
-        </ScrollingBlockContent>
+        {informationFields.map((field) => (
+          <ScrollingBlockContent key={field.key}>
+            <h3>{field.title}</h3>
+            <p>{staffData[activeIndex]?.[field.key]}</p>
+          </ScrollingBlockContent>
+        ))}
       </ScrollingBlock>
     </ScrollingBlockWrp>
   );
