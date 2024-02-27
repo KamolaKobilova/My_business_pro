@@ -1,16 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import {
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  InputWrapper,
-  Label,
-  Input,
-  ButtonWrapper,
-  SaveButton,
-  CancelButton,
-} from "./ModalStyles";
+import React, { useState } from "react";
+import { Modal, Input, Button } from "antd";
 
 export const ClientModal = ({ isOpen, onClose }: any) => {
   const [name, setName] = useState("");
@@ -28,41 +17,39 @@ export const ClientModal = ({ isOpen, onClose }: any) => {
 
   return (
     <>
-      {isOpen && (
-        <ModalOverlay>
-          <ModalContent>
-            <ModalHeader>Register Client</ModalHeader>
-            <InputWrapper>
-              <Label>Name:</Label>
-              <Input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </InputWrapper>
-            <InputWrapper>
-              <Label>Email:</Label>
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </InputWrapper>
-            <InputWrapper>
-              <Label>Contact Number:</Label>
-              <Input
-                type="tel"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </InputWrapper>
-            <ButtonWrapper>
-              <SaveButton onClick={handleSave}>Save</SaveButton>
-              <CancelButton onClick={handleCancel}>Cancel</CancelButton>
-            </ButtonWrapper>
-          </ModalContent>
-        </ModalOverlay>
-      )}
+      <Modal
+        title="Register Client"
+        open={isOpen}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="cancel" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button key="save" type="primary" onClick={handleSave}>
+            Save
+          </Button>,
+        ]}
+      >
+        <Input.Group>
+          <Input
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            placeholder="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="Phone Number"
+            type="tel"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </Input.Group>
+      </Modal>
     </>
   );
 };

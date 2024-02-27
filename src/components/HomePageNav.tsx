@@ -11,6 +11,7 @@ import {
 } from "../Pages/MainHomePage/BookingModal/BookingStyles";
 import { CalendarModal } from "../Pages/MainHomePage/BookingModal/BookingPage";
 import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer";
+import { Link } from "react-router-dom";
 
 export const HomePageNav = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +42,9 @@ export const HomePageNav = () => {
             <a href="/services">
               <NavButton>Services</NavButton>
             </a>
-            <NavButton>Staff</NavButton>
+            <a href="/staff">
+              <NavButton>Staff</NavButton>
+            </a>
             <a href="/my-profile">
               <NavButton>My profile</NavButton>
             </a>

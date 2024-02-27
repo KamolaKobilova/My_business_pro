@@ -30,6 +30,14 @@ export const ProfileSide = styled.div`
     gap:10px
 
 }
+.img-block-service{
+   display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px
+
+}
+
 .img-block .photo{
   width:70px;
   height:70px;
@@ -38,11 +46,33 @@ export const ProfileSide = styled.div`
   display:flex;
   align-items:center;
 }
-.img-block img {
+
+.img-block .service-photo {
+  width:70px;
+  height:60px;
   border:1px solid #ddd;
+   display:flex;
+}
+.service-photo img{
+  width:70px;
+  height:60px;
+}
+.img-block img {
   width:70px;
   height:70px;
   border-radius:40px;
+
+}
+
+.placeholder img{
+  
+  display:flex;
+  align-items:center;
+}
+.service-placeholder img{
+width:70px;
+height:60px;
+
 }
 
 .button-block{
@@ -53,7 +83,7 @@ export const ProfileSide = styled.div`
 export const Button = styled.div<{ active: boolean; variant?: string }>`
   width: 300px;
   height: 20px;
-  background-color: ${(props) => (props.active ? "#eeeeee" : "white")};
+  background-color: ${(props) => (props.active ? "#f8f8f8" : "white")};
   border: ${(props) =>
     props.active ? "1px solid #dbd9d9" : " 1px solid white"};
 
