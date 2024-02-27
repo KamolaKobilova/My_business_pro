@@ -1,11 +1,10 @@
 import React, { Navigate } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "../Pages/SignIn";
-import SignUpForm from "../Pages/SignUp/SignUpForm";
+import SignUp from "../Pages/SignUp";
 import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
 import { MyProfile } from "../Pages/MainHomePage/MyProfile.tsx";
-import { MainHomePage } from "../Pages/MainHomePage/MainHomePage";
 import { ServicesPage } from "../Pages/MainHomePage/ServicesPage";
 
 export const router = createBrowserRouter([
@@ -49,6 +48,6 @@ export const publicRouter = createBrowserRouter([
   },
   {
     path: "/sign-up",
-    element: <SignUpForm />,
+    element: <SignUp />,
   },
 ]);
