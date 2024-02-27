@@ -1,7 +1,7 @@
 import React, { Navigate } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import SignIn from "../Pages/SignIn";
-import SignUpForm from "../Pages/SignUp/SignUpForm";
+import SignUp from "../Pages/SignUp";
 import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
 import { MyProfile } from "../Pages/MainHomePage/MyProfile";
@@ -21,7 +21,6 @@ export const router = createBrowserRouter(
       path: "/my-profile",
       element: <MyProfile />,
     },
-
     {
       path: "/services",
       element: <ServicesPage />,
@@ -38,6 +37,7 @@ export const router = createBrowserRouter(
   ],
   { basename: "/" }
 );
+
 export const publicRouter = createBrowserRouter(
   [
     {
@@ -63,3 +63,4 @@ export const publicRouter = createBrowserRouter(
   ],
   { basename: "/" }
 );
+
