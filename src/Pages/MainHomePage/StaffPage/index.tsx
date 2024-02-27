@@ -24,12 +24,12 @@ interface StaffMember {
 }
 
 export const StaffPage = () => {
+  const [modal, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const staffData = useSelector((state: RootState) => state.staff.staffData);
   const activeIndex = useSelector(
     (state: RootState) => state.staff.activeIndex
   );
-  const [modal, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen((state) => !state);
   const handleAddStaff = (staffMember: any) => {
