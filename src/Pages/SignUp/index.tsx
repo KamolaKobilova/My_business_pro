@@ -1,14 +1,20 @@
 import React, { useEffect } from "react";
-import { Form, Checkbox, message } from "antd";
+import { Form, message } from "antd";
 import { NavbarSignUp } from "./NavbarSignUp";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "../../redux/authSlice";
 import { useSignUpMutation } from "../../features/apiSlice";
-import { AntButton, AntInput, PasswordInpt } from "./StylesForSignUp";
+import {
+  AntButton,
+  AntInput,
+  CustomCheckbox,
+  CustomForm,
+  Main,
+} from "./StylesForSignUp";
 import { SIGNUP_FIELDS } from "./constants";
 
-const SignUpForm: React.FC = () => {
+const SignUp: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [signUp, { data, error, isLoading }] = useSignUpMutation();
@@ -35,22 +41,11 @@ const SignUpForm: React.FC = () => {
     <>
       <NavbarSignUp />
       <hr />
-      <div className="main" style={{ marginTop: "80px" }}>
-        <h3
-          style={{
-            maxWidth: "500px",
-            margin: "auto",
-            fontFamily: "semibold",
-            fontSize: "23px",
-            marginBottom: "30px",
-          }}
-        >
-          Start with your free account today.
-        </h3>
-        <Form
+      <Main>
+        <h3>Start with your free account today.</h3>
+        <CustomForm
           name="signup-form"
           initialValues={{ remember: true }}
-          style={{ maxWidth: "500px", margin: "auto" }}
           layout="vertical"
           onFinish={onFinish}
         >
@@ -66,20 +61,18 @@ const SignUpForm: React.FC = () => {
           ))}
 
           <Form.Item>
-            <p style={{ fontFamily: "sans-serif" }}>
-              Your data will be stored in the US data center.
-            </p>
-            <Checkbox style={{ margin: "10px 10px 10px 0" }}>
+            <p>Your data will be stored in the US data center.</p>
+            <CustomCheckbox>
               I agree to the Terms of Service and Privacy Policy.
-            </Checkbox>
+            </CustomCheckbox>
             <AntButton type="primary" htmlType="submit" loading={isLoading}>
               SIGN UP FREE
             </AntButton>
           </Form.Item>
-        </Form>
-      </div>
+        </CustomForm>
+      </Main>
     </>
   );
 };
 
-export default SignUpForm;
+export default SignUp;
