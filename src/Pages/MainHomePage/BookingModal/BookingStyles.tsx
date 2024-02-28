@@ -89,16 +89,15 @@ export const Header = styled.div`
 `;
 
 export const NavButton = styled.button`
- 
   font-size: 17px;
   font-family: sans-serif;
   background-color: ${mainPurple};
   border: none;
   width: 150px;
   height: 60px;
+  color: white;
   &:hover {
     border-bottom: 2px solid red;
-   
   }
 `;
 
