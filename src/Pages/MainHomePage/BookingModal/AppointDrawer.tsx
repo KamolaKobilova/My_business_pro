@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Select, DatePicker, TimePicker, Input, Button, message,Checkbox } from 'antd';
+import { Select, DatePicker, TimePicker, Input, Button, message, Checkbox } from 'antd';
 import TodoModal from './TodoModal';
-import { SelectItems, SelectItem} from './BookingStyles'
+import { SelectItems, SelectItem } from './BookingStyles';
 import './style.css';
-
+import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 
 const { Option } = Select;
+
 interface TodoItem {
   id: number;
   name: string;
@@ -13,16 +14,16 @@ interface TodoItem {
   phone: string;
 }
 
-const AppointDrawer: React.FC = () => {
+const AppointDrawer = () => {
   const [firstSelectValue, setFirstSelectValue] = useState<TodoItem[]>([]);
-  const [secondSelectValue, setSecondSelectValue] = useState<any>(undefined);
-  const [thirdSelectValue, setThirdSelectValue] = useState<any>(undefined);
-  const [selectedDate, setSelectedDate] = useState<any>(null);
-  const [selectedTime, setSelectedTime] = useState<any>(null);
-  const [inputArea, setInputArea] = useState<any>(null);
+  const [secondSelectValue, setSecondSelectValue] = useState<string | undefined>(undefined);
+  const [thirdSelectValue, setThirdSelectValue] = useState<string | undefined>(undefined);
+  const [selectedDate, setSelectedDate] = useState<any>(null); 
+  const [selectedTime, setSelectedTime] = useState<any>(null); 
+  const [inputArea, setInputArea] = useState<string>(""); 
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleAddAppointment = () => {
-    
     console.log("First Select Value:", firstSelectValue);
     console.log("Second Select Value:", secondSelectValue);
     console.log("Third Select Value:", thirdSelectValue);
@@ -32,31 +33,27 @@ const AppointDrawer: React.FC = () => {
     console.log("Is Checked:", isChecked);
   };
 
-
-
-
-  const handleDateChange = (date: any) => {
+  const handleDateChange = (date: any, dateString: string) => {
     setSelectedDate(date);
   };
 
-  const handleTimeChange = (time: any) => {
+  const handleTimeChange = (time: any, dateString: string) => { 
     setSelectedTime(time);
   };
 
-  const handleFirstSelectChange = (value: any) => {
+  const handleFirstSelectChange = (value: TodoItem[]) => { 
     setFirstSelectValue(value);
   };
 
-  const handleSecondSelectChange = (value: any) => {
+  const handleSecondSelectChange = (value: string | undefined) => {
     setSecondSelectValue(value);
   };
 
-  const handleThirdSelectChange = (value: any) => {
+  const handleThirdSelectChange = (value: string | undefined) => {
     setThirdSelectValue(value);
   };
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckboxChange = (e:any) => {
+  const handleCheckboxChange = (e: CheckboxChangeEvent) => { 
     setIsChecked(e.target.checked);
   };
 
@@ -73,7 +70,7 @@ const AppointDrawer: React.FC = () => {
       <SelectItems>
         <p style={{fontSize:"16px"}}>Workspace</p>
         <Select
-         style={{ width: "342px", height:"40px",marginLeft:"70px"}}
+          style={{ width: "342px", height:"40px",marginLeft:"70px"}}
           value={firstSelectValue}
           onChange={handleFirstSelectChange}
         >
@@ -86,7 +83,7 @@ const AppointDrawer: React.FC = () => {
       <SelectItems>
         <p style={{fontSize:"16px"}}>Service</p>
         <Select
-           style={{ width: "342px", height:"40px",marginLeft:"95px"}}
+          style={{ width: "342px", height:"40px",marginLeft:"95px"}}
           value={secondSelectValue}
           onChange={handleSecondSelectChange}
         >
@@ -98,7 +95,7 @@ const AppointDrawer: React.FC = () => {
       <SelectItems>
         <p style={{fontSize:"16px"}}>Assign Staff</p>
         <Select
-           style={{ width: "342px", height:"40px", marginBottom:"24px",marginLeft:"70px"}}
+          style={{ width: "342px", height:"40px", marginBottom:"24px",marginLeft:"70px"}}
           value={thirdSelectValue}
           onChange={handleThirdSelectChange}
         >
@@ -108,8 +105,6 @@ const AppointDrawer: React.FC = () => {
         </Select>
       </SelectItems>
       <div>
-        
-
         <div className="inlinePickerContainer">
           <div  className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
             <p>Date & Time</p>
@@ -126,29 +121,29 @@ const AppointDrawer: React.FC = () => {
           </div>
         </div>
       </div>
-     <SelectItem className='todo'>
+      <SelectItem className='todo'>
         <TodoModal/>
-     </SelectItem>
- 
-    <div style={{display:"flex", alignItems:"center"}}>
-   <p style={{marginLeft:"100px"}}>Notes</p>
-    <Input.TextArea 
-      value={inputArea}
-      placeholder="Appoint description here" 
-      autoSize={{ minRows: 3, maxRows: 6 }}
-      style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 
-    />
-    </div>
-    <div style={{marginLeft:"235px", marginTop:"20px"}}>
-      <Checkbox onChange={handleCheckboxChange}>Send Notification</Checkbox>
-      <Button type="primary" onClick={handleSendNotification}>
-        Send
-      </Button>
-    </div>
-    <div className='btns'>
-    <Button style={{backgroundColor:"#edebeb", borderColor:"#edebeb"}}><p>Cancel</p></Button>
-    <Button style={{backgroundColor:"#4F4A7B", color:"white"}} onClick={handleAddAppointment}><p>Add Appointment</p></Button>
-    </div>
+      </SelectItem>
+      <div style={{display:"flex", alignItems:"center"}}>
+        <p style={{marginLeft:"100px"}}>Notes</p>
+        <Input.TextArea 
+          value={inputArea}
+          placeholder="Appoint description here" 
+          autoSize={{ minRows: 3, maxRows: 6 }}
+          style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 
+          onChange={(e) => setInputArea(e.target.value)}
+        />
+      </div>
+      <div style={{marginLeft:"235px", marginTop:"20px"}}>
+        <Checkbox onChange={handleCheckboxChange}>Send Notification</Checkbox>
+        <Button type="primary" onClick={handleSendNotification}>
+          Send
+        </Button>
+      </div>
+      <div className='btns'>
+        <Button style={{backgroundColor:"#edebeb", borderColor:"#edebeb"}}><p>Cancel</p></Button>
+        <Button style={{backgroundColor:"#4F4A7B", color:"white"}} onClick={handleAddAppointment}><p>Add Appointment</p></Button>
+      </div>
     </div>
   );
 };

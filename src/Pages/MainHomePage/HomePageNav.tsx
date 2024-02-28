@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import { IoMdPerson} from "react-icons/io";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { Menu, Dropdown, Drawer, Button } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { NavButton, Navbar } from "./BookingModal/BookingStyles";
 import { CalendarModal } from "./BookingModal/BookingPage";
 import { ProfileDrawer } from "./ProfileDrawer";
@@ -11,8 +11,6 @@ import logo from '../../assets/BookingPage/booking.png';
 import MenuWithDrawer from "./BookingModal/constan/menuConstants";
 import {PlusOutlined} from "@ant-design/icons";
 import './Navbar.css'
-
-
 
 
 
@@ -71,7 +69,6 @@ export const HomePageNav = () => {
           <PlusOutlined className="plusOutLined"
             style={{
               fontSize: '24px',
-              
             }}
          
           />
