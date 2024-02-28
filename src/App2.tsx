@@ -7,8 +7,6 @@ import { store, persistor, RootState } from "./redux/store";
 import { publicRouter, router } from "./router";
 import { MainHomePage } from "./Pages/MainHomePage/MainHomePage";
 
-
-
 const queryClient = new QueryClient();
 
 function App2() {

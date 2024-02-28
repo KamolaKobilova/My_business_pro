@@ -7,11 +7,11 @@ import {
   Header,
   Title,
 } from "./BookingStyles";
-import logo from '../../../assets/BookingPage/logo.png';
-import { Form, Input, Button, Steps, Select, TimePicker, InputNumber, Space, Modal } from 'antd';
-import { Store } from 'antd/lib/form/interface';
+import logo from "../../../assets/BookingPage/logo.png";
+import { Form, Input, Button, Steps, Select, TimePicker, InputNumber, Space, Modal } from "antd";
+// import { Store } from 'antd/lib/form/interface';
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import './style.css'
+import "./style.css"
 
 interface CalendarModalProps {
   onClose: () => void;
@@ -34,7 +34,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
     setCurrentStep(currentStep - 1);
   };
 
-  const onFinish = (values: Store) => {
+  const onFinish = (values: any) => {
     console.log('Form submitted with values:', values);
     setSecondModalVisible(true); 
   };
