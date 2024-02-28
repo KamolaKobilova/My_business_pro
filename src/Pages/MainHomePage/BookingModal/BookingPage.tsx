@@ -9,7 +9,6 @@ import {
 } from "./BookingStyles";
 import logo from "../../../assets/BookingPage/logo.png";
 import { Form, Input, Button, Steps, Select, TimePicker, InputNumber, Space, Modal } from "antd";
-// import { Store } from 'antd/lib/form/interface';
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import "./style.css"
 
