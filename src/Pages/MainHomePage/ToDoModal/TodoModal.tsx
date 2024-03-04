@@ -3,6 +3,8 @@ import { Select, Input, Button, Modal, Form } from "antd"
 import profile from "../../../assets/BookingPage/profile.jpeg"
 import uzbekFlag from "../../../assets/BookingPage/flag.png"
 import "./todoModal.css"
+import { CustomButton } from "./stylesforToDo"
+import { TO_DO_MODAL_FIELDS } from "./constants"
 
 interface TodoItem {
   id: number
@@ -71,70 +73,32 @@ const CustomSelect: React.FC = () => {
         open={form.getFieldValue("showTodoListModal")}
         onCancel={() => form.setFieldsValue({ showTodoListModal: false })}
         footer={[
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <Button
-              key="clear"
-              className="antBtn"
-              onClick={handleClearList}
-              style={{
-                width: "270px",
-                height: "50px",
-                marginTop: "20px",
-                borderRadius: "0",
-                marginLeft: "1",
-              }}
-            >
+          <div>
+            <CustomButton key="clear" onClick={handleClearList}>
               Clear
-            </Button>
-            <Button
-              type="primary"
+            </CustomButton>
+            <CustomButton
               className="antBtn"
               key="save"
               onClick={handleTaskSubmit}
-              style={{
-                width: "270px",
-                height: "50px",
-                marginTop: "20px",
-                borderRadius: "0",
-              }}
             >
               Save
-            </Button>
+            </CustomButton>
           </div>,
         ]}
         width={500}
       >
         <Form form={form} layout="vertical">
-          <Form.Item
-            label="Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter a name" }]}
-          >
-            <Input placeholder="Name" />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter an email" }]}
-          >
-            <Input placeholder="Email" />
-          </Form.Item>
-          <Form.Item
-            label="Phone"
-            name="phone"
-            rules={[{ required: true, message: "Please enter a phone number" }]}
-          >
-            <Input
-              placeholder="Phone"
-              prefix={
-                <img
-                  src={uzbekFlag}
-                  alt="Uzbekistan Flag"
-                  style={{ width: "20px", height: "auto", marginRight: "5px" }}
-                />
-              }
-            />
-          </Form.Item>
+          {TO_DO_MODAL_FIELDS.map((field) => (
+            <Form.Item
+              key={field.name}
+              label={field.label}
+              name={field.name}
+              rules={field.rules}
+            >
+              {field.element || <></>}
+            </Form.Item>
+          ))}
         </Form>
       </Modal>
     </>
