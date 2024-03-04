@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Select, Input, Button, Modal } from 'antd';
+import React,{useState} from 'react';
+import { Select, Input, Button, Modal, Form } from 'antd';
 import profile from '../../../assets/BookingPage/profile.jpeg';
+// import profile from '../../../assets/BookingPage/'
 import uzbekFlag from '../../../assets/BookingPage/flag.png';
-import './todoModal.css'
+import './todoModal.css';
 
 interface TodoItem {
   id: number;
@@ -12,13 +13,12 @@ interface TodoItem {
 }
 
 const { Option } = Select;
+const { useForm } = Form;
 
 const CustomSelect: React.FC = () => {
+  const [form] = useForm();
   const [showTodoListModal, setShowTodoListModal] = useState(false);
   const [todoItems, setTodoItems] = useState<TodoItem[]>([]);
-  const [nameValue, setNameValue] = useState('');
-  const [emailValue, setEmailValue] = useState('');
-  const [phoneValue, setPhoneValue] = useState('');
   const [nextId, setNextId] = useState(1);
 
   const handleAddButtonClick = () => {
@@ -26,20 +26,18 @@ const CustomSelect: React.FC = () => {
   };
 
   const handleTaskSubmit = () => {
-    if (nameValue.trim() !== '' && emailValue.trim() !== '' && phoneValue.trim() !== '') {
+    form.validateFields().then((values) => {
       const newItem: TodoItem = {
         id: nextId,
-        name: nameValue,
-        email: emailValue,
-        phone: phoneValue
+        ...values
       };
       setTodoItems([...todoItems, newItem]);
-      setNameValue('');
-      setEmailValue('');
-      setPhoneValue('');
       setNextId(nextId + 1);
-      setShowTodoListModal(false); 
-    }
+      setShowTodoListModal(false);
+      form.resetFields();
+    }).catch((error) => {
+      console.log('Validation failed:', error);
+    });
   };
 
   const handleClearList = () => {
@@ -48,88 +46,60 @@ const CustomSelect: React.FC = () => {
 
   return (
     <>
-    <Select
+      <Select
         placeholder="Type and enter"
-        style={{  width: "342px", height:"40px", marginLeft:"197px" }}
+        style={{ width: "342px", height: "40px", marginLeft: "197px" }}
       >
-      
         {todoItems.map(item => (
-            
           <Option key={item.id} value={item.name}>
-            <div style={{display:"flex", alignItems:"center"}}>
-              <img src={profile} alt="" style={{width:"20px"}}/>
-              <p style={{marginLeft:"8px"}}>{item.name}</p> 
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img src={profile} alt="" style={{ width: "20px" }} />
+              <p style={{ marginLeft: "8px" }}>{item.name}</p>
             </div>
           </Option>
         ))}
         <Option value="add">
           <Button type="text" onClick={handleAddButtonClick}>
-           + New Customer
+            + New Customer
           </Button>
         </Option>
       </Select>
-    
+
 
       <Modal
-        title={<div className="customTitle">+ New Customer</div>} 
-        visible={showTodoListModal}
+        title={<div className="customTitle">+ New Customer</div>}
+        open={showTodoListModal}
         onCancel={() => setShowTodoListModal(false)}
         footer={[
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Button key="clear" className='antBtn' onClick={handleClearList} style={{width:"270px",height:"50px", marginTop:"20px", borderRadius:"0", marginLeft:"1"}}>
-             Clear
+            <Button key="clear" className='antBtn' onClick={handleClearList} style={{ width: "270px", height: "50px", marginTop: "20px", borderRadius: "0", marginLeft: "1" }}>
+              Clear
             </Button>
-            <Button type="primary" className='antBtn' key="save" onClick={handleTaskSubmit} style={{width:"270px",height:"50px", marginTop:"20px", borderRadius:"0"}}>
-             Save
+            <Button type="primary" className='antBtn' key="save" onClick={handleTaskSubmit} style={{ width: "270px", height: "50px", marginTop: "20px", borderRadius: "0" }}>
+              Save
             </Button>
           </div>
         ]}
         width={500}
       >
-        
-        <div className='main'>
 
-        <div style={{display:"flex", alignItems:"center"}}>
-          <p style={{marginLeft:"20px", fontSize:"18px"}}>Name</p>
-          <Input
-           placeholder="Name"
-           value={nameValue}
-           onChange={(e) => setNameValue(e.target.value)}
-           style={{ marginTop: '30px', width:"250px", height:"40px", marginLeft:"40px", marginBottom:"15px" }}
-          />
-        </div>
-        <div style={{display:"flex", alignItems:"center"}}>
-          <p style={{marginLeft:"20px", fontSize:"18px"}}>Email</p>
-          <Input
-              placeholder="Email"
-              value={emailValue}
-              onChange={(e) => setEmailValue(e.target.value)}
-              style={{ marginTop: '10px', width:"250px", height:"40px", marginLeft:"44px", marginBottom:"15px" }}
-          />
-        </div>
-        <div style={{display:"flex", alignItems:"center"}}>
-          <p style={{marginLeft:"20px", fontSize:"18px"}}>Phone</p>
-          <Input
+        <Form form={form} layout="vertical">
+          <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please enter a name' }]}>
+            <Input placeholder="Name" />
+          </Form.Item>
+          <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please enter an email' }]}>
+            <Input placeholder="Email" />
+          </Form.Item>
+          <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please enter a phone number' }]}>
+            <Input
               placeholder="Phone"
-              value={phoneValue}
-              onChange={(e) => {
-                   let newValue = e.target.value;
-                   if (!newValue.startsWith('+998')) {
-                     newValue = '+998' + newValue;
-                   }
-                   setPhoneValue(newValue);
-              }}
-              style={{ marginTop: '10px', width:"250px", height:"40px", marginLeft:"40px", marginBottom:"20px" }} 
-              prefix={<img src={uzbekFlag} alt="Uzbekistan Flag" style={{ width: '20px', height: 'auto', marginRight: '5px' }} />} 
-          />
-        </div>
-        </div>
+              prefix={<img src={uzbekFlag} alt="Uzbekistan Flag" style={{ width: '20px', height: 'auto', marginRight: '5px' }} />}
+            />
+          </Form.Item>
+        </Form>
       </Modal>
     </>
   );
 };
-
-
-
 
 export default CustomSelect;

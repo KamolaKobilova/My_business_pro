@@ -22,6 +22,7 @@ export const Block = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  padding-right:50px;
 `;
 export const NavbarContainer = styled.div`
   display: flex;
@@ -165,4 +166,6 @@ export const AccauntBlock = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+margin-right:30px;
 `;
+

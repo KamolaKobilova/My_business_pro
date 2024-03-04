@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 export const stylesForHome = () => {
   return <div>stylesForHome</div>;
 };
-
+export const  CustomNavlink = styled(NavLink)`
+  text-decoration:none;
+`
 export const StyledDiv = styled.div`
   display: flex;
   width: 600px;
@@ -42,6 +44,9 @@ export const Button = styled.button`
   color: #ffffff;
   box-shadow: none;
   cursor: pointer;
+  p{
+font-size:15px;
+  }
 `;
 export const Container = styled.div`
   background: #f8f9fb;
@@ -51,6 +56,7 @@ export const Picture = styled.div`
   height: 308.48px;
   flex-shrink: 0;
   margin-top: 160px;
+  margin-top:230px;
 `;
 export const Feature = styled.div`
   width: 390px;
@@ -80,6 +86,22 @@ export const Feature = styled.div`
   span {
     font-family: sans-serif
   }
+  .feature p{
+ margin:20px 0 0 50px;
+  }
+  .feature ul {
+    list-style: none; 
+    margin: 20px 20px 20px 50px;
+  }
+  .feature ul li {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+  }
+  .feature h4{
+    margin-top: 30px; 
+    color: #056cb8; 
+  }
 `;
 
 export const Region = styled.div`
@@ -87,4 +109,10 @@ export const Region = styled.div`
   height: 205.3px;
   flex-shrink: 0;
   margin-left: 300px;
+  ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  }
+
 `;
