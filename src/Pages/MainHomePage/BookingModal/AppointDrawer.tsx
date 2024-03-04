@@ -1,147 +1,74 @@
 import React, { useState } from 'react';
-import { Select, DatePicker, TimePicker, Input, Button, message,Checkbox } from 'antd';
-import TodoModal from './TodoModal';
-import './style.css';
+import TodoModal from './TodoModal'
+import {
+  Button,
+  DatePicker,
+  Form,
+  Select,
+  TimePicker,
+  Checkbox
+} from 'antd';
+import './style.css'
+import TextArea from 'antd/es/input/TextArea';
 
+type SizeType = Parameters<typeof Form>[0]['size'];
+function AppointDrawer() {
+  const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
 
-const { Option } = Select;
-interface TodoItem {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
+  const onFormLayoutChange = ({ size }: { size: SizeType }) => {
+    setComponentSize(size);
+  };
+  return (
+    <Form
+    labelCol={{ span: 4 }}
+    wrapperCol={{ span: 14 }}
+    layout="horizontal"
+    initialValues={{ size: componentSize }}
+    onValuesChange={onFormLayoutChange}
+    size={componentSize as SizeType}
+    style={{ maxWidth: 600 ,
+    marginLeft:"80px",
+    marginTop:"30px"}}
+  >
+    <Form.Item label="Workspace">
+      <Select className='select'>
+        <Select.Option value="demo">Alicode</Select.Option>
+      </Select>
+    </Form.Item>
+    <Form.Item label="Service">
+      <Select className='select'>
+        <Select.Option value="demo">Select</Select.Option>
+      </Select>
+    </Form.Item>
+    <Form.Item label="Assign Staff">
+      <Select className='select'>
+        <Select.Option value="demo">Demo</Select.Option>
+      </Select>
+    </Form.Item>
+    <Form.Item label="Date & Time">
+      <DatePicker className='selectDate'/>
+      <TimePicker className='selectTime'/>
+    </Form.Item>
+   <Form.Item style={{marginLeft:"-94px"}}>
+      <TodoModal />
+   </Form.Item>
+      <Form.Item label="Notes" className='area'>
+        <TextArea 
+        style={{
+          height:"100px"
+        }} />
+    </Form.Item>
+    <Form.Item>
+     <Checkbox className='checkbox'
+     style={{marginLeft:"100px"}}>Send notification for customers</Checkbox>
+    </Form.Item>
+    <div className="form-footer">
+    <Button>Cancel</Button>
+    <Button type="primary">Submit</Button>
+  </div>
+  </Form>
+  
+  )
 }
 
-const AppointDrawer: React.FC = () => {
-  const [firstSelectValue, setFirstSelectValue] = useState<TodoItem[]>([]);
-  const [secondSelectValue, setSecondSelectValue] = useState<any>(undefined);
-  const [thirdSelectValue, setThirdSelectValue] = useState<any>(undefined);
-  const [selectedDate, setSelectedDate] = useState<any>(null);
-  const [selectedTime, setSelectedTime] = useState<any>(null);
-  const [inputArea, setInputArea] = useState<any>(null)
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
-  };
-
-  const handleTimeChange = (time: any) => {
-    setSelectedTime(time);
-  };
-
-  const handleFirstSelectChange = (value: any) => {
-    setFirstSelectValue(value);
-  };
-
-  const handleSecondSelectChange = (value: any) => {
-    setSecondSelectValue(value);
-  };
-
-  const handleThirdSelectChange = (value: any) => {
-    setThirdSelectValue(value);
-  };
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = (e:any) => {
-    setIsChecked(e.target.checked);
-  };
-
-  const handleSendNotification = () => {
-    if (isChecked) {
-      message.success('Notification sent to customer!');
-    } else {
-      message.warning('Please check the checkbox to send notification.');
-    }
-  };
-
-  return (
-    <div className="input_forms" >
-      <div className='input_items' style={{display:"flex", alignItems:"center", marginTop:"30px"}}>
-        <p style={{fontSize:"16px"}}>Workspace</p>
-        <Select
-         style={{ width: "342px", height:"40px",marginLeft:"70px"}}
-          value={firstSelectValue}
-          onChange={handleFirstSelectChange}
-        >
-          <Option value="option1">alicode</Option>
-          <Option value="option2">Option 2</Option>
-          <Option value="option3">Option 3</Option>
-        </Select>
-      </div>
-
-      <div className='input_items'  style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
-        <p style={{fontSize:"16px"}}>Service</p>
-        <Select
-           style={{ width: "342px", height:"40px",marginLeft:"95px"}}
-          value={secondSelectValue}
-          onChange={handleSecondSelectChange}
-        >
-          <Option value="option1">Option 1</Option>
-          <Option value="option2">Option 2</Option>
-          <Option value="option3">Option 3</Option>
-        </Select>
-      </div>
-
-      <div className='input_items' style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
-        <p style={{fontSize:"16px"}}>Assign Staff</p>
-        <Select
-           style={{ width: "342px", height:"40px", marginBottom:"24px",marginLeft:"70px"}}
-          value={thirdSelectValue}
-          onChange={handleThirdSelectChange}
-        >
-          <Option value="option1">Option 1</Option>
-          <Option value="option2">Option 2</Option>
-          <Option value="option3">Option 3</Option>
-        </Select>
-      </div>
-
-      <div>
-        
-
-        <div className="inlinePickerContainer">
-          <div  className="inlinePicker input_items" style={{display:"flex", alignItems:"center", marginBottom:"24px"}}>
-            <p>Date & Time</p>
-            <DatePicker
-              style={{ width: '178px', height:"40px", marginRight:"10px", marginLeft:"82px" }}
-              value={selectedDate}
-              onChange={handleDateChange}
-            />
-            <TimePicker
-              style={{ width: '178px', height:"40px" }}
-              value={selectedTime}
-              onChange={handleTimeChange}
-            />
-          </div>
-        </div>
-
-        
-      </div>
-      
-    <div className='input_items'style={{ width: "342px", height:"40px",marginLeft:"40px", display:"flex",alignItems:"center"}}>
-     
-    <TodoModal/>
-    
-    </div>
-    <div style={{display:"flex", alignItems:"center"}}>
-   <p style={{marginLeft:"100px"}}>Notes</p>
-    <Input.TextArea 
-       value={inputArea}
-      placeholder="Appoint description here" 
-      autoSize={{ minRows: 3, maxRows: 6 }}
-      style={{width:"342px", height:"200px", marginLeft:"100px", marginTop:"12px"}} 
-    />
-    </div>
-    <div style={{marginLeft:"235px", marginTop:"20px"}}>
-      <Checkbox onChange={handleCheckboxChange}>Send Notification</Checkbox>
-      <Button type="primary" onClick={handleSendNotification}>
-        Send
-      </Button>
-    </div>
-    <div className='btns'>
-
-    <Button style={{backgroundColor:"#edebeb", borderColor:"#edebeb"}}><p>Cancel</p></Button>
-    <Button style={{backgroundColor:"#4F4A7B", color:"white"}}><p>Add Appointment</p></Button>
-    </div>
-    </div>
-  );
-};
-
-export default AppointDrawer;
+export default AppointDrawer
