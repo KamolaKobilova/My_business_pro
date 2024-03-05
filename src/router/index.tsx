@@ -1,7 +1,7 @@
 import React, { Navigate } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
-import SignIn from '../Pages/SignIn/index';
-import SignUp from "../Pages/SignUp/index";
+import SignIn from '../Pages/SignIn'
+import SignUp from "../Pages/SignUp";
 import HomePage from "../components/HomePage";
 import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
 import { MyProfile } from "../Pages/MainHomePage/MyProfile";

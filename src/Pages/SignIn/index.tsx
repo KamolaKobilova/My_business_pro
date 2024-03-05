@@ -24,15 +24,6 @@ interface FieldType {
 const SignIn = () => {
   const dispatch = useDispatch();
   const [signIn, { data, error, isLoading }] = useSignInMutation();
-<<<<<<< HEAD
-  type FieldType = {
-    email: string;
-    password: string;
-  };
-  const handleSignIn = async (formData: FieldType) => {
- 
-=======
->>>>>>> development
 
   const handleSignIn = async (formData: FieldType) => {
     try {
