@@ -32,8 +32,8 @@ export const SIGNUP_FIELDS: SignUpField[] = [
     rules: [{ required: true, message: "Please enter your phone number!" }],
   },
   {
-    label: "Phone Number",
-    name: "phone",
+    label: "Password",
+    name: "password",
     rules: [{ required: true, message: "Please enter your phone number!" }],
     element: <PasswordInpt />,
   },
