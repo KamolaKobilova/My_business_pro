@@ -58,7 +58,7 @@ export const publicRouter = createBrowserRouter(
     },
     {
       path: "/sign-up",
-      element: <SignUpForm />,
+      element: <SignUp />,
     },
   ],
   { basename: "/" }
