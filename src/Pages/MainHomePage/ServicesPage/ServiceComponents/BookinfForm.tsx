@@ -1,4 +1,4 @@
-import { ScrollingBlockWrp } from "../../MyProfile/stylesForMyProfile";
+import { ScrollingBlockWrp } from "../../MyProfile/MyProfile.styles"
 
 export const BookingForm = () => {
   return (
@@ -7,5 +7,5 @@ export const BookingForm = () => {
         <h3>Know Your Customers</h3>
       </div>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}

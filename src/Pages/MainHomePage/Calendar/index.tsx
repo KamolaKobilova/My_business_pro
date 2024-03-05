@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { FullPageCalendar, StyledCalendar } from "./StylesForCalendar"
+import { FullPageCalendar, StyledCalendar } from "./Calendar.styles"
 import { Button } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 

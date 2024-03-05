@@ -16,7 +16,7 @@ import desk from "../../assets/HomePgImage/desk.png"
 import creator from "../../assets/HomePgImage/creator.png"
 import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png"
 import crm from "../../assets/HomePgImage/crm.png"
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../Navbar"
 import "./style.css"
 
 function HomePage() {

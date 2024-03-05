@@ -3,7 +3,7 @@ import { Select, Input, Button, Modal, Form } from "antd"
 import profile from "../../../assets/BookingPage/profile.jpeg"
 import uzbekFlag from "../../../assets/BookingPage/flag.png"
 import "./todoModal.css"
-import { CustomButton } from "./stylesforToDo"
+import { CustomButton } from "./Todo.style"
 import { TO_DO_MODAL_FIELDS } from "./constants"
 
 interface TodoItem {

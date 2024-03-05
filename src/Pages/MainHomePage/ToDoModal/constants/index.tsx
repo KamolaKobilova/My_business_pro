@@ -1,14 +1,14 @@
 import { Input } from "antd"
 import { Rule } from "antd/es/form"
 
-type ToDoModalTypes = {
+type ToDoModalType = {
   label: string
   name: string
   rules: Rule[]
   element?: JSX.Element
 }
 
-export const TO_DO_MODAL_FIELDS: ToDoModalTypes[] = [
+export const TO_DO_MODAL_FIELDS: ToDoModalType[] = [
   {
     label: "Name",
     name: "name",

@@ -1,4 +1,4 @@
-import { ScrollingBlockWrp } from "../../MyProfile/stylesForMyProfile";
+import { ScrollingBlockWrp } from "../../MyProfile/MyProfile.styles"
 
 export const ServicePreferences = () => {
   return (
@@ -7,5 +7,5 @@ export const ServicePreferences = () => {
         <h3>Set Service Preferences</h3>
       </div>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}

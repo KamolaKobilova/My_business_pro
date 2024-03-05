@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { Tabs } from "antd";
-import { Container, ProfileSide, Button } from "./stylesForMyProfile";
-import { GeneralInformation } from "./MyProfileComponents/GeneralInformation";
-import { WorkHours } from "./MyProfileComponents/WorkHours";
-import { Services } from "./MyProfileComponents/Services";
-import { Settings } from "./MyProfileComponents/Settings";
-import PhotoInput from "../../../components/PhotoSelector";
+import React, { useState } from "react"
+import { Tabs } from "antd"
+import { Container, ProfileSide, Button } from "./MyProfile.styles"
+import { GeneralInformation } from "./MyProfileComponents/GeneralInformation"
+import { WorkHours } from "./MyProfileComponents/WorkHours"
+import { Services } from "./MyProfileComponents/Services"
+import { Settings } from "./MyProfileComponents/Settings"
+import PhotoInput from "../../../components/PhotoSelector"
 
-const { TabPane } = Tabs;
+const { TabPane } = Tabs
 
 export const MyProfile = () => {
-  const [photo, setPhoto] = useState("");
-  const [activeTab, setActiveTab] = useState("1");
+  const [photo, setPhoto] = useState("")
+  const [activeTab, setActiveTab] = useState("1")
 
   const handleTabChange = (key: string) => {
-    setActiveTab(key);
-  };
+    setActiveTab(key)
+  }
 
   return (
     <Container>
@@ -45,5 +45,5 @@ export const MyProfile = () => {
         {activeTab === "4" && <Settings />}
       </div>
     </Container>
-  );
-};
+  )
+}

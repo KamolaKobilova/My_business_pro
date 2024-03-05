@@ -1,28 +1,24 @@
-import React, { useState } from "react";
-import {
-  Container,
-  ProfileSide,
-  Button,
-} from "../MyProfile/stylesForMyProfile";
-import { Tabs } from "antd";
-import services from "../../../assets/users/service.png";
-import { MainContainer, SideContainer } from "./stylesForServices";
-import { ServiceInformation } from "./ServiceComponents/ServiceInformation";
-import { StaffAssigned } from "./ServiceComponents/StaffAssigned";
-import { ServiceAvailability } from "./ServiceComponents/Avability";
-import { ServiceNotifications } from "./ServiceComponents/Notifications";
-import { ServicePreferences } from "./ServiceComponents/Preferences";
-import { BookingForm } from "./ServiceComponents/BookinfForm";
-import PhotoInput from "../../../components/PhotoSelector";
-const { TabPane } = Tabs;
+import React, { useState } from "react"
+import { Container, ProfileSide, Button } from "../MyProfile/MyProfile.styles"
+import { Tabs } from "antd"
+import services from "../../../assets/users/service.png"
+import { MainContainer, SideContainer } from "./Service.style"
+import { ServiceInformation } from "./ServiceComponents/ServiceInformation"
+import { StaffAssigned } from "./ServiceComponents/StaffAssigned"
+import { ServiceAvailability } from "./ServiceComponents/Avability"
+import { ServiceNotifications } from "./ServiceComponents/Notifications"
+import { ServicePreferences } from "./ServiceComponents/Preferences"
+import { BookingForm } from "./ServiceComponents/BookinfForm"
+import PhotoInput from "../../../components/PhotoSelector"
+const { TabPane } = Tabs
 export const ServicesPage = () => {
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState("")
 
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState("1")
 
   const handleTabChange = (key: string) => {
-    setActiveTab(key);
-  };
+    setActiveTab(key)
+  }
 
   return (
     <>
@@ -64,5 +60,5 @@ export const ServicesPage = () => {
         </Container>
       </MainContainer>
     </>
-  );
-};
+  )
+}

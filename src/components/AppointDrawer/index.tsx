@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import TodoModal from "../../MainHomePage/ToDoModal/TodoModal"
+import TodoModal from "../../Pages/MainHomePage/ToDoModal/TodoModal"
 import { Button, DatePicker, Form, Select, TimePicker, Checkbox } from "antd"
 import "./style.css"
 import TextArea from "antd/es/input/TextArea"
