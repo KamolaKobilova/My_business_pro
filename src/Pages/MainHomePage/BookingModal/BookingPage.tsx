@@ -89,10 +89,10 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
                 <div style={{ marginTop: '16px' }}>
                 <Form form={form} onFinish={onFinish}>
      
-
-     <div style={{ marginTop: '16px' }}>
-       {currentStep === 0 && (
-         <>
+   
+          <div style={{ marginTop: '16px' }}>
+                {currentStep === 0 && (
+           <>
         
            <Form.Item
              name={['input1']}
@@ -122,7 +122,9 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
            <Form.Item
             label={
              <span>
-               Currency <span><ExclamationCircleOutlined style={{color: "rgb(204, 204, 204)"}}/></span>
+               Currency <span><ExclamationCircleOutlined
+                style={{color: "rgb(204, 204, 204)"}}/>
+                </span>
              </span>
            }
              name={[ 'input3']}
@@ -139,7 +141,10 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
              </Select>
            </Form.Item>
            <Form.Item>
-             <Button type="primary" onClick={nextStep} style={{width:"100px", position:"relative", top:"35px", left:"190px", backgroundColor:"#4F4A7B"}}>
+             <Button type="primary" onClick={nextStep}
+              style={{width:"100px", position:"relative", 
+              top:"35px", left:"190px", 
+              backgroundColor:"#4F4A7B"}}>
                Next
              </Button>
            </Form.Item>
@@ -183,35 +188,46 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({ onClose }) => {
          <Button
            type={selectedDays.includes('Monday') ? 'primary' : 'default'}
            onClick={() => handleDayClick('Monday')}
-           style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
+           style={{ marginRight: '10px',
+           height:"35px", borderRadius:"15px",
+            borderColor:"#4F4A7B",
+             backgroundColor:"#dbd9f5" }}
          >
            Monday
          </Button>
          <Button
            type={selectedDays.includes('Tuesday') ? 'primary' : 'default'}
            onClick={() => handleDayClick('Tuesday')}
-           style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
+           style={{ marginRight: '10px',height:"35px", 
+           borderRadius:"15px", borderColor:"#4F4A7B", 
+           backgroundColor:"#dbd9f5" }}
          >
            Tuesday
          </Button>
          <Button
            type={selectedDays.includes('Wednesday') ? 'primary' : 'default'}
            onClick={() => handleDayClick('Wednesday')}
-           style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
+           style={{ marginRight: '10px',height:"35px",
+            borderRadius:"15px", borderColor:"#4F4A7B", 
+            backgroundColor:"#dbd9f5" }}
          >
            Wednesday
          </Button>
          <Button
            type={selectedDays.includes('Thursday') ? 'primary' : 'default'}
            onClick={() => handleDayClick('Thursday')}
-           style={{ marginRight: '10px',height:"35px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
+           style={{ marginRight: '10px',height:"35px",
+            borderRadius:"15px", borderColor:"#4F4A7B", 
+            backgroundColor:"#dbd9f5" }}
          >
            Thursday
          </Button>
          <Button
            type={selectedDays.includes('Friday') ? 'primary' : 'default'}
            onClick={() => handleDayClick('Friday')}
-           style={{ marginRight: '10px',height:"35px",marginTop:"12px", borderRadius:"15px", borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
+           style={{ marginRight: '10px',height:"35px",
+           marginTop:"12px", borderRadius:"15px",
+            borderColor:"#4F4A7B", backgroundColor:"#dbd9f5" }}
          >
            Friday
          </Button>
