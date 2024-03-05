@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Input, Button, Form } from "antd";
+import { Button, Form } from "antd";
 import SignInCarousel from "./SignInCarousel";
 import {
   Container,
@@ -10,25 +10,35 @@ import {
   InputBlock,
   StyledGoogleButton,
 } from "./StylesForSignIn/styles";
-
 import { setToken } from "../../redux/authSlice";
 import { useSignInMutation } from "../../features/apiSlice";
+import { CustomInput, CustomPasswordInput } from "./StylesForSignIn";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+interface FieldType {
+  email: string;
+  password: string;
+}
 
 const SignIn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [signIn, { data, error, isLoading }] = useSignInMutation();
+<<<<<<< HEAD
   type FieldType = {
     email: string;
     password: string;
   };
   const handleSignIn = async (formData: FieldType) => {
  
+=======
+>>>>>>> development
 
+  const handleSignIn = async (formData: FieldType) => {
     try {
       await signIn(formData);
-    } catch (error: any) {
-      console.error("Sign-in failed. Please try again.", error);
+    } catch (error) {
+      toast.error("Sign-in failed. Please try again.");
     }
   };
 
@@ -36,12 +46,13 @@ const SignIn = () => {
     if (data) {
       dispatch(setToken(data?.token));
     } else if (error) {
-      console.error("Sign-in failed. Please try again.", error);
+      toast.error("Sign-in failed. Please try again.");
     }
-  }, [data, error, dispatch, navigate]);
+  }, [data, error, dispatch]);
 
   return (
     <Container>
+      <ToastContainer />
       <Back>
         <SignInBlock>
           <InputBlock>
@@ -57,8 +68,10 @@ const SignIn = () => {
                 rules={[
                   { required: true, message: "Please input your email!" },
                 ]}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
               >
-                <Input />
+                <CustomInput />
               </Form.Item>
               <Form.Item<FieldType>
                 label="Password"
@@ -66,11 +79,13 @@ const SignIn = () => {
                 rules={[
                   { required: true, message: "Please input your password!" },
                 ]}
+                labelCol={{ span: 24 }}
+                wrapperCol={{ span: 24 }}
               >
-                <Input.Password />
+                <CustomPasswordInput />
               </Form.Item>
-              <Button type="primary" htmlType="submit" disabled={isLoading}>
-                {isLoading ? "Signing In..." : "Sign In"}
+              <Button type="primary" htmlType="submit" loading={isLoading}>
+                Sign in
               </Button>
             </Form>
             <h3>Or</h3>

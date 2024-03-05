@@ -22,7 +22,7 @@ export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
       placement="right"
       closable={false}
       onClose={onCloseDrawer}
-      visible={isDrawerVisible}
+      open={isDrawerVisible}
     >
       <DrawerContent>
         <div className="user">

@@ -7,11 +7,18 @@ import { setToken } from "../../redux/authSlice";
 export const useHook = (): any => {
   const [signUp, { data, error, isLoading }] = useSignUpMutation();
   const [errMsg, setErrMsg] = useState("");
-
   const dispatch = useDispatch();
- 
+  // let getChatTab = useGetChatTabQuery();
+  // const { data, isLoading, refetch } = useChat();
   const handleSignUp = async (formData: FormEventHandler<HTMLFormElement>) => {
-    
+    // try {
+    // const response = await signUp(formData);
+    // } catch (err) {
+    //   if (err.status == 500) {
+    //     if (err.data.msg.contains("E11000")) {
+    //     }
+    //   }
+    // }
   };
   useEffect(() => {
     dispatch(setToken(data?.token));
