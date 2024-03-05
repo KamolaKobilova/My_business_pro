@@ -11,7 +11,6 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }: any) => {
     headers.set("Content-Type", "application/json");
     const token = getState()?.auth?.token;
-    // console.log("test it test");
     headers.set("Authorization", "Bearer " + token);
     return headers;
   },
