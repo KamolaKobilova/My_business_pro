@@ -3,7 +3,6 @@ import { Menu, Drawer, Input, Select } from 'antd';
 import { PlusSquareOutlined } from "@ant-design/icons";
 import { ProfileDrawer } from '../../ProfileDrawer';
 import AppointDrawer from '../AppointDrawer';
-import { CheckSquareOutlined, FieldTimeOutlined, BellOutlined, AppstoreOutlined } from '@ant-design/icons';
 import '../../Navbar.css';
 import app from '../assets/app.png';
 import addBr from '../assets/addBr.png';
@@ -14,11 +13,54 @@ import service from '../assets/serv.png';
 import customer from '../assets/cus.png';
 import res from '../assets/res.png'
 
-[{
+  type FieldsTypes = {
+    key: string,
+    icon: string,
+    title: string
+  }
+
+
+ const fields = [{
     key: '1',
-    icon: <img src={app} alt="" style={{ width: "30px", marginRight: "8px" }} />,
-    title: 'Appointment'
-}]
+    icon: '../assets/app.png',
+    title: 'Appointment',
+},
+  {
+    key: '2',
+    icon: '../assets/addBr.png',
+    title: 'Add break & Block time',
+  },
+{
+    key: '3',
+    icon: '../assets/addSp.png',
+    title: 'Appointment',
+},
+{
+    key: '4',
+    icon: '../assets/Work,png',
+    title: 'Appointment',
+},
+{
+    key: '5',
+    icon: '../assets/Staff.png',
+    title: 'Appointment',
+},
+{
+    key: '5',
+    icon: '../assets/serv.png',
+    title: 'Appointment',
+},
+{
+    key: '6',
+    icon: '../assets/cus.png',
+    title: 'Appointment',
+},
+{
+    key: '7',
+    icon: '../assets/res.png',
+    title: 'Appointment',
+},
+]
 
 export const MenuWithDrawer = () => {
     const [drawerVisible, setDrawerVisible] = useState(false);
@@ -33,60 +75,8 @@ export const MenuWithDrawer = () => {
         setDrawerVisible(false);
     };
 
-    const menu = (
-        <Menu style={{ width: "260px", height: "400px" }} onClick={handleMenuClick}>
-            <Menu.Item key="1" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={app} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>Appointment</p>
-                </div>
-            </Menu.Item>
-            <Menu.Item key="2" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={addBr} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}> Add break & Block time</p>
-                </div>
-            </Menu.Item>
 
-            <Menu.Item key="3" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={addSp} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>  Add special working hours</p>
-                </div>
-            </Menu.Item>
-            <div style={{ width: "200px", marginLeft: "28px" }}> <hr /></div>
-            <Menu.Item key="4" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={work} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}> Workspaces</p>
-                </div>
-            </Menu.Item>
-            <Menu.Item key="5" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={staff} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>Staff</p>
-                </div>
-            </Menu.Item>
-            <Menu.Item key="6" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={service} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>Service</p>
-                </div>
-            </Menu.Item>
-            <Menu.Item key="6" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={customer} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>Customer</p>
-                </div>
-            </Menu.Item>
-            <Menu.Item key="6" >
-                <div style={{ display: "flex", alignContent: "center", marginTop: "8px" }}>
-                    <img src={res} alt="" style={{ width: "30px", marginRight: "8px" }} />
-                    <p style={{ marginTop: "4px" }}>Customer</p>
-                </div>
-            </Menu.Item>
-        </Menu>
-    );
+   
     const { Option } = Select;
 
     const [inputValue, setInputValue] = useState('');
@@ -103,7 +93,19 @@ export const MenuWithDrawer = () => {
 
     return (
         <>
-            {menu}
+        
+            {fields.map((field) => {
+                <Menu>
+                   <Menu.Item key={field.key}>
+                    <img src={field.icon}/>
+                    <p>{field.title}</p>
+                  </Menu.Item>
+                  <Menu.Item key={field.key}>
+                     
+                  </Menu.Item>
+                </Menu>
+                    
+            })}
             <Drawer
                 title={
                     <div style={{ display: "flex", alignItems: "center" }}>

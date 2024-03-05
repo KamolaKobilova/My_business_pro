@@ -71,4 +71,4 @@ function AppointDrawer() {
   )
 }
 
-export default AppointDrawer
+export default AppointDrawer;

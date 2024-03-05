@@ -18,7 +18,6 @@ const root = createRoot(domNode);
 root.render(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
-    
       <App2 />
     </Provider>
   </QueryClientProvider>
