@@ -34,9 +34,7 @@ const AddServiceModal = ({ isOpen, onClose }: any) => {
     try {
       const result = await createService({
         ...values,
-        // duration: values.duration?.hour() * 60 + values.duration?.minute(),
       });
-      //   onAdd();
       form.resetFields();
       onClose();
     } catch (error: any) {

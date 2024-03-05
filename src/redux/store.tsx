@@ -5,7 +5,6 @@ import authReducer from "./authSlice";
 import { staffSlice } from "./StaffPageReducer/authSlice";
 import { apiSlice } from "../features/apiSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { jwtApiMiddleware } from "./jwtExpiration";
 
 const persistAuthConfig = {
   key: "auth",
@@ -31,13 +30,12 @@ const store = configureStore({
     staff: persistedStaffReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(apiSlice.middleware, jwtApiMiddleware) as any,
+    getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export default store;
-export { store, setupListeners };
+export { store };
 export const persistor = persistStore(store);
+setupListeners(store.dispatch);

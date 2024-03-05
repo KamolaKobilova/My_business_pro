@@ -1,19 +1,30 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/query/react";
 import { logout } from "../redux/authSlice";
 import store from "../redux/store";
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_BASE_URL,
+  prepareHeaders: (headers, { getState }: any) => {
+    headers.set("Content-Type", "application/json");
+    const token = getState()?.auth?.token;
+    // console.log("test it test");
+    headers.set("Authorization", "Bearer " + token);
+    return headers;
+  },
+});
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_BASE_URL,
-    prepareHeaders: (headers, { getState }: any) => {
-      headers.set("Content-Type", "application/json");
-      const token = getState()?.auth?.token;
-
-      headers.set("Authorization", "Bearer " + token);
-      return headers;
-    },
-  }),
+  baseQuery: async (args, api, extraOptions) => {
+    const res: any = baseQuery(args, api, extraOptions);
+    if (res.error?.status === 401) {
+      store.dispatch(logout());
+    }
+    return res;
+  },
   tagTypes: ["Post"],
   endpoints: (builder) => ({
     signUp: builder.mutation({
@@ -22,11 +33,6 @@ export const apiSlice = createApi({
         method: "POST",
         body: formData,
       }),
-      transformErrorResponse: (baseQueryReturnValue: any) => {
-        if (baseQueryReturnValue?.data?.msg === "jwt expired") {
-          store.dispatch(logout());
-        }
-      },
     }),
     signIn: builder.mutation({
       query: ({ email, password }) => ({
@@ -68,18 +74,12 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
-
     createWorkSpace: builder.mutation({
       query: (workSpaceData) => ({
         url: "workspace",
         method: "POST",
         body: workSpaceData,
       }),
-      transformErrorResponse: (baseQueryReturnValue: any) => {
-        if (baseQueryReturnValue?.data?.msg === "jwt expired") {
-          store.dispatch(logout());
-        }
-      },
     }),
   }),
 });
