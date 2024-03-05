@@ -19,9 +19,12 @@ export const StyledDiv = styled.div`
 `;
 
 export const Text = styled.div`
-  font-family:"sans-serif";
    margin-bottom:"30px";
    font-size:"60px";
+   p {
+    margin-bottom: 35px;
+    font-size: 25px;
+    }
 `
  export const StyledText = styled.div`
   margin-bottom:"30px";

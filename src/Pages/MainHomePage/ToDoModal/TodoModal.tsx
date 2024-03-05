@@ -3,9 +3,8 @@ import { Select, Input, Button, Modal, Form } from "antd"
 import profile from "../../../assets/BookingPage/profile.jpeg"
 import uzbekFlag from "../../../assets/BookingPage/flag.png"
 import "./todoModal.css"
-import { CustomButton } from "./Todo.style"
-import { TO_DO_MODAL_FIELDS } from "./constants"
-
+import {  CustomOption, CustomSelector} from "./Todo.style"
+import NewCustomerModal from "../../../components/NewCustomerModal.tsx"
 interface TodoItem {
   id: number
   name: string
@@ -49,58 +48,24 @@ const CustomSelect: React.FC = () => {
 
   return (
     <>
-      <Select
+      <CustomSelector
         placeholder="Type and enter"
-        style={{ width: "342px", height: "40px", marginLeft: "197px" }}
       >
         {form.getFieldValue("todoItems").map((item: TodoItem) => (
-          <Option key={item.id} value={item.name}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img src={profile} alt="" style={{ width: "20px" }} />
-              <p style={{ marginLeft: "8px" }}>{item.name}</p>
+          <CustomOption key={item.id} value={item.name}>
+            <div className="option" >
+              <img src={profile} alt="profile"  />
+              <p >{item.name}</p>
             </div>
-          </Option>
+          </CustomOption>
         ))}
         <Option value="add">
           <Button type="text" onClick={handleAddButtonClick}>
             + New Customer
           </Button>
         </Option>
-      </Select>
-
-      <Modal
-        title={<div className="customTitle">+ New Customer</div>}
-        open={form.getFieldValue("showTodoListModal")}
-        onCancel={() => form.setFieldsValue({ showTodoListModal: false })}
-        footer={[
-          <div>
-            <CustomButton key="clear" onClick={handleClearList}>
-              Clear
-            </CustomButton>
-            <CustomButton
-              className="antBtn"
-              key="save"
-              onClick={handleTaskSubmit}
-            >
-              Save
-            </CustomButton>
-          </div>,
-        ]}
-        width={500}
-      >
-        <Form form={form} layout="vertical">
-          {TO_DO_MODAL_FIELDS.map((field) => (
-            <Form.Item
-              key={field.name}
-              label={field.label}
-              name={field.name}
-              rules={field.rules}
-            >
-              {field.element || <></>}
-            </Form.Item>
-          ))}
-        </Form>
-      </Modal>
+      </CustomSelector>
+      <NewCustomerModal handleClearList={handleClearList} handleTaskSubmit={handleTaskSubmit} />
     </>
   )
 }

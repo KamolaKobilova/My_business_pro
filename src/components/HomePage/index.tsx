@@ -27,20 +27,10 @@ function HomePage() {
         <div className="main_left">
           <StyledDiv className="text">
             <Text
-              style={{
-                fontFamily: "sans-serif",
-                marginBottom: "30px",
-                fontSize: "50px",
-              }}
             >
               Your life's work, <br /> powered by our life's work
             </Text>
             <p
-              style={{
-                marginBottom: "35px",
-                fontFamily: "sans-serif",
-                fontSize: "25px",
-              }}
             >
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a
@@ -48,7 +38,6 @@ function HomePage() {
             </p>
             <Button>
               <p>Get Started For Free</p> <br />
-              <img src="" alt="" />{" "}
             </Button>
           </StyledDiv>
           <Picture>
@@ -68,7 +57,7 @@ function HomePage() {
                 </CustomNavlink>
               </li>
               <li className="covers">
-                <img src={girl} alt="" />
+                <img src={girl} alt="girl" />
               </li>
             </ul>
           </Region>
@@ -88,7 +77,7 @@ function HomePage() {
               </li>
 
               <li>
-                <img src={mail} alt="" />
+                <img src={mail} alt="mail" />
                 <span>
                   <b>Desk</b> <br />
                   Helpdesk software to deliver <br />
@@ -97,15 +86,15 @@ function HomePage() {
               </li>
 
               <li>
-                <img src={book} alt="" />
+                <img src={book} alt="book" />
                 <span>
-                  <b>Mail</b> <br /> Secure email service for your <br />{" "}
+                  <b>Mail</b> <br /> Secure email service for your <br />
                   business.
                 </span>
               </li>
 
               <li>
-                <img src={desk} alt="" />
+                <img src={desk} alt="desk" />
                 <span>
                   <b>Books</b> <br />
                   Powerful financial platform for <br /> growing businesses.
@@ -113,7 +102,7 @@ function HomePage() {
               </li>
 
               <li>
-                <img src={creator} alt="" />
+                <img src={creator} alt="creator" />
                 <span>
                   <b>Assist </b>
                   <br />
@@ -124,7 +113,6 @@ function HomePage() {
               <hr />
               <CustomNavlink
                 to="https://www.zoho.com/all-products.html?ireft=nhome&src=home1"
-                style={{ textDecoration: "none" }}
               >
                 <h4>EXPLORE ALL PRODUCTS</h4>
               </CustomNavlink>
