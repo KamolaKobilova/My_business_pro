@@ -22,7 +22,7 @@ export const SideContainer = styled.div`
     justify-content: space-between;
   }
 `;
-export const StaffBUtton = styled.button`
+export const PlusButton = styled.button`
   width:30px;
   height:30px;
   display:flex:
