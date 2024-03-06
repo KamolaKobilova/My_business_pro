@@ -38,16 +38,6 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
     console.log("Form submitted with values:", values);
   };
 
-  const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-
   const handleDayClick = (day: string) => {
     if (selectedDays.includes(day)) {
       setSelectedDays(
