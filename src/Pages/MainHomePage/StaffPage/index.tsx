@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   MainContainer,
   SideContainer,
-  StaffBUtton,
+  PlusButton,
   StaffUser,
 } from "../ServicesPage/stylesForServices";
 import user from "../../../assets/users/user.png";
@@ -32,6 +32,7 @@ export const StaffPage = () => {
   );
 
   const toggleModal = () => setIsModalOpen((state) => !state);
+
   const handleAddStaff = (staffMember: any) => {
     dispatch(addStaffMember(staffMember));
   };
@@ -46,9 +47,9 @@ export const StaffPage = () => {
         <SideContainer>
           <div className="header">
             <h3>Staff</h3>
-            <StaffBUtton onClick={toggleModal}>
+            <PlusButton onClick={toggleModal}>
               <FaPlus size={14} />
-            </StaffBUtton>
+            </PlusButton>
           </div>
           {staffData.length ? (
             staffData.map((staff: StaffMember, index: number) => (
@@ -72,7 +73,7 @@ export const StaffPage = () => {
             <p>Add staff</p>
           )}
         </SideContainer>
-        {activeIndex && <StaffContainer />}
+        {activeIndex !== null && activeIndex >= 0 && <StaffContainer />}
       </MainContainer>
       <AddStaffModal
         isOpen={modal}
