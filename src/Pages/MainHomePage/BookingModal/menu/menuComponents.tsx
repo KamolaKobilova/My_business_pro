@@ -93,10 +93,7 @@ export const MenuWithDrawer = () => {
         title={
           <div style={{ display: "flex", alignItems: "center" }}>
             <PlusSquareOutlined 
-            style={{ marginRight: "10px",
-             fontSize: "27px", display: "flex",
-              alignItems: "center", color: "white",
-              backgroundColor: "orange" }} />
+            className='plusSquare' />
             New Appointment
           </div>
         }
