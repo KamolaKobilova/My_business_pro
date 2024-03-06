@@ -1,24 +1,31 @@
-import React, { useState } from "react"
-import { Container, ProfileSide, Button } from "../MyProfile/MyProfile.styles"
-import { Tabs } from "antd"
-import services from "../../../assets/users/service.png"
-import { MainContainer, SideContainer } from "./Service.style"
-import { ServiceInformation } from "./ServiceComponents/ServiceInformation"
-import { StaffAssigned } from "./ServiceComponents/StaffAssigned"
-import { ServiceAvailability } from "./ServiceComponents/Avability"
-import { ServiceNotifications } from "./ServiceComponents/Notifications"
-import { ServicePreferences } from "./ServiceComponents/Preferences"
-import { BookingForm } from "./ServiceComponents/BookinfForm"
-import PhotoInput from "../../../components/PhotoSelector"
-const { TabPane } = Tabs
-export const ServicesPage = () => {
-  const [photo, setPhoto] = useState("")
+import React, { useState } from "react";
+import { Container, ProfileSide } from "../MyProfile/MyProfile.styles"
+import { Tabs } from "antd";
+import { FaPlus } from "react-icons/fa";
+import { MainContainer, PlusButton, SideContainer } from "./Service.style"
+import { ServiceInformation } from "./ServiceComponents/ServiceInformation";
+import { StaffAssigned } from "./ServiceComponents/StaffAssigned";
+import { ServiceAvailability } from "./ServiceComponents/Avability";
+import { ServiceNotifications } from "./ServiceComponents/Notifications";
+import { ServicePreferences } from "./ServiceComponents/Preferences";
+import { BookingForm } from "./ServiceComponents/BookinfForm";
+import PhotoInput from "../../../components/PhotoSelector";
+import AddServiceModal from "../../../components/addServiceModal";
 
-  const [activeTab, setActiveTab] = useState("1")
+const { TabPane } = Tabs;
+
+export const ServicesPage = () => {
+  const [photo, setPhoto] = useState("");
+  const [activeTab, setActiveTab] = useState("1");
+  const [isAddServiceModalOpen, setAddServiceModalOpen] = useState(false);
 
   const handleTabChange = (key: string) => {
-    setActiveTab(key)
-  }
+    setActiveTab(key);
+  };
+
+  const toggleModal = () => {
+    setAddServiceModalOpen((state) => !state);
+  };
 
   return (
     <>
@@ -26,8 +33,10 @@ export const ServicesPage = () => {
         <SideContainer>
           <div className="header">
             <h3>Services</h3>
+            <PlusButton onClick={toggleModal}>
+              <FaPlus size={15} />
+            </PlusButton>{" "}
           </div>
-          <div></div>
         </SideContainer>
 
         <Container variant="little">
@@ -59,6 +68,7 @@ export const ServicesPage = () => {
           {activeTab === "6" && <BookingForm />}
         </Container>
       </MainContainer>
+      <AddServiceModal isOpen={isAddServiceModalOpen} onClose={toggleModal} />
     </>
   )
 }
