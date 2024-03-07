@@ -117,8 +117,6 @@ export const ModalContent = styled.div`
   background: #fff;
   height: auto;
   width: 800px;
-  /* width: auto; */
-  /* padding: 20px; */
   border-radius: 10px;
 `;
 
@@ -196,3 +194,22 @@ export const LogOutButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const SelectItems = styled.div`
+   display: flex;
+   align-items: center;
+   margin-top: 25px;
+   margin-left: 90px;
+   margin-bottom: 30px;
+`
+
+export const SelectItem = styled.div`
+   display: flex;
+   align-items: center;
+   margin-top: 10px;
+   margin-left: 40px;
+   margin-bottom: 30px
+
+
+`
+

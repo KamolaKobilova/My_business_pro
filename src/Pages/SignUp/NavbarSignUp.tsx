@@ -1,6 +1,6 @@
-import React from "react";
-import { MainItem } from "./StylesForSignUp";
-import logo from "../../assets/BookingPage/zoho-logo-web.svg";
+import React from "react"
+import { MainItem } from "./StylesForSignUp"
+import logo from "../../assets/BookingPage/zoho-logo-web.svg"
 
 export const NavbarSignUp = () => {
   return (
@@ -9,9 +9,9 @@ export const NavbarSignUp = () => {
         <img src={logo} alt="logo" />
         <div className="left_items">
           <p>Have a Zoho Account?</p>
-          <a href="/">Sign In</a>
+          <a href="/sign-in">Sign In</a>
         </div>
       </div>
     </MainItem>
-  );
-};
+  )
+}
