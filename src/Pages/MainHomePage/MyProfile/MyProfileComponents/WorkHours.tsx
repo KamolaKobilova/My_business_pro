@@ -2,8 +2,8 @@ import {
   ScrollingBlock,
   ScrollingBlockWrp,
   ScrollingBlockContent,
-} from "../stylesForMyProfile";
-import { FaRegClock } from "react-icons/fa";
+} from "../MyProfile.styles"
+import { FaRegClock } from "react-icons/fa"
 
 export const WorkHours = () => {
   const daysOfWeek = [
@@ -14,7 +14,7 @@ export const WorkHours = () => {
     "Friday",
     "Saturday",
     "Sunday",
-  ];
+  ]
 
   return (
     <>
@@ -34,5 +34,5 @@ export const WorkHours = () => {
         </ScrollingBlock>
       </ScrollingBlockWrp>
     </>
-  );
-};
+  )
+}

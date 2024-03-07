@@ -1,12 +1,12 @@
-import React, { Navigate } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
-import SignIn from "../Pages/SignIn";
-import SignUp from "../Pages/SignUp";
-import HomePage from "../components/HomePage";
-import { CalendarComponent } from "../Pages/MainHomePage/Calendar/CalendarComponent";
-import { MyProfile } from "../Pages/MainHomePage/MyProfile";
-import { ServicesPage } from "../Pages/MainHomePage/ServicesPage";
-import { StaffPage } from "../Pages/MainHomePage/StaffPage";
+import React, { Navigate } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
+import SignIn from "../Pages/SignIn"
+import SignUp from "../Pages/SignUp"
+import HomePage from "../components/HomePage"
+import { CalendarComponent } from "../Pages/MainHomePage/Calendar"
+import { MyProfile } from "../Pages/MainHomePage/MyProfile"
+import { ServicesPage } from "../Pages/MainHomePage/ServicesPage"
+import { StaffPage } from "../Pages/MainHomePage/StaffPage"
 
 export const router = createBrowserRouter(
   [
@@ -36,7 +36,7 @@ export const router = createBrowserRouter(
     },
   ],
   { basename: "/" }
-);
+)
 
 export const publicRouter = createBrowserRouter(
   [
@@ -62,4 +62,4 @@ export const publicRouter = createBrowserRouter(
     },
   ],
   { basename: "/" }
-);
+)

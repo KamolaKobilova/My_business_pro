@@ -1,45 +1,45 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { Button, Form } from "antd";
-import SignInCarousel from "./SignInCarousel";
+import React, { useEffect } from "react"
+import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Button, Form } from "antd"
+import SignInCarousel from "./SignInCarousel"
 import {
   Container,
   SignInBlock,
   Back,
   InputBlock,
   StyledGoogleButton,
-} from "./StylesForSignIn/styles";
-import { setToken } from "../../redux/authSlice";
-import { useSignInMutation } from "../../features/apiSlice";
-import { CustomInput, CustomPasswordInput } from "./StylesForSignIn";
-import {toast,ToastContainer} from "react-toastify"
-import "react-toastify/dist/ReactToastify.css";
+} from "./StylesForSignIn/styles"
+import { setToken } from "../../redux/authSlice"
+import { useSignInMutation } from "../../features/apiSlice"
+import { CustomInput, CustomPasswordInput } from "./StylesForSignIn"
+import { toast, ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 interface FieldType {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const SignIn = () => {
-  const dispatch = useDispatch();
-  const [signIn, { data, error, isLoading }] = useSignInMutation();
+  const dispatch = useDispatch()
+  const [signIn, { data, error, isLoading }] = useSignInMutation()
 
   const handleSignIn = async (formData: FieldType) => {
     try {
-      await signIn(formData);
+      await signIn(formData)
     } catch (error) {
-      toast.error("Sign-in failed. Please try again.");
+      toast.error("Sign-in failed. Please try again.")
     }
-  };
+  }
 
   useEffect(() => {
     if (data) {
-      dispatch(setToken(data?.token));
+      dispatch(setToken(data?.token))
     } else if (error) {
-      toast.error("Sign-in failed. Please try again.");
+      toast.error("Sign-in failed. Please try again.")
     }
-  }, [data, error, dispatch]);
+  }, [data, error, dispatch])
 
   return (
     <Container>
@@ -86,7 +86,7 @@ const SignIn = () => {
         </SignInBlock>
       </Back>
     </Container>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn

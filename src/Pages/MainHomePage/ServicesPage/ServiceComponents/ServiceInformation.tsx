@@ -2,8 +2,8 @@ import {
   ScrollingBlock,
   ScrollingBlockContent,
   ScrollingBlockWrp,
-} from "../../MyProfile/stylesForMyProfile";
-import { SERVICE_INFORMATION_FIELDS } from "./constants";
+} from "../../MyProfile/MyProfile.styles"
+import { SERVICE_INFORMATION_FIELDS } from "./constants"
 
 export const ServiceInformation = () => {
   return (
@@ -20,5 +20,5 @@ export const ServiceInformation = () => {
         ))}
       </ScrollingBlock>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}

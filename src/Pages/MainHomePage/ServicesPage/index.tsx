@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Container, ProfileSide } from "../MyProfile/stylesForMyProfile";
+import { Container, ProfileSide } from "../MyProfile/MyProfile.styles"
 import { Tabs } from "antd";
 import { FaPlus } from "react-icons/fa";
-import { MainContainer, PlusButton, SideContainer } from "./stylesForServices";
+import { MainContainer, PlusButton, SideContainer } from "./Service.style"
 import { ServiceInformation } from "./ServiceComponents/ServiceInformation";
 import { StaffAssigned } from "./ServiceComponents/StaffAssigned";
 import { ServiceAvailability } from "./ServiceComponents/Avability";
@@ -70,5 +70,5 @@ export const ServicesPage = () => {
       </MainContainer>
       <AddServiceModal isOpen={isAddServiceModalOpen} onClose={toggleModal} />
     </>
-  );
-};
+  )
+}

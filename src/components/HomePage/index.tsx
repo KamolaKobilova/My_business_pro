@@ -1,82 +1,73 @@
-import React from "react";
+import React from "react"
 import {
   StyledDiv,
   Button,
-  Container,
   Picture,
   Feature,
   Region,
-} from "./styles";
-import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.png";
-import zoho from "../../assets/HomePgImage/billing-logo.svg.svg";
-import mail from "../../assets/HomePgImage/mail.png";
-import book from "../../assets/HomePgImage/books.png";
-import desk from "../../assets/HomePgImage/desk.png";
-import creator from "../../assets/HomePgImage/creator.png";
-import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png";
-import crm from "../../assets/HomePgImage/crm.png";
-import Navbar from "../Navbar/Navbar";
+  Text,
+  CustomNavlink,
+} from "./stylesForHome"
+import image from "../../assets/HomePgImage/Picture → zh-homev2-banner.webp.png"
+import { ReactComponent as ZohoIcon } from "../../assets/HomePgImage/billing-logo.svg.svg"
+import mail from "../../assets/HomePgImage/mail.png"
+import book from "../../assets/HomePgImage/books.png"
+import desk from "../../assets/HomePgImage/desk.png"
+import creator from "../../assets/HomePgImage/creator.png"
+import girl from "../../assets/HomePgImage/Link → zh-announcement-billing.png.png"
+import crm from "../../assets/HomePgImage/crm.png"
+import Navbar from "../Navbar"
+import "./style.css"
 
 function HomePage() {
   return (
-    <>
+    <div>
       <Navbar />
-      <Container className="container">
+      <div className="container">
         <div className="main_left">
           <StyledDiv className="text">
-            <h2>
-              Your life&apos;s work, <br /> powered by our life&apos;s work
-            </h2>
-            <p>
+            <Text
+            >
+              Your life's work, <br /> powered by our life's work
+            </Text>
+            <p
+            >
               A unique and powerful software suite to transform the <br /> way
               you work. Designed for businesses of all sizes, built <br /> by a
               company that values your privacy{" "}
             </p>
             <Button>
-              Get Started For Free <br />
-              <img src="" alt="" />{" "}
+              <p>Get Started For Free</p> <br />
             </Button>
           </StyledDiv>
           <Picture>
-            <img src={image} alt="" />
+            <img src={image} alt="img" />
           </Picture>
           <Region className="region">
-            <ul
-              style={{
-                listStyle: "none",
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <li>
-                <img src={zoho} alt="" />
+            <ul>
+              <li className="coverr">
+                <ZohoIcon />
               </li>
-              <li>
+              <hr />
+              <li className="cover">
                 <p>A complete solution for every billing requirement.</p>
                 <br />
-                <button>Try now</button>
+                <CustomNavlink to="https://www.zoho.com/workplace/?ireft=nhome&src=home1">
+                  <button>TRY NOW</button>
+                </CustomNavlink>
               </li>
-              <li>
-                <img src={girl} alt="" />
+              <li className="covers">
+                <img src={girl} alt="girl" />
               </li>
             </ul>
           </Region>
         </div>
         <Feature className="main_right">
-          {" "}
           <div className="feature">
-            <p style={{ marginTop: "20px", marginLeft: "50px" }}>
-              FEATURED APPS
-            </p>
-            <ul style={{ listStyle: "none", margin: "20px 20px 20px 50px" }}>
-              <li
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginBottom: "50px",
-                }}
-              >
-                <img src={crm} alt="" />
+            <p>FEATURED APPS</p>
+            <ul>
+              <li>
+                <img src={crm} alt="crm" />
                 <span>
                   <b>CRM</b>
                   <br />
@@ -85,14 +76,8 @@ function HomePage() {
                 </span>
               </li>
 
-              <li
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginBottom: "50px",
-                }}
-              >
-                <img src={mail} alt="" />
+              <li>
+                <img src={mail} alt="mail" />
                 <span>
                   <b>Desk</b> <br />
                   Helpdesk software to deliver <br />
@@ -100,42 +85,24 @@ function HomePage() {
                 </span>
               </li>
 
-              <li
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginBottom: "50px",
-                }}
-              >
-                <img src={book} alt="" />
+              <li>
+                <img src={book} alt="book" />
                 <span>
-                  <b>Mail</b> <br /> Secure email service for your <br />{" "}
+                  <b>Mail</b> <br /> Secure email service for your <br />
                   business.
                 </span>
               </li>
 
-              <li
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginBottom: "50px",
-                }}
-              >
-                <img src={desk} alt="" />
+              <li>
+                <img src={desk} alt="desk" />
                 <span>
                   <b>Books</b> <br />
                   Powerful financial platform for <br /> growing businesses.
                 </span>
               </li>
 
-              <li
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginBottom: "50px",
-                }}
-              >
-                <img src={creator} alt="" />
+              <li>
+                <img src={creator} alt="creator" />
                 <span>
                   <b>Assist </b>
                   <br />
@@ -144,21 +111,17 @@ function HomePage() {
                 </span>
               </li>
               <hr />
-              <h4
-                style={{
-                  marginTop: "30px",
-                  color: "#056cb8",
-                  fontFamily: "sans-serif",
-                }}
+              <CustomNavlink
+                to="https://www.zoho.com/all-products.html?ireft=nhome&src=home1"
               >
-                EXPLORE ALL PRODUCTS
-              </h4>
+                <h4>EXPLORE ALL PRODUCTS</h4>
+              </CustomNavlink>
             </ul>
           </div>
         </Feature>
-      </Container>
-    </>
-  );
+      </div>
+    </div>
+  )
 }
 
-export default HomePage;
+export default HomePage

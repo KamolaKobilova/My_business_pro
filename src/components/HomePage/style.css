@@ -1,0 +1,40 @@
+.text {
+  position: relative;
+  top: 80px;
+  left: 90px;
+
+   
+}
+.region {
+  background-color: rgba(210, 216, 228, 0.684);
+  margin-top: 100px;
+}
+.coverr {
+  width: 200px;
+  margin-top: 60px;
+  margin-left: 50px;
+}
+.cover {
+  width: 200px;
+  margin-top: 60px;
+  margin-left: 100px;
+}
+.cover p {
+  font-size: 20px;
+}
+.cover button {
+  font-size: 16px;
+  width: 140px;
+  height: 40px;
+  color: white;
+  background-color: #056CB8;
+  border-color: #056CB8;
+  cursor: pointer;
+}
+.covers {
+  margin-top: 35px;
+  margin-left: 300px;
+}
+.text p {
+  width: 600px;
+}

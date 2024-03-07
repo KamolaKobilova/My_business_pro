@@ -1,4 +1,4 @@
-import { ScrollingBlockWrp } from "../stylesForMyProfile";
+import { ScrollingBlockWrp } from "../MyProfile.styles"
 
 export const Services = () => {
   return (
@@ -8,5 +8,5 @@ export const Services = () => {
       </div>
       <h1>Services</h1>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}

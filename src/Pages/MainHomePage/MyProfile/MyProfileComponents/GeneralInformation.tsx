@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 import {
   ScrollingBlockWrp,
   ScrollingBlock,
   ScrollingBlockContent,
-} from "../stylesForMyProfile";
+} from "../MyProfile.styles"
 
 export const GeneralInformation = () => {
   return (
@@ -52,5 +52,5 @@ export const GeneralInformation = () => {
         </ScrollingBlock>
       </ScrollingBlockWrp>
     </>
-  );
-};
+  )
+}
