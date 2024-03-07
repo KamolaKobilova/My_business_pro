@@ -12,9 +12,9 @@ import logo from "../../../assets/BookingPage/logo.png";
 import { Form, Steps, Select } from "antd";
 import { Store } from "antd/lib/form/interface";
 
-import StepZero from "./ModalSteps/StepZero";
-import StepOne from "./ModalSteps/StepOne";
-import StepTwo from "./StepTwo";
+import BusinessDetailsStep from "./ModalSteps/BusinessDetailsStep";
+import AvaibilityStep from "./ModalSteps/AvaibilityStep";
+import CreateServiceStep from "./ModalSteps/CreateServiceStep";
 
 interface BookingPageProps {
   onClose: () => void;
@@ -80,15 +80,20 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
             <span>
               <Form form={form} onFinish={onFinish}>
                 <div className="current-step">
-                  <StepZero currentStep={currentStep} nextStep={nextStep} />
-                  <StepOne
-                    currentStep={currentStep}
-                    nextStep={nextStep}
-                    prevStep={prevStep}
-                    selectedDays={selectedDays}
-                    handleDayClick={handleDayClick}
-                  />
-                  <StepTwo currentStep={currentStep} prevStep={prevStep} />
+                  {currentStep === 0 && (
+                    <BusinessDetailsStep nextStep={nextStep} />
+                  )}
+                  {currentStep === 1 && (
+                    <AvaibilityStep
+                      nextStep={nextStep}
+                      prevStep={prevStep}
+                      selectedDays={selectedDays}
+                      handleDayClick={handleDayClick}
+                    />
+                  )}
+                  {currentStep === 2 && (
+                    <CreateServiceStep prevStep={prevStep} />
+                  )}
                 </div>
               </Form>
             </span>

@@ -1,10 +1,10 @@
 import { Form, Input, Space } from "antd";
-import { CustomInputNumber, PrevSubmit } from "./BookingStyles";
+import { CustomInputNumber, PrevSubmit } from "../BookingStyles";
 
-const StepTwo = ({ currentStep, prevStep }: any) => {
+const CreateServiceStep = ({ prevStep }: any) => {
   return (
     <>
-      {currentStep === 2 && (
+      {
         <Form>
           <Form.Item
             name="serviceName"
@@ -37,9 +37,9 @@ const StepTwo = ({ currentStep, prevStep }: any) => {
             </PrevSubmit>
           </Form.Item>
         </Form>
-      )}
+      }
     </>
   );
 };
 
-export default StepTwo;
+export default CreateServiceStep;

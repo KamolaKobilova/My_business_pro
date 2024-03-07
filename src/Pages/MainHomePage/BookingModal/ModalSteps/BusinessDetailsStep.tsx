@@ -4,10 +4,10 @@ import { BOOKING_MODAL_ITEMS } from "../constants";
 
 const { Option } = Select;
 
-const StepZero = ({ currentStep, nextStep }: any) => {
+const BusinessDetailsStep = ({ nextStep }: any) => {
   return (
     <>
-      {currentStep === 0 && (
+      {
         <Form>
           {BOOKING_MODAL_ITEMS.map((item) => (
             <Form.Item
@@ -40,9 +40,9 @@ const StepZero = ({ currentStep, nextStep }: any) => {
             </Button>
           </Form.Item>
         </Form>
-      )}
+      }
     </>
   );
 };
 
-export default StepZero;
+export default BusinessDetailsStep;

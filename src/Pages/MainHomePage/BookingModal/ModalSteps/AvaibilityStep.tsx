@@ -6,8 +6,7 @@ import {
 } from "../BookingStyles";
 import { WEEKDAYS } from "../constants/weekDays";
 
-const StepOne = ({
-  currentStep,
+const AvaibilityStep = ({
   nextStep,
   prevStep,
   selectedDays,
@@ -15,7 +14,7 @@ const StepOne = ({
 }: any) => {
   return (
     <>
-      {currentStep === 1 && (
+      {
         <Form>
           <Form.Item
             name="field2"
@@ -76,9 +75,9 @@ const StepOne = ({
             </NextPreviousButton>
           </Form.Item>
         </Form>
-      )}
+      }
     </>
   );
 };
 
-export default StepOne;
+export default AvaibilityStep;
