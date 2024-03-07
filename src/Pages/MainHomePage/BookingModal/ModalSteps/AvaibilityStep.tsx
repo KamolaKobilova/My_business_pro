@@ -15,9 +15,9 @@ const AvaibilityStep = ({
   return (
     <Form>
       <Form.Item
-        name="field2"
-        label="Field 2"
-        rules={[{ required: true, message: "Please input Field 2!" }]}
+        name="Duration"
+        label="Duration"
+        rules={[{ required: true, message: "Please select duration " }]}
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
       >
