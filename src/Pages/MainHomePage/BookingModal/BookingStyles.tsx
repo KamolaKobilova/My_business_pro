@@ -1,5 +1,8 @@
 import styled from "styled-components";
-
+import { Button, Form, InputNumber, Select, Steps, TimePicker } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
+const { Step } = Steps;
+const { Option } = Select;
 const mainPurple = "#4f4a7b";
 
 export const Navbar = styled.nav`
@@ -53,6 +56,12 @@ export const ButtonNext = styled.nav`
   margin-top: 40px;
 `;
 export const Title = styled.div`
+  h3 {
+    color: #333333;
+    font-family: "Inter";
+    margin: 0 0 20px 20px;
+    font-size: 18px;
+  }
   p {
     max-width: 290px;
     font-family: Inter;
@@ -60,8 +69,20 @@ export const Title = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
+    margin: 20px, 0 0 20px;
   }
 `;
+export const CustomSteps = styled(Steps)`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  width: 250px;
+  height: 120px;
+  .ant-steps-item:first-child {
+    margin: 0 0 0 10px;
+  }
+`;
+
 export const Input = styled.div`
   margin-top: 30px;
   input,
@@ -86,8 +107,54 @@ export const Header = styled.div`
   flex-direction: row;
   margin-top: 20px;
   margin-left: 10px;
+  img {
+    width: 65px;
+  }
+  h1 {
+    margin: 17px 0;
+  }
 `;
-
+export const CustomForm = styled(Form)`
+  .current-step {
+    margin: 16px 0;
+  }
+`;
+export const CustomSelector = styled(Select)`
+  height: 35px;
+`;
+export const NextStepButton = styled(Button)`
+  width: 100px;
+  position: relative;
+  top: 35px;
+  left: 190px;
+  background-color: #4f4a7b;
+`;
+export const NextPreviousButton = styled(Button)<{ variant: string }>`
+  width: 100px;
+  position: relative;
+  top: 70px;
+  left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
+  background-color: #4f4a7b;
+`;
+export const PrevSubmit = styled(Button)<{ variant: string }>`
+  width: 100px;
+  position: relative;
+  top: 120px;
+  left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
+  background-color: #4f4a7b;
+`;
+export const CustomTimePicker = styled(TimePicker)`
+  width: 190px;
+  height: 40px;
+`;
+export const WeekDaysButton = styled(Button)`
+  margin-right: 10px;
+  height: 35px;
+  border-radius: 15px;
+  border-color: #4f4a7b;
+  background-color: #dbd9f5;
+  margin-bottom: 10px;
+`;
 export const NavButton = styled.button`
   font-size: 17px;
   font-family: sans-serif;
@@ -100,7 +167,9 @@ export const NavButton = styled.button`
     border-bottom: 2px solid red;
   }
 `;
-
+export const Circle = styled(ExclamationCircleOutlined)`
+  color: rgb(204, 204, 204);
+`;
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -122,12 +191,13 @@ export const ModalContent = styled.div`
 
 export const ModalCloseButton = styled.button`
   position: absolute;
-  top: 115px;
+  top: 215px;
   left: 1130px;
   background: none;
   border: none;
   font-size: 30px;
   cursor: pointer;
+  right: 370px;
 `;
 export const ModalContainer = styled.div`
   display: flex;
@@ -156,6 +226,7 @@ export const ModalContainer = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
+    margin-left: 8px;
 
     padding: 50px;
   }
@@ -194,22 +265,7 @@ export const LogOutButton = styled.button`
   border: none;
   cursor: pointer;
 `;
-
-export const SelectItems = styled.div`
-   display: flex;
-   align-items: center;
-   margin-top: 25px;
-   margin-left: 90px;
-   margin-bottom: 30px;
-`
-
-export const SelectItem = styled.div`
-   display: flex;
-   align-items: center;
-   margin-top: 10px;
-   margin-left: 40px;
-   margin-bottom: 30px
-
-
-`
-
+export const CustomInputNumber = styled(InputNumber)`
+  width: 180px;
+  height: 40px;
+`;

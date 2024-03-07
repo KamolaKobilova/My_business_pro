@@ -9,7 +9,7 @@ import {
   NavButton,
   Navbar,
 } from "../Pages/MainHomePage/BookingModal/BookingStyles";
-import { CalendarModal } from "../Pages/MainHomePage/BookingModal/BookingPage";
+import { BookingModal } from "../Pages/MainHomePage/BookingModal";
 import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer";
 import { Link } from "react-router-dom";
 
@@ -49,7 +49,7 @@ export const HomePageNav = () => {
               <NavButton>My profile</NavButton>
             </a>
             <NavButton onClick={handleOpenModal}>Booking page</NavButton>
-            {isModalOpen && <CalendarModal onClose={handleCloseModal} />}
+            {isModalOpen && <BookingModal onClose={handleCloseModal} />}
           </div>
           <div className="push-settings">
             <AiOutlineSetting size={25} color="white" />
