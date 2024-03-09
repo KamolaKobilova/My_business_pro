@@ -5,7 +5,12 @@
 }
 
 
-.ant-modal .ant-modal-content.ant-modal-content {
+.ant-modal .ant-modal-content.ant-modal-content  {
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ant-modal .ant-modal-content.ant-modal-content button {
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;

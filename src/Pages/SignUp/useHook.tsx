@@ -8,10 +8,9 @@ export const useHook = (): any => {
   const [signUp, { data, error, isLoading }] = useSignUpMutation();
   const [errMsg, setErrMsg] = useState("");
   const dispatch = useDispatch();
-
-  const handleSignUp = async (formData: FormEventHandler<HTMLFormElement>) => {
-  
-  };
+  const handleSignUp = async (
+    formData: FormEventHandler<HTMLFormElement>
+  ) => {};
   useEffect(() => {
     dispatch(setToken(data?.token));
   }, [data]);

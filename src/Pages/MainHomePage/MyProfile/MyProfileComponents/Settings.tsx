@@ -1,4 +1,4 @@
-import { ScrollingBlockWrp } from "../stylesForMyProfile";
+import { ScrollingBlockWrp } from "../MyProfile.styles"
 
 export const Settings = () => {
   return (
@@ -7,5 +7,5 @@ export const Settings = () => {
         <h3>Manage page elements</h3>
       </div>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}

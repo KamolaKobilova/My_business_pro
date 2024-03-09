@@ -1,19 +1,29 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/query/react";
+import { logout } from "../redux/authSlice";
+import store from "../redux/store";
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_BASE_URL,
+  prepareHeaders: (headers, { getState }: any) => {
+    headers.set("Content-Type", "application/json");
+    const token = getState()?.auth?.token;
+    headers.set("Authorization", "Bearer " + token);
+    return headers;
+  },
+});
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_BASE_URL,
-    prepareHeaders: (headers, { getState }: any) => {
-      headers.set("Content-Type", "application/json");
-      const token = getState()?.auth?.token;
-      console.log(getState(), "getState()");
-      console.log(token, "token");
-
-      headers.set("Authorization", "Bearer " + token);
-      return headers;
-    },
-  }),
+  baseQuery: async (args, api, extraOptions) => {
+    const res: any = baseQuery(args, api, extraOptions);
+    if (res.error?.status === 401) {
+      store.dispatch(logout());
+    }
+    return res;
+  },
   tagTypes: ["Post"],
   endpoints: (builder) => ({
     signUp: builder.mutation({
@@ -38,59 +48,48 @@ export const apiSlice = createApi({
         url: "appointments",
       }),
     }),
-    // getChatTab: builder.query({
-    //     query: () => ({
-    //         url: "/api/chats",
-    //     }),
-    //     // refetchOnMountOrArgChange: true,
-    // }),
-    // deleteChatTabAPI: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload}`,
-    //         method: "DELETE",
-    //     }),
-    // }),
-    // getMessages: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload}/messages`,
-    //     }),
-    // }),
-    // generateChatTabName: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload}/generate-name`,
-    //         method: "PUT",
-    //     }),
-    // }),
-    // updateChatTab: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload.id}`,
-    //         method: "PUT",
-    //         body: payload.changedData,
-    //     }),
-    // }),
-    // pinMessage: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload.chatId}/messages/${payload.id}`,
-    //         method: "PUT",
-    //         body: payload.body,
-    //     }),
-    // }),
-    // unpinMessage: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload.chatId}/messages/${payload.id}`,
-    //         method: "PUT",
-    //         body: payload.body,
-    //     }),
-    // }),
-    // deleteMessage: builder.mutation({
-    //     query: (payload) => ({
-    //         url: `/api/chats/${payload.chatId}/messages/batch`,
-    //         method: "DELETE",
-    //         body: payload.body,
-    //     }),
-    // }),
+    createService: builder.mutation({
+      query: (serviceData) => ({
+        url: "service",
+        method: "POST",
+        body: serviceData,
+      }),
+    }),
+    getServiceById: builder.query({
+      query: (serviceId) => ({
+        url: `service/${serviceId}`,
+        method: "GET",
+      }),
+    }),
+    getAllServices: builder.query({
+      query: () => ({
+        url: "service/",
+        method: "GET",
+      }),
+    }),
+    getWorkSpace: builder.query({
+      query: () => ({
+        url: "workspace",
+        method: "GET",
+      }),
+    }),
+    createWorkSpace: builder.mutation({
+      query: (workSpaceData) => ({
+        url: "workspace",
+        method: "POST",
+        body: workSpaceData,
+      }),
+    }),
   }),
 });
 
-export const { useSignInMutation, useSignUpMutation, useGetAppointmentsQuery } =
-  apiSlice;
+export const {
+  useSignInMutation,
+  useSignUpMutation,
+  useGetAppointmentsQuery,
+  useCreateServiceMutation,
+  useGetAllServicesQuery,
+  useGetServiceByIdQuery,
+  useGetWorkSpaceQuery,
+  useCreateWorkSpaceMutation,
+} = apiSlice;

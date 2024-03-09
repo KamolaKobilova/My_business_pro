@@ -1,18 +1,17 @@
-import styled from "styled-components";
-import { Carousel } from "react-responsive-carousel";
-import GoogleButton from "react-google-button";
-import { Input } from "antd";
+import styled from "styled-components"
+import { Carousel } from "react-responsive-carousel"
+import GoogleButton from "react-google-button"
+import { Input } from "antd"
 const colors = {
   back: "#fcfcfc",
-};
+}
 export const Container = styled.div`
   max-width: 1920px;
   margin: 0 auto;
-`;
+`
 export const Back = styled.div`
-background-image:url('/assets/SignInImg/bg.svg');
   max-width: 1920px;
-`;
+`
 export const SignInBlock = styled.div`
   width: 900px;
   margin: 30px auto;
@@ -22,7 +21,7 @@ export const SignInBlock = styled.div`
   background-color: ${colors.back};
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-`;
+`
 export const InputBlock = styled.div`
   width: 600px;
 
@@ -57,7 +56,7 @@ export const InputBlock = styled.div`
     margin-left: 160px;
     margin-top: 20px;
   }
-`;
+`
 export const CustomInput = styled(Input)`
   width: 350px;
   height: 38px;
@@ -68,7 +67,7 @@ export const CustomInput = styled(Input)`
     display: flex;
     flex: 1;
   }
-`;
+`
 export const CustomPasswordInput = styled(Input.Password)`
   width: 350px;
   height: 38px;
@@ -79,7 +78,7 @@ export const CustomPasswordInput = styled(Input.Password)`
     display: flex;
     flex: 1;
   }
-`;
+`
 
 export const StyledCard = styled.div`
   padding: 10px;
@@ -88,7 +87,7 @@ export const StyledCard = styled.div`
   align-items: center;
   box-sizing: border-box;
   text-align: center;
-`;
+`
 
 export const StyledCaption = styled.div`
   font-size: 20px;
@@ -96,18 +95,20 @@ export const StyledCaption = styled.div`
   display: flex;
   font-weight: 10px;
   flex-direction: column;
-`;
+`
 export const CustomCarousel = styled(Carousel)`
   max-width: 450px;
   height: auto;
-`;
+`
 export const StyledImg = styled.img`
   width: 80px;
   height: 360px;
-  border-radius: 200px, 0 0 20px;
-`;
+  border-radius:
+    200px,
+    0 0 20px;
+`
 export const StyledGoogleButton = styled(GoogleButton)`
   display: flex;
   font-size: 20px;
   margin: 20px 0 0 55px;
-`;
+`

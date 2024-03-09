@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Tabs } from "antd";
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
+import { Tabs } from "antd"
 import {
   Button,
   Container,
   ProfileSide,
-} from "../../MyProfile/stylesForMyProfile";
+} from "../../MyProfile/MyProfile.styles"
 
-import { StaffInformation } from "./StaffInformation";
-import { WorkingHours } from "./WorkingHours";
-import { AssignedServices } from "./AssignedServices";
-import PhotoInput from "../../../../components/PhotoSelector";
+import { StaffInformation } from "./StaffInformation"
+import { WorkingHours } from "./WorkingHours"
+import { AssignedServices } from "./AssignedServices"
+import PhotoInput from "../../../../components/PhotoSelector"
 
-const { TabPane } = Tabs;
+const { TabPane } = Tabs
 
 export const StaffContainer = () => {
-  const staffData = useSelector((state: any) => state.staff.staffData);
-  const activeIndex = useSelector((state: any) => state.staff.activeIndex);
-  const [photo, setPhoto] = useState("");
-  const [activeTab, setActiveTab] = useState("1");
+  const staffData = useSelector((state: any) => state.staff.staffData)
+  const activeIndex = useSelector((state: any) => state.staff.activeIndex)
+  const [photo, setPhoto] = useState("")
+  const [activeTab, setActiveTab] = useState("1")
 
   const handleTabChange = (key: string) => {
-    setActiveTab(key);
-  };
+    setActiveTab(key)
+  }
 
   return (
     <Container variant="little">
@@ -50,5 +50,5 @@ export const StaffContainer = () => {
       {activeTab === "2" && <WorkingHours />}
       {activeTab === "3" && <AssignedServices />}
     </Container>
-  );
-};
+  )
+}

@@ -2,8 +2,8 @@ import {
   ScrollingBlock,
   ScrollingBlockContent,
   ScrollingBlockWrp,
-} from "../../MyProfile/stylesForMyProfile";
-import { STAFF_INFORMATION_FIELDS } from "./constants";
+} from "../../MyProfile/MyProfile.styles"
+import { STAFF_INFORMATION_FIELDS } from "./constants"
 
 export const StaffInformation = ({ staffData, activeIndex }: any) => {
   return (
@@ -20,5 +20,5 @@ export const StaffInformation = ({ staffData, activeIndex }: any) => {
         ))}
       </ScrollingBlock>
     </ScrollingBlockWrp>
-  );
-};
+  )
+}
