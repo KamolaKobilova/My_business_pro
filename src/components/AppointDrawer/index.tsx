@@ -1,16 +1,16 @@
 import React, { useState } from "react"
 import TodoModal from "../../Pages/MainHomePage/ToDoModal/TodoModal"
 import { Button, DatePicker, Form, Select, TimePicker, Checkbox } from "antd"
-import "./style.css"
+// import '../style.css'
 import TextArea from "antd/es/input/TextArea"
 
-type SizeType = Parameters<typeof Form>[0]["size"]
+
 function AppointDrawer() {
-  const [componentSize, setComponentSize] = useState<SizeType | "default">(
+  const [componentSize, setComponentSize] = useState<0 | "default">(
     "default"
   )
 
-  const onFormLayoutChange = ({ size }: { size: SizeType }) => {
+  const onFormLayoutChange = ({ size }: { size: 0}) => {
     setComponentSize(size)
   }
   return (
@@ -20,7 +20,7 @@ function AppointDrawer() {
       layout="horizontal"
       initialValues={{ size: componentSize }}
       onValuesChange={onFormLayoutChange}
-      size={componentSize as SizeType}
+      // size={componentSize as d}
       style={{ maxWidth: 600, marginLeft: "80px", marginTop: "30px" }}
     >
       <Form.Item label="Workspace">
