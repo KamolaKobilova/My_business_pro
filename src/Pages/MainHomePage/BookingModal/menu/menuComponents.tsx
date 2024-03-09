@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, Drawer } from 'antd';
 import { PlusSquareOutlined } from "@ant-design/icons";
 import { ProfileDrawer } from '../../ProfileDrawer';
-import AppointDrawer from '../AppointDrawer';
+import AppointDrawer from '../../../../components/AppointDrawer';
 import '../../Navbar.css';
 import app from "../assets/app.png"
 import addBr from "../assets/addBr.png"
