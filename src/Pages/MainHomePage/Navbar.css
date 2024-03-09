@@ -27,3 +27,11 @@
    position: relative;
    left: 820px;
  }
+ .plusSquare {
+    margin-right: 10px;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: orange
+ }
