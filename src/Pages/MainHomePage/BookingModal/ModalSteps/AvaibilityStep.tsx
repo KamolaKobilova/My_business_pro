@@ -3,7 +3,7 @@ import {
   CustomTimePicker,
   NextPreviousButton,
   WeekDaysButton,
-} from "../BookingStyles"
+} from "../Style.Booking"
 import { WEEKDAYS } from "../constants/weekDays"
 
 const AvaibilityStep = ({
@@ -16,23 +16,20 @@ const AvaibilityStep = ({
   updateFormData,
 }: any) => {
   const handleTimeChange = (field: string) => (time: any) => {
-    // console.log(time)
     form.setFieldsValue({ [field]: time })
     updateFormData({ [field]: time })
   }
 
   const handleWeekDaysChange = (day: string) => {
-    let updatedSelectedDays = [...selectedDays]
-    if (updatedSelectedDays.includes(day)) {
-      updatedSelectedDays = updatedSelectedDays.filter(
-        (selectedDay) => selectedDay !== day
+    if (selectedDays.includes(day)) {
+      setSelectedDays((prev: any) =>
+        prev.filter((selectedDay: any) => selectedDay !== day)
       )
     } else {
-      updatedSelectedDays.push(day)
+      setSelectedDays((prev: any) => [...prev, day])
     }
-    setSelectedDays(updatedSelectedDays)
-    form.setFieldsValue({ weekDays: updatedSelectedDays })
-    updateFormData({ weekDays: updatedSelectedDays })
+    form.setFieldsValue({ weekDays: selectedDays })
+    updateFormData({ weekDays: selectedDays })
   }
   return (
     <>

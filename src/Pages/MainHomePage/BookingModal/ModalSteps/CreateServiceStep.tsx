@@ -5,7 +5,7 @@ import {
   CustomTimePicker,
   ModalCloseButton,
   PrevSubmit,
-} from "../BookingStyles"
+} from "../Style.Booking"
 
 const CreateServiceStep = ({
   prevStep,
@@ -15,8 +15,13 @@ const CreateServiceStep = ({
 }: any) => {
   const handleTimeChange = (time: any) => {
     const formattedTime = time.format("HH:mm")
-    form.setFieldsValue({ duration: formattedTime })
-    updateFormData({ duration: formattedTime })
+    form.setFieldsValue({ serviceDuration: formattedTime })
+    updateFormData({ serviceDuration: formattedTime })
+  }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    form.setFieldsValue({ serviceName: value })
+    updateFormData({ serviceName: value })
   }
 
   return (
@@ -29,10 +34,13 @@ const CreateServiceStep = ({
         wrapperCol={{ span: 24 }}
         style={{ width: "370px" }}
       >
-        <Input style={{ width: "370px", height: "40px" }} />
+        <Input
+          onChange={handleInputChange}
+          style={{ width: "370px", height: "40px" }}
+        />
       </Form.Item>
       <Form.Item
-        name="duration"
+        name="serviceDuration"
         label="Duration"
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}

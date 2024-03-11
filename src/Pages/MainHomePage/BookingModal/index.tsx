@@ -7,7 +7,7 @@ import {
   Header,
   Title,
   CustomSteps,
-} from "./BookingStyles"
+} from "./Style.Booking"
 import logo from "../../../assets/BookingPage/logo.png"
 import { Form, Steps, Select } from "antd"
 import { Store } from "antd/lib/form/interface"
@@ -15,7 +15,7 @@ import { Store } from "antd/lib/form/interface"
 import BusinessDetailsStep from "./ModalSteps/BusinessDetailsStep"
 import AvaibilityStep from "./ModalSteps/AvaibilityStep"
 import CreateServiceStep from "./ModalSteps/CreateServiceStep"
-import WorkSpaceApi from "./workSpaceApi"
+import WorkSpaceApi from "../../../hooks/workSpaceApi"
 
 interface BookingPageProps {
   onClose: () => void
@@ -42,9 +42,9 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
   }
 
   const onFinish = async () => {
-    // console.log("Form submitted with values:", formData)
     await handleSubmit(formData)
-    onClose()
+
+    // onClose()
   }
 
   const handleDayClick = (day: string) => {

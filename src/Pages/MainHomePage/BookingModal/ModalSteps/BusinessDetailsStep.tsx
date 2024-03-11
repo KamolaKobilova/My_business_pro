@@ -1,6 +1,6 @@
 import React from "react"
 import { Form, Input, Select } from "antd"
-import { CustomSelector, Next } from "../BookingStyles"
+import { CustomSelector, NextButton } from "../Style.Booking"
 import { BOOKING_MODAL_ITEMS } from "../constants"
 
 const { Option } = Select
@@ -41,9 +41,9 @@ const BusinessDetailsStep = ({ nextStep, form, updateFormData }: any) => {
         </Form.Item>
       ))}
       <Form.Item>
-        <Next onClick={nextStep} type="primary" htmlType="submit">
+        <NextButton onClick={nextStep} type="primary" htmlType="submit">
           Next
-        </Next>
+        </NextButton>
       </Form.Item>
     </>
   )

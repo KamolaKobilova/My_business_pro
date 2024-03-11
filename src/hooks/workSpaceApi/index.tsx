@@ -1,29 +1,34 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
   useCreateServiceMutation,
   useCreateWorkSpaceMutation,
-  useGetWorkSpaceQuery,
-} from "../../../../features/apiSlice"
-import { saveWorkspace } from "../../../../redux/workSpaceReducer"
-import { WEEKDAYS } from "../constants/weekDays"
+} from "../../features/apiSlice"
+import { saveWorkspace } from "../../redux/workSpaceReducer"
+import { RootState } from "../../redux/store"
 
 type WorkSpaceType = {
   name?: string
   startTime?: string
   endTime?: string
   weekDays?: string[]
+  serviceName?: string
+  serviceDuration?: string
 }
-interface ServiceValues {
+
+interface ServiceValuesType {
   name?: string
   duration?: string
   unit?: string
   workspace?: string
-  staff?: string
 }
 
 const WorkSpaceApi = () => {
   const dispatch = useDispatch()
+  const workspaceId = useSelector(
+    (state: RootState) => state.workspace.workspaceId
+  )
+
   const [createWorkSpace] = useCreateWorkSpaceMutation()
   const [createService] = useCreateServiceMutation()
 
@@ -58,18 +63,17 @@ const WorkSpaceApi = () => {
       }
 
       const workspace = workspaceResult.data
+      dispatch(saveWorkspace(workspace.payload._id))
 
-      dispatch(saveWorkspace(workspace))
-
-      const serviceValues: ServiceValues = {
-        name: "Some Service Name",
+      const serviceData: ServiceValuesType = {
+        name: values?.serviceName,
         duration: "60",
-        unit: "minutes",
-        workspace: workspace.id,
-        staff: "Some Staff ID",
+        // duration: values?.serviceDuration,
+        unit: "hour",
+        workspace: workspaceId || "",
       }
 
-      const serviceResult = await createService(serviceValues)
+      const serviceResult = await createService(serviceData)
 
       if ("error" in serviceResult) {
         console.error("Failed to save service:", serviceResult.error)

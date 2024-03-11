@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { Button, Form, InputNumber, Select, Steps, TimePicker } from "antd"
 import { ExclamationCircleOutlined } from "@ant-design/icons"
+import { mainPurple } from "../../../colors"
 const { Step } = Steps
 const { Option } = Select
-const mainPurple = "#4f4a7b"
 
 export const Navbar = styled.nav`
   max-width: 1920px;
@@ -49,7 +49,7 @@ export const ButtonNext = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 0.595px;
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
   color: white;
   border-radius: 2px;
   margin-left: 220px;
@@ -84,7 +84,6 @@ export const CustomSteps = styled(Steps)`
     margin: 0 0 0 10px;
   }
 `
-
 export const Input = styled.div`
   margin-top: 30px;
   input,
@@ -129,28 +128,28 @@ export const NextStepButton = styled(Button)`
   position: relative;
   top: 35px;
   left: 190px;
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
 `
-export const Next = styled(Button)`
+export const NextButton = styled(Button)`
   width: 100px;
   position: relative;
   top: 30px;
   left: 220px;
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
 `
 export const NextPreviousButton = styled(Button)<{ variant: string }>`
   width: 100px;
   position: relative;
   top: 70px;
   left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
 `
 export const PrevSubmit = styled(Button)<{ variant: string }>`
   width: 100px;
   position: relative;
   top: 120px;
   left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
 `
 export const CustomTimePicker = styled(TimePicker)`
   width: 190px;

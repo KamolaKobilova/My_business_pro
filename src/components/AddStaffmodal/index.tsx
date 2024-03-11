@@ -1,24 +1,24 @@
-import React from "react";
-import { Modal, Input, Select, DatePicker, Button, Form } from "antd";
-import { ModalContent } from "./stylesForModal";
+import React from "react"
+import { Modal, Input, Select, DatePicker, Button, Form } from "antd"
+import { ModalContent } from "./Style.Modal"
 
-const { Option } = Select;
-const { Item } = Form;
+const { Option } = Select
+const { Item } = Form
 
 const initialValues = {
   role: "staff",
   gender: "male",
-};
+}
 
 const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm()
 
   const handleSubmit = (values: any) => {
-    values.dob = values.dob.format("YYYY-MM-DD");
-    onAdd(values);
-    form.resetFields();
-    onClose();
-  };
+    values.dob = values.dob.format("YYYY-MM-DD")
+    onAdd(values)
+    form.resetFields()
+    onClose()
+  }
 
   return (
     <Modal
@@ -69,7 +69,7 @@ const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
         </ModalContent>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddStaffModal;
+export default AddStaffModal

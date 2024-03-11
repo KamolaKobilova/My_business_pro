@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Button } from "antd";
+import styled from "styled-components"
+import { Button } from "antd"
 export const ModalContent = styled.div`
   .ant-modal-body {
     display: flex;
@@ -14,4 +14,4 @@ export const ModalContent = styled.div`
     width: 100%;
     margin-bottom: 20px;
   }
-`;
+`

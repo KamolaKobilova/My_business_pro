@@ -1,22 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "./store"
 
-type Workspace = {
-  id: string
-  name: string
-  startTime: string
-  endTime: string
-  weekDays: string[]
+type InitialState = {
+  workspaceId: string | null
 }
 
-const initialState: Workspace[] = []
+const initialState: InitialState = { workspaceId: null }
 
 export const workspaceSlice = createSlice({
   name: "workspace",
   initialState,
   reducers: {
-    saveWorkspace(state, action: PayloadAction<Workspace>) {
-      state.push(action.payload)
+    saveWorkspace(state, action: PayloadAction<string>) {
+      state.workspaceId = action.payload
     },
   },
 })
