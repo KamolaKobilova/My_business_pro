@@ -1,12 +1,18 @@
-import { Button, Form, Input, Select } from "antd";
-import { CustomSelector } from "../BookingStyles";
-import { BOOKING_MODAL_ITEMS } from "../constants";
+import React from "react"
+import { Form, Input, Select } from "antd"
+import { CustomSelector, Next } from "../BookingStyles"
+import { BOOKING_MODAL_ITEMS } from "../constants"
 
-const { Option } = Select;
+const { Option } = Select
+const BusinessDetailsStep = ({ nextStep, form, updateFormData }: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    form.setFieldsValue({ [name]: value })
+    updateFormData({ [name]: value })
+  }
 
-const BusinessDetailsStep = ({ nextStep }: any) => {
   return (
-    <Form>
+    <>
       {BOOKING_MODAL_ITEMS.map((item) => (
         <Form.Item
           key={item.name}
@@ -25,17 +31,21 @@ const BusinessDetailsStep = ({ nextStep }: any) => {
               ))}
             </CustomSelector>
           ) : (
-            <Input style={{ height: "35px" }} placeholder={item.placeholder} />
+            <Input
+              style={{ height: "35px" }}
+              placeholder={item.placeholder}
+              name={item.name}
+              onChange={handleInputChange}
+            />
           )}
         </Form.Item>
       ))}
       <Form.Item>
-        <Button type="primary" onClick={nextStep}>
+        <Next onClick={nextStep} type="primary" htmlType="submit">
           Next
-        </Button>
+        </Next>
       </Form.Item>
-    </Form>
-  );
-};
-
-export default BusinessDetailsStep;
+    </>
+  )
+}
+export default BusinessDetailsStep

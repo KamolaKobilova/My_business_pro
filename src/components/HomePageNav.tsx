@@ -1,35 +1,33 @@
-import React from "react";
-import { useState } from "react";
-import { AiOutlineSetting } from "react-icons/ai";
-import { FaPlus } from "react-icons/fa";
-import { IoMdPerson } from "react-icons/io";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import React from "react"
+import { useState } from "react"
+import { AiOutlineSetting } from "react-icons/ai"
+import { FaPlus } from "react-icons/fa"
+import { IoMdPerson } from "react-icons/io"
+import { IoIosNotificationsOutline } from "react-icons/io"
 
 import {
   NavButton,
   Navbar,
-} from "../Pages/MainHomePage/BookingModal/BookingStyles";
-import { BookingModal } from "../Pages/MainHomePage/BookingModal";
-import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer";
-import { Link } from "react-router-dom";
+} from "../Pages/MainHomePage/BookingModal/BookingStyles"
+import { BookingModal } from "../Pages/MainHomePage/BookingModal"
+import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer"
+import { Link } from "react-router-dom"
 
 export const HomePageNav = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDrawerVisible, setDrawerVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isDrawerVisible, setDrawerVisible] = useState(false)
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-    console.log("modal open");
-  };
+    setIsModalOpen(true)
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-    console.log("modal closed");
-  };
+    setIsModalOpen(false)
+  }
 
   const showDrawer = () => {
-    setDrawerVisible(true);
-  };
+    setDrawerVisible(true)
+  }
 
   return (
     <div>
@@ -66,5 +64,5 @@ export const HomePageNav = () => {
         setDrawerVisible={setDrawerVisible}
       />
     </div>
-  );
-};
+  )
+}

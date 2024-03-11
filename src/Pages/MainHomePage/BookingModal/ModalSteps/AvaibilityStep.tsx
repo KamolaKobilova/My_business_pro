@@ -1,21 +1,43 @@
-import { Form } from "antd";
+import { Form } from "antd"
 import {
   CustomTimePicker,
   NextPreviousButton,
   WeekDaysButton,
-} from "../BookingStyles";
-import { WEEKDAYS } from "../constants/weekDays";
+} from "../BookingStyles"
+import { WEEKDAYS } from "../constants/weekDays"
 
 const AvaibilityStep = ({
   nextStep,
   prevStep,
   selectedDays,
+  setSelectedDays,
   handleDayClick,
+  form,
+  updateFormData,
 }: any) => {
+  const handleTimeChange = (field: string) => (time: any) => {
+    // console.log(time)
+    form.setFieldsValue({ [field]: time })
+    updateFormData({ [field]: time })
+  }
+
+  const handleWeekDaysChange = (day: string) => {
+    let updatedSelectedDays = [...selectedDays]
+    if (updatedSelectedDays.includes(day)) {
+      updatedSelectedDays = updatedSelectedDays.filter(
+        (selectedDay) => selectedDay !== day
+      )
+    } else {
+      updatedSelectedDays.push(day)
+    }
+    setSelectedDays(updatedSelectedDays)
+    form.setFieldsValue({ weekDays: updatedSelectedDays })
+    updateFormData({ weekDays: updatedSelectedDays })
+  }
   return (
-    <Form>
+    <>
       <Form.Item
-        name="Duration"
+        name="duration"
         label="Duration"
         rules={[{ required: true, message: "Please select duration " }]}
         labelCol={{ span: 24 }}
@@ -27,8 +49,16 @@ const AvaibilityStep = ({
             justifyContent: "space-between",
           }}
         >
-          <CustomTimePicker format="HH:mm" placeholder="Start Time" />
-          <CustomTimePicker format="HH:mm" placeholder="End Time" />
+          <CustomTimePicker
+            format="HH:mm"
+            placeholder="Start Time"
+            onChange={handleTimeChange("startTime")}
+          />
+          <CustomTimePicker
+            format="HH:mm"
+            placeholder="End Time"
+            onChange={handleTimeChange("endTime")}
+          />
         </div>
       </Form.Item>
       <Form.Item
@@ -48,7 +78,7 @@ const AvaibilityStep = ({
             <WeekDaysButton
               key={day}
               type={selectedDays.includes(day) ? "primary" : "default"}
-              onClick={() => handleDayClick(day)}
+              onClick={() => handleWeekDaysChange(day)}
             >
               {day}
             </WeekDaysButton>
@@ -64,8 +94,8 @@ const AvaibilityStep = ({
           Next
         </NextPreviousButton>
       </Form.Item>
-    </Form>
-  );
-};
+    </>
+  )
+}
 
-export default AvaibilityStep;
+export default AvaibilityStep
