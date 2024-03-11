@@ -29,7 +29,7 @@ const CreateServiceStep = ({
       <Form.Item
         name="serviceName"
         label="Service Name"
-        rules={[{ required: true, message: "Please select Service Name!" }]}
+        rules={[{ required: true, message: "Please write Service name!" }]}
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
         style={{ width: "370px" }}

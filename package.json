@@ -69,7 +69,5 @@
     "eslint-plugin-jsx-a11y": "^6.8.0"
   },
   "main": "index.js",
-  "repository": "https://github.com/alicodeuz/my-schedule.git",
-  "author": "Kamola Kobilova <kamola_8880@mail.ru>, Dinora Diyorovna <acullen647@gmail.com>",
-  "license": "MIT"
+  "repository": "https://github.com/alicodeuz/my-schedule.git"
 }
