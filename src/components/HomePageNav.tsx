@@ -1,5 +1,5 @@
 import React from "react";
-import { Drawer } from "antd";
+import { Drawer, Dropdown } from "antd";
 import {
   NavButton,
   Navbar,
@@ -8,22 +8,16 @@ import {
 } from "../Pages/MainHomePage/BookingModal/BookingStyles";
 import { useState } from "react";
 import { BookingModal } from "../Pages/MainHomePage/BookingModal/index";
-import { AiOutlineSetting } from "react-icons/ai";
-import { FaPlus } from "react-icons/fa";
-import { IoIosNotificationsOutline } from "react-icons/io";
-import { IoMdPerson } from "react-icons/io";
+import { PlusOutlined, BellOutlined } from "@ant-design/icons";
+import { IoIosNotificationsOutline, IoMdPerson,  } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
-import { Dropdown } from 'antd';
-import menuComponents from '../Pages/MainHomePage/BookingModal/menu/menuComponents'
-// import logo from '../assets/BookingPage/logo.png';
-import {PlusOutlined, BellOutlined, SettingOutlined,CheckSquareOutlined,FieldTimeOutlined,AppstoreOutlined} from "@ant-design/icons";
+import logo from '../assets/BookingPage/booking.png';
+import { AiOutlineSetting } from 'react-icons/ai';
+import { SettingOutlined } from "@ant-design/icons";
+import Menu from '../Pages/MainHomePage/BookingModal/menu/menuComponents'
 
 export const HomePageNav = () => {
- 
-
-
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerVisible, setDrawerVisible] = useState(false);
   const dispatch = useDispatch();
@@ -45,17 +39,22 @@ export const HomePageNav = () => {
   const onCloseDrawer = () => {
     setDrawerVisible(false);
   };
+
   const handleLogout = () => {
     dispatch(logout());
     onCloseDrawer();
   };
+
+  const menu = (
+    <Menu />
+  );
 
   return (
     <div>
       <Navbar>
         <div className="navbar-buttons">
           <div className="navbar">
-          <NavButton style={{display:"flex", alignItems:"center", marginLeft:"10px"}}> Booking</NavButton>
+            <NavButton style={{display:"flex", alignItems:"center", marginLeft:"10px"}}><img src={logo} alt="" style={{width: "30px"}}/> Booking</NavButton>
             <a href="/calendar">
               <NavButton>Calendar</NavButton>
             </a>
@@ -65,24 +64,16 @@ export const HomePageNav = () => {
               <NavButton>My profile</NavButton>
             </a>
             <NavButton onClick={handleOpenModal}>Booking page</NavButton>
-            {isModalOpen && < BookingModal onClose={handleCloseModal} />}
+            {isModalOpen && <BookingModal onClose={handleCloseModal} />}
           </div>
           <div className="push-settings">
-            <AiOutlineSetting size={25} color="white"  style={{ fontSize: '24px', 
-            }}
-          />  
-            <Dropdown  placement="bottomRight" trigger={['click']}>
-          <PlusOutlined
-            style={{
-              fontSize: '24px',
-            }}
-           onClick={menuComponents}
-          />
-        </Dropdown>
-            <IoIosNotificationsOutline size={25} color="white" style={{
-              fontSize: '24px',
-            }}
-          />
+            <AiOutlineSetting size={25} color="white" />
+            <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
+              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <PlusOutlined style={{ fontSize: '24px', color: '#F8F8F8' }} />
+              </a>
+            </Dropdown>
+            <IoIosNotificationsOutline size={25} color="white" />
             <div className="user-image">
               <IoMdPerson size={28} color="white" onClick={showDrawer} />
             </div>
