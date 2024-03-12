@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const MainContainer = styled.div`
   display: flex;
-`;
+`
 export const SideContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,7 +21,13 @@ export const SideContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
-`;
+  .service-user {
+    display: flex;
+    flex-direction: column;
+  }
+  .service-user h1 {
+  }
+`
 export const PlusButton = styled.button`
   width:30px;
   height:30px;
@@ -32,7 +38,7 @@ export const PlusButton = styled.button`
   border:none;
   border-radius:5px;
   font-size:25px;
-`;
+`
 export const StaffUser = styled.div<{ active: boolean }>`
   display: flex;
   align-items: center;
@@ -54,4 +60,4 @@ export const StaffUser = styled.div<{ active: boolean }>`
     margin-left: 10px;
     flex: 1;
   }
-`;
+`

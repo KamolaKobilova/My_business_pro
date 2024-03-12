@@ -1,31 +1,38 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { Container, ProfileSide } from "../MyProfile/MyProfile.styles"
-import { Tabs } from "antd";
-import { FaPlus } from "react-icons/fa";
+import { Tabs } from "antd"
+import { FaPlus } from "react-icons/fa"
 import { MainContainer, PlusButton, SideContainer } from "./Service.style"
-import { ServiceInformation } from "./ServiceComponents/ServiceInformation";
-import { StaffAssigned } from "./ServiceComponents/StaffAssigned";
-import { ServiceAvailability } from "./ServiceComponents/Avability";
-import { ServiceNotifications } from "./ServiceComponents/Notifications";
-import { ServicePreferences } from "./ServiceComponents/Preferences";
-import { BookingForm } from "./ServiceComponents/BookinfForm";
-import PhotoInput from "../../../components/PhotoSelector";
-import AddServiceModal from "../../../components/addServiceModal";
+import { ServiceInformation } from "./ServiceComponents/ServiceInformation"
+import { StaffAssigned } from "./ServiceComponents/StaffAssigned"
+import { ServiceAvailability } from "./ServiceComponents/Avability"
+import { ServiceNotifications } from "./ServiceComponents/Notifications"
+import { ServicePreferences } from "./ServiceComponents/Preferences"
+import { BookingForm } from "./ServiceComponents/BookinfForm"
+import PhotoInput from "../../../components/PhotoSelector"
+import AddServiceModal from "../../../components/addServiceModal"
+import {
+  useGetServiceQuery,
+  useGetStaffQuery,
+} from "../../../features/apiSlice"
+import { ServiceValuesType } from "../../../components/ServiceApi"
 
-const { TabPane } = Tabs;
+const { TabPane } = Tabs
 
 export const ServicesPage = () => {
-  const [photo, setPhoto] = useState("");
-  const [activeTab, setActiveTab] = useState("1");
-  const [isAddServiceModalOpen, setAddServiceModalOpen] = useState(false);
+  const { data: serviceData } = useGetServiceQuery("")
+  const [photo, setPhoto] = useState("")
+  const [activeTab, setActiveTab] = useState("1")
+  const [isAddServiceModalOpen, setAddServiceModalOpen] = useState(false)
+  const service = serviceData?.payload ?? []
 
   const handleTabChange = (key: string) => {
-    setActiveTab(key);
-  };
+    setActiveTab(key)
+  }
 
   const toggleModal = () => {
-    setAddServiceModalOpen((state) => !state);
-  };
+    setAddServiceModalOpen((state) => !state)
+  }
 
   return (
     <>
@@ -36,6 +43,9 @@ export const ServicesPage = () => {
             <PlusButton onClick={toggleModal}>
               <FaPlus size={15} />
             </PlusButton>{" "}
+          </div>
+          <div className="service-user">
+            <h1>{service.name}</h1>
           </div>
         </SideContainer>
 

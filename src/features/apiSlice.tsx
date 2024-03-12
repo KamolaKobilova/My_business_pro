@@ -2,27 +2,27 @@ import {
   createApi,
   fetchBaseQuery,
   FetchBaseQueryError,
-} from "@reduxjs/toolkit/query/react";
-import { logout } from "../redux/authSlice";
-import store from "../redux/store";
+} from "@reduxjs/toolkit/query/react"
+import { logout } from "../redux/authSlice"
+import store from "../redux/store"
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_BASE_URL,
   prepareHeaders: (headers, { getState }: any) => {
-    headers.set("Content-Type", "application/json");
-    const token = getState()?.auth?.token;
-    headers.set("Authorization", "Bearer " + token);
-    return headers;
+    headers.set("Content-Type", "application/json")
+    const token = getState()?.auth?.token
+    headers.set("Authorization", "Bearer " + token)
+    return headers
   },
-});
+})
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: async (args, api, extraOptions) => {
-    const res: any = baseQuery(args, api, extraOptions);
+    const res: any = baseQuery(args, api, extraOptions)
     if (res.error?.status === 401) {
-      store.dispatch(logout());
+      store.dispatch(logout())
     }
-    return res;
+    return res
   },
   tagTypes: ["Post"],
   endpoints: (builder) => ({
@@ -61,7 +61,7 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
-    getAllServices: builder.query({
+    getService: builder.query({
       query: () => ({
         url: "service/",
         method: "GET",
@@ -80,16 +80,31 @@ export const apiSlice = createApi({
         body: workSpaceData,
       }),
     }),
+    createStaff: builder.mutation({
+      query: (staffData) => ({
+        url: "staff",
+        method: "POST",
+        body: staffData,
+      }),
+    }),
+    getStaff: builder.query({
+      query: () => ({
+        url: "staff",
+        method: "GET",
+      }),
+    }),
   }),
-});
+})
 
 export const {
   useSignInMutation,
   useSignUpMutation,
   useGetAppointmentsQuery,
   useCreateServiceMutation,
-  useGetAllServicesQuery,
+  useGetServiceQuery,
   useGetServiceByIdQuery,
   useGetWorkSpaceQuery,
   useCreateWorkSpaceMutation,
-} = apiSlice;
+  useCreateStaffMutation,
+  useGetStaffQuery,
+} = apiSlice
