@@ -5,7 +5,7 @@ import {
   Navbar,
   DrawerContent,
   LogOutButton,
-} from "../Pages/MainHomePage/BookingModal/BookingStyles"
+} from "../Pages/MainHomePage/BookingModal/Style.Booking"
 import { useState } from "react"
 import { BookingModal } from "../Pages/MainHomePage/BookingModal/index"
 import { PlusOutlined, BellOutlined } from "@ant-design/icons"

@@ -1,8 +1,8 @@
-import { Button, Form, Input, Select } from "antd";
-import { CustomSelector } from "../BookingStyles";
-import { BOOKING_MODAL_ITEMS } from "../constants";
+import { Button, Form, Input, Select } from "antd"
+import { CustomSelector } from "../Style.Booking"
+import { BOOKING_MODAL_ITEMS } from "../constants"
 
-const { Option } = Select;
+const { Option } = Select
 
 const BusinessDetailsStep = ({ nextStep }: any) => {
   return (
@@ -35,7 +35,7 @@ const BusinessDetailsStep = ({ nextStep }: any) => {
         </Button>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
-export default BusinessDetailsStep;
+export default BusinessDetailsStep

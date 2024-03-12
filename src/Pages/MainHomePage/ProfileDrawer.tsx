@@ -1,21 +1,21 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Drawer } from "antd";
-import { logout } from "../../redux/authSlice";
-import { LogOutButton, DrawerContent } from "./BookingModal/BookingStyles";
+import React from "react"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { Drawer } from "antd"
+import { logout } from "../../redux/authSlice"
+import { LogOutButton, DrawerContent } from "./BookingModal/Style.Booking"
 
 export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const onCloseDrawer = () => {
-    setDrawerVisible(false);
-  };
+    setDrawerVisible(false)
+  }
 
   const handleLogout = () => {
-    dispatch(logout());
-    onCloseDrawer();
-  };
+    dispatch(logout())
+    onCloseDrawer()
+  }
   return (
     <Drawer
       title="User Menu"
@@ -34,5 +34,5 @@ export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
         <LogOutButton onClick={handleLogout}>Log out</LogOutButton>
       </DrawerContent>
     </Drawer>
-  );
-};
+  )
+}

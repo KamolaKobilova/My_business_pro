@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   ModalOverlay,
   ModalContent,
@@ -7,46 +7,44 @@ import {
   Header,
   Title,
   CustomSteps,
-} from "./BookingStyles";
-import logo from "../../../assets/BookingPage/logo.png";
-import { Form, Steps, Select } from "antd";
-import { Store } from "antd/lib/form/interface";
+} from "./Style.Booking"
+import logo from "../../../assets/BookingPage/logo.png"
+import { Form, Steps, Select } from "antd"
+import { Store } from "antd/lib/form/interface"
 
-import BusinessDetailsStep from "./ModalSteps/BusinessDetailsStep";
-import AvaibilityStep from "./ModalSteps/AvaibilityStep";
-import CreateServiceStep from "./ModalSteps/CreateServiceStep";
+import BusinessDetailsStep from "./ModalSteps/BusinessDetailsStep"
+import AvaibilityStep from "./ModalSteps/AvaibilityStep"
+import CreateServiceStep from "./ModalSteps/CreateServiceStep"
 
 interface BookingPageProps {
-  onClose: () => void;
+  onClose: () => void
 }
-const { Step } = Steps;
+const { Step } = Steps
 
 export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [selectedDays, setSelectedDays] = useState<string[]>([]);
-  const [form] = Form.useForm();
+  const [currentStep, setCurrentStep] = useState(0)
+  const [selectedDays, setSelectedDays] = useState<string[]>([])
+  const [form] = Form.useForm()
 
   const nextStep = () => {
-    setCurrentStep(currentStep + 1);
-  };
+    setCurrentStep(currentStep + 1)
+  }
 
   const prevStep = () => {
-    setCurrentStep(currentStep - 1);
-  };
+    setCurrentStep(currentStep - 1)
+  }
 
   const onFinish = (values: Store) => {
-    console.log("Form submitted with values:", values);
-  };
+    console.log("Form submitted with values:", values)
+  }
 
   const handleDayClick = (day: string) => {
     if (selectedDays.includes(day)) {
-      setSelectedDays(
-        selectedDays.filter((selectedDay) => selectedDay !== day)
-      );
+      setSelectedDays(selectedDays.filter((selectedDay) => selectedDay !== day))
     } else {
-      setSelectedDays([...selectedDays, day]);
+      setSelectedDays([...selectedDays, day])
     }
-  };
+  }
 
   return (
     <ModalOverlay>
@@ -101,5 +99,5 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
         </ModalContainer>
       </ModalContent>
     </ModalOverlay>
-  );
-};
+  )
+}
