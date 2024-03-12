@@ -1,68 +1,94 @@
-import React, { useState } from "react"
-import TodoModal from "../../Pages/MainHomePage/ToDoModal/TodoModal"
-import { Button, DatePicker, Form, Select, TimePicker, Checkbox } from "antd"
-import "./style.css"
-import TextArea from "antd/es/input/TextArea"
+import React from 'react';
+import { Button, DatePicker, Form, Input, Select } from 'antd';
+import './style.css';
+const { RangePicker } = DatePicker;
 
-type SizeType = Parameters<typeof Form>[0]["size"]
-function AppointDrawer() {
-  const [componentSize, setComponentSize] = useState<SizeType | "default">(
-    "default"
-  )
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 6 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 14 },
+  },
+};
 
-  const onFormLayoutChange = ({ size }: { size: SizeType }) => {
-    setComponentSize(size)
-  }
+const Index: React.FC = () => {
+  const onFinish = (values: any) => {
+    console.log('Form values:', values);
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
+
   return (
     <Form
-      labelCol={{ span: 4 }}
-      wrapperCol={{ span: 14 }}
-      layout="horizontal"
-      initialValues={{ size: componentSize }}
-      onValuesChange={onFormLayoutChange}
-      size={componentSize as SizeType}
-      style={{ maxWidth: 600, marginLeft: "80px", marginTop: "30px" }}
+      {...formItemLayout}
+      style={{ maxWidth: 600 }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
     >
-      <Form.Item label="Workspace">
-        <Select className="select">
-          <Select.Option value="demo">Alicode</Select.Option>
-        </Select>
-      </Form.Item>
-      <Form.Item label="Service">
-        <Select className="select">
-          <Select.Option value="demo">Select</Select.Option>
-        </Select>
-      </Form.Item>
-      <Form.Item label="Assign Staff">
+      <Form.Item
+        label="WorkSpace"
+        name="workspace"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
         <Select className="select">
           <Select.Option value="demo">Demo</Select.Option>
         </Select>
       </Form.Item>
-      <Form.Item label="Date & Time">
-        <DatePicker className="selectDate" />
-        <TimePicker className="selectTime" />
-      </Form.Item>
-      <Form.Item style={{ marginLeft: "-94px" }}>
-        <TodoModal />
-      </Form.Item>
-      <Form.Item label="Notes" className="area">
-        <TextArea
-          style={{
-            height: "100px",
-          }}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Checkbox className="checkbox" style={{ marginLeft: "100px" }}>
-          Send notification for customers
-        </Checkbox>
-      </Form.Item>
-      <div className="form-footer">
-        <Button>Cancel</Button>
-        <Button type="primary">Submit</Button>
-      </div>
-    </Form>
-  )
-}
 
-export default AppointDrawer
+      <Form.Item
+        label="Service"
+        name="service"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
+        <Select className="select">
+          <Select.Option value="demo">Demo</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        label="Assign Staff"
+        name="staff"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
+        <Select className="select">
+          <Select.Option value="demo">Demo</Select.Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item
+        label="DatePicker"
+        name="datePicker"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
+        <DatePicker className="selects" />
+      </Form.Item>
+
+      <Form.Item
+        label="Notes"
+        name="notes"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
+        <Input.TextArea className="notes" />
+      </Form.Item>
+      <Form.Item
+        label="RangePicker"
+        name="rangePicker"
+        rules={[{ required: true, message: 'Please input!' }]}
+      >
+        <RangePicker className="selectss" />
+      </Form.Item>
+
+      <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
+
+export default Index;
