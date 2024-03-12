@@ -2,27 +2,27 @@ import {
   createApi,
   fetchBaseQuery,
   FetchBaseQueryError,
-} from "@reduxjs/toolkit/query/react";
-import { logout } from "../redux/authSlice";
-import store from "../redux/store";
+} from "@reduxjs/toolkit/query/react"
+import { logout } from "../redux/authSlice"
+import store from "../redux/store"
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_BASE_URL,
   prepareHeaders: (headers, { getState }: any) => {
-    headers.set("Content-Type", "application/json");
-    const token = getState()?.auth?.token;
-    headers.set("Authorization", "Bearer " + token);
-    return headers;
+    headers.set("Content-Type", "application/json")
+    const token = getState()?.auth?.token
+    headers.set("Authorization", "Bearer " + token)
+    return headers
   },
-});
+})
 export const apiSlice = createApi({
   reducerPath: "apiSlice",
   baseQuery: async (args, api, extraOptions) => {
-    const res: any = baseQuery(args, api, extraOptions);
+    const res: any = baseQuery(args, api, extraOptions)
     if (res.error?.status === 401) {
-      store.dispatch(logout());
+      store.dispatch(logout())
     }
-    return res;
+    return res
   },
   tagTypes: ["Post"],
   endpoints: (builder) => ({
@@ -81,7 +81,7 @@ export const apiSlice = createApi({
       }),
     }),
   }),
-});
+})
 
 export const {
   useSignInMutation,
@@ -92,4 +92,4 @@ export const {
   useGetServiceByIdQuery,
   useGetWorkSpaceQuery,
   useCreateWorkSpaceMutation,
-} = apiSlice;
+} = apiSlice

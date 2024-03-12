@@ -1,29 +1,56 @@
-import { Form, Input, Space } from "antd";
-import { CustomInputNumber, PrevSubmit } from "../BookingStyles";
+import { Form, Input, Space, TimePicker } from "antd"
+import { useForm } from "rc-field-form"
+import {
+  CustomInputNumber,
+  CustomTimePicker,
+  ModalCloseButton,
+  PrevSubmit,
+} from "../Style.Booking"
 
-const CreateServiceStep = ({ prevStep }: any) => {
+const CreateServiceStep = ({
+  prevStep,
+  onClose,
+  form,
+  updateFormData,
+}: any) => {
+  const handleTimeChange = (time: any) => {
+    const formattedTime = time.format("HH:mm")
+    form.setFieldsValue({ serviceDuration: formattedTime })
+    updateFormData({ serviceDuration: formattedTime })
+  }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    form.setFieldsValue({ serviceName: value })
+    updateFormData({ serviceName: value })
+  }
+
   return (
-    <Form>
+    <>
       <Form.Item
         name="serviceName"
         label="Service Name"
-        rules={[{ required: true, message: "Please input Service Name!" }]}
+        rules={[{ required: true, message: "Please write Service name!" }]}
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
         style={{ width: "370px" }}
       >
-        <Input style={{ width: "370px", height: "40px" }} />
+        <Input
+          onChange={handleInputChange}
+          style={{ width: "370px", height: "40px" }}
+        />
       </Form.Item>
       <Form.Item
-        name="duration"
+        name="serviceDuration"
         label="Duration"
-        rules={[{ required: true, message: "Please input Duration!" }]}
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
       >
         <Space>
-          <CustomInputNumber min={0} max={24} placeholder="Hours" />
-          <CustomInputNumber min={0} max={59} placeholder="Minutes" />
+          <CustomTimePicker
+            format="HH:mm"
+            placeholder="Duration"
+            onChange={handleTimeChange}
+          />
         </Space>
       </Form.Item>
       <Form.Item>
@@ -34,8 +61,8 @@ const CreateServiceStep = ({ prevStep }: any) => {
           Submit
         </PrevSubmit>
       </Form.Item>
-    </Form>
-  );
-};
+    </>
+  )
+}
 
-export default CreateServiceStep;
+export default CreateServiceStep

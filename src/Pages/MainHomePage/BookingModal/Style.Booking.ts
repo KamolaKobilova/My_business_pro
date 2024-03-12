@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { Button, Form, InputNumber, Select, Steps, TimePicker } from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-const { Step } = Steps;
-const { Option } = Select;
-const mainPurple = "#4f4a7b";
+import styled from "styled-components"
+import { Button, Form, InputNumber, Select, Steps, TimePicker } from "antd"
+import { ExclamationCircleOutlined } from "@ant-design/icons"
+import { mainPurple } from "../../../colors"
+const { Step } = Steps
+const { Option } = Select
 
 export const Navbar = styled.nav`
   max-width: 1920px;
@@ -40,7 +40,7 @@ export const Navbar = styled.nav`
     display: flex;
     align-items: center;
   }
-`;
+`
 export const ButtonNext = styled.nav`
   display: flex;
   height: 22px;
@@ -49,12 +49,12 @@ export const ButtonNext = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 0.595px;
-  background-color: #4f4a7b;
+  background-color: ${mainPurple};
   color: white;
   border-radius: 2px;
   margin-left: 220px;
   margin-top: 40px;
-`;
+`
 export const Title = styled.div`
   h3 {
     color: #333333;
@@ -69,9 +69,11 @@ export const Title = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
-    margin: 20px, 0 0 20px;
+    margin:
+      20px,
+      0 0 20px;
   }
-`;
+`
 export const CustomSteps = styled(Steps)`
   display: flex;
   flex-direction: column;
@@ -81,8 +83,7 @@ export const CustomSteps = styled(Steps)`
   .ant-steps-item:first-child {
     margin: 0 0 0 10px;
   }
-`;
-
+`
 export const Input = styled.div`
   margin-top: 30px;
   input,
@@ -101,7 +102,7 @@ export const Input = styled.div`
     font-size: 17.438px;
     margin-bottom: 10px;
   }
-`;
+`
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
@@ -113,40 +114,47 @@ export const Header = styled.div`
   h1 {
     margin: 17px 0;
   }
-`;
+`
 export const CustomForm = styled(Form)`
   .current-step {
     margin: 16px 0;
   }
-`;
+`
 export const CustomSelector = styled(Select)`
   height: 35px;
-`;
+`
 export const NextStepButton = styled(Button)`
   width: 100px;
   position: relative;
   top: 35px;
   left: 190px;
-  background-color: #4f4a7b;
-`;
+  background-color: ${mainPurple};
+`
+export const NextButton = styled(Button)`
+  width: 100px;
+  position: relative;
+  top: 30px;
+  left: 220px;
+  background-color: ${mainPurple};
+`
 export const NextPreviousButton = styled(Button)<{ variant: string }>`
   width: 100px;
   position: relative;
   top: 70px;
   left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
-  background-color: #4f4a7b;
-`;
+  background-color: ${mainPurple};
+`
 export const PrevSubmit = styled(Button)<{ variant: string }>`
   width: 100px;
   position: relative;
   top: 120px;
   left: ${(props) => (props.variant === "left" ? "150px" : "8px")};
-  background-color: #4f4a7b;
-`;
+  background-color: ${mainPurple};
+`
 export const CustomTimePicker = styled(TimePicker)`
   width: 190px;
   height: 40px;
-`;
+`
 export const WeekDaysButton = styled(Button)`
   margin-right: 10px;
   height: 35px;
@@ -154,7 +162,7 @@ export const WeekDaysButton = styled(Button)`
   border-color: #4f4a7b;
   background-color: #dbd9f5;
   margin-bottom: 10px;
-`;
+`
 export const NavButton = styled.button`
   font-size: 17px;
   font-family: sans-serif;
@@ -166,10 +174,10 @@ export const NavButton = styled.button`
   &:hover {
     border-bottom: 2px solid red;
   }
-`;
+`
 export const Circle = styled(ExclamationCircleOutlined)`
   color: rgb(204, 204, 204);
-`;
+`
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -180,25 +188,25 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const ModalContent = styled.div`
   background: #fff;
   height: auto;
   width: 800px;
   border-radius: 10px;
-`;
+`
 
 export const ModalCloseButton = styled.button`
   position: absolute;
-  top: 215px;
+  top: 150px;
   left: 1130px;
   background: none;
   border: none;
   font-size: 30px;
   cursor: pointer;
   right: 370px;
-`;
+`
 export const ModalContainer = styled.div`
   display: flex;
 
@@ -234,7 +242,7 @@ export const ModalContainer = styled.div`
     color: ${mainPurple};
     margin-top: 0;
   }
-`;
+`
 export const DrawerContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -255,7 +263,7 @@ export const DrawerContent = styled.div`
     height: 100px;
     border-radius: 50px;
   }
-`;
+`
 export const LogOutButton = styled.button`
   width: 100px;
   height: 40px;
@@ -264,8 +272,8 @@ export const LogOutButton = styled.button`
   background-color: ${mainPurple};
   border: none;
   cursor: pointer;
-`;
+`
 export const CustomInputNumber = styled(InputNumber)`
   width: 180px;
   height: 40px;
-`;
+`

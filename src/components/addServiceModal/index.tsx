@@ -1,46 +1,46 @@
-import React from "react";
-import { Modal, Button, Form, Input, Select, message, TimePicker } from "antd";
-import { ModalContent } from "../AddStaffmodal/stylesForModal";
+import React from "react"
+import { Modal, Button, Form, Input, Select, message, TimePicker } from "antd"
+import { ModalContent } from "../AddStaffmodal/Style.Modal"
 import {
   useCreateServiceMutation,
   useGetAllServicesQuery,
   useGetWorkSpaceQuery,
-} from "../../features/apiSlice";
-const { Item } = Form;
-const { Option } = Select;
+} from "../../features/apiSlice"
+const { Item } = Form
+const { Option } = Select
 
 interface FormValues {
-  name?: string;
-  duration?: number;
-  unit?: string;
-  workspace?: string;
-  staff?: string;
+  name?: string
+  duration?: number
+  unit?: string
+  workspace?: string
+  staff?: string
 }
 type WorkSpaceTypes = {
-  name?: string;
-  email?: string;
-  status?: string;
-  description?: string;
-  id?: string;
-};
+  name?: string
+  email?: string
+  status?: string
+  description?: string
+  id?: string
+}
 
 const AddServiceModal = ({ isOpen, onClose }: any) => {
-  const [form] = Form.useForm();
-  const [createService, { isLoading: isCreating }] = useCreateServiceMutation();
-  const { data: workSpaceData, isLoading } = useGetWorkSpaceQuery("");
-  const workspaces = workSpaceData?.payload ?? [];
+  const [form] = Form.useForm()
+  const [createService, { isLoading: isCreating }] = useCreateServiceMutation()
+  const { data: workSpaceData, isLoading } = useGetWorkSpaceQuery("")
+  const workspaces = workSpaceData?.payload ?? []
 
   const handleSubmit = async (values: FormValues) => {
     try {
       const result = await createService({
         ...values,
-      });
-      form.resetFields();
-      onClose();
+      })
+      form.resetFields()
+      onClose()
     } catch (error: any) {
-      message.error("Couldn't create service!");
+      message.error("Couldn't create service!")
     }
-  };
+  }
 
   return (
     <Modal
@@ -101,7 +101,7 @@ const AddServiceModal = ({ isOpen, onClose }: any) => {
         </ModalContent>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddServiceModal;
+export default AddServiceModal
