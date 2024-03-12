@@ -1,60 +1,62 @@
-import React from "react";
-import { Drawer, Dropdown } from "antd";
+import React from "react"
+import { Drawer, Dropdown } from "antd"
 import {
   NavButton,
   Navbar,
   DrawerContent,
   LogOutButton,
-} from "../Pages/MainHomePage/BookingModal/BookingStyles";
-import { useState } from "react";
-import { BookingModal } from "../Pages/MainHomePage/BookingModal/index";
-import { PlusOutlined, BellOutlined } from "@ant-design/icons";
-import { IoIosNotificationsOutline, IoMdPerson,  } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { logout } from "../redux/authSlice";
-import logo from '../assets/BookingPage/booking.png';
-import { AiOutlineSetting } from 'react-icons/ai';
-import { SettingOutlined } from "@ant-design/icons";
-import Menu from '../Pages/MainHomePage/BookingModal/menu/menuComponents'
+} from "../Pages/MainHomePage/BookingModal/BookingStyles"
+import { useState } from "react"
+import { BookingModal } from "../Pages/MainHomePage/BookingModal/index"
+import { PlusOutlined, BellOutlined } from "@ant-design/icons"
+import { IoIosNotificationsOutline, IoMdPerson } from "react-icons/io"
+import { useDispatch } from "react-redux"
+import { logout } from "../redux/authSlice"
+import logo from "../assets/BookingPage/booking.png"
+import { AiOutlineSetting } from "react-icons/ai"
+import { SettingOutlined } from "@ant-design/icons"
+import Menu from "../Pages/MainHomePage/BookingModal/menu/menuComponents"
+import { ProfileDrawer } from "../Pages/MainHomePage/ProfileDrawer"
 
 export const HomePageNav = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDrawerVisible, setDrawerVisible] = useState(false);
-  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isDrawerVisible, setDrawerVisible] = useState(false)
+  const dispatch = useDispatch()
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-    console.log("modal open");
-  };
+    setIsModalOpen(true)
+    console.log("modal open")
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-    console.log("modal closed");
-  };
+    setIsModalOpen(false)
+    console.log("modal closed")
+  }
 
   const showDrawer = () => {
-    setDrawerVisible(true);
-  };
+    setDrawerVisible(true)
+  }
 
   const onCloseDrawer = () => {
-    setDrawerVisible(false);
-  };
+    setDrawerVisible(false)
+  }
 
-  const handleLogout = () => {
-    dispatch(logout());
-    onCloseDrawer();
-  };
-
-  const menu = (
-    <Menu />
-  );
+  const menu = <Menu />
 
   return (
     <div>
       <Navbar>
         <div className="navbar-buttons">
           <div className="navbar">
-            <NavButton style={{display:"flex", alignItems:"center", marginLeft:"10px"}}><img src={logo} alt="" style={{width: "30px"}}/> Booking</NavButton>
+            <NavButton
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "10px",
+              }}
+            >
+              <img src={logo} alt="" style={{ width: "30px" }} /> Booking
+            </NavButton>
             <a href="/calendar">
               <NavButton>Calendar</NavButton>
             </a>
@@ -68,9 +70,16 @@ export const HomePageNav = () => {
           </div>
           <div className="push-settings">
             <AiOutlineSetting size={25} color="white" />
-            <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
-              <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                <PlusOutlined style={{ fontSize: '24px', color: '#F8F8F8' }} />
+            <Dropdown
+              overlay={menu}
+              placement="bottomRight"
+              trigger={["click"]}
+            >
+              <a
+                className="ant-dropdown-link"
+                onClick={(e) => e.preventDefault()}
+              >
+                <PlusOutlined style={{ fontSize: "24px", color: "#F8F8F8" }} />
               </a>
             </Dropdown>
             <IoIosNotificationsOutline size={25} color="white" />
@@ -81,23 +90,10 @@ export const HomePageNav = () => {
         </div>
       </Navbar>
 
-      <Drawer
-        title="User Menu"
-        placement="right"
-        closable={false}
-        onClose={onCloseDrawer}
-        visible={isDrawerVisible}
-      >
-        <DrawerContent>
-          <div className="user">
-            <img alt="user" src="" />
-          </div>
-          <p>Dinora</p>
-          <p>email</p>
-          <p>time</p>
-          <LogOutButton onClick={handleLogout}>Log out</LogOutButton>
-        </DrawerContent>
-      </Drawer>
+      <ProfileDrawer
+        isDrawerVisible={isDrawerVisible}
+        setDrawerVisible={setDrawerVisible}
+      />
     </div>
-  );
-};
+  )
+}
