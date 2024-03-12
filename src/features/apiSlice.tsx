@@ -61,7 +61,7 @@ export const apiSlice = createApi({
         method: "GET",
       }),
     }),
-    getAllServices: builder.query({
+    getService: builder.query({
       query: () => ({
         url: "service/",
         method: "GET",
@@ -80,6 +80,19 @@ export const apiSlice = createApi({
         body: workSpaceData,
       }),
     }),
+    createStaff: builder.mutation({
+      query: (staffData) => ({
+        url: "staff",
+        method: "POST",
+        body: staffData,
+      }),
+    }),
+    getStaff: builder.query({
+      query: () => ({
+        url: "staff",
+        method: "GET",
+      }),
+    }),
   }),
 })
 
@@ -88,8 +101,10 @@ export const {
   useSignUpMutation,
   useGetAppointmentsQuery,
   useCreateServiceMutation,
-  useGetAllServicesQuery,
+  useGetServiceQuery,
   useGetServiceByIdQuery,
   useGetWorkSpaceQuery,
   useCreateWorkSpaceMutation,
+  useCreateStaffMutation,
+  useGetStaffQuery,
 } = apiSlice
