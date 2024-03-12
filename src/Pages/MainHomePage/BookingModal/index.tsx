@@ -15,17 +15,24 @@ import { Store } from "antd/lib/form/interface"
 import BusinessDetailsStep from "./ModalSteps/BusinessDetailsStep"
 import AvaibilityStep from "./ModalSteps/AvaibilityStep"
 import CreateServiceStep from "./ModalSteps/CreateServiceStep"
+import WorkSpaceApi from "../../../hooks/workSpaceApi"
 
 interface BookingPageProps {
   onClose: () => void
 }
+
 const { Step } = Steps
 
 export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
   const [currentStep, setCurrentStep] = useState(0)
   const [selectedDays, setSelectedDays] = useState<string[]>([])
+  const [formData, setFormData] = useState({})
+  const { handleSubmit } = WorkSpaceApi()
   const [form] = Form.useForm()
 
+  const updateFormData = (values: any) => {
+    setFormData({ ...formData, ...values })
+  }
   const nextStep = () => {
     setCurrentStep(currentStep + 1)
   }
@@ -34,8 +41,10 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
     setCurrentStep(currentStep - 1)
   }
 
-  const onFinish = (values: Store) => {
-    console.log("Form submitted with values:", values)
+  const onFinish = async () => {
+    await handleSubmit(formData)
+
+    // onClose()
   }
 
   const handleDayClick = (day: string) => {
@@ -49,8 +58,10 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
   return (
     <ModalOverlay>
       <ModalContent>
-        <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
         <ModalContainer>
+          {currentStep === 2 && (
+            <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
+          )}
           <div className="switch-block">
             <Header>
               <img src={logo} alt="logo" />
@@ -79,7 +90,11 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
               <Form form={form} onFinish={onFinish}>
                 <div className="current-step">
                   {currentStep === 0 && (
-                    <BusinessDetailsStep nextStep={nextStep} />
+                    <BusinessDetailsStep
+                      nextStep={nextStep}
+                      form={form}
+                      updateFormData={updateFormData}
+                    />
                   )}
                   {currentStep === 1 && (
                     <AvaibilityStep
@@ -87,10 +102,18 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
                       prevStep={prevStep}
                       selectedDays={selectedDays}
                       handleDayClick={handleDayClick}
+                      form={form}
+                      updateFormData={updateFormData}
+                      setSelectedDays={setSelectedDays}
                     />
                   )}
                   {currentStep === 2 && (
-                    <CreateServiceStep prevStep={prevStep} />
+                    <CreateServiceStep
+                      prevStep={prevStep}
+                      onClose={onClose}
+                      form={form}
+                      updateFormData={updateFormData}
+                    />
                   )}
                 </div>
               </Form>

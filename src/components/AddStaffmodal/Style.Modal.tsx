@@ -11,12 +11,8 @@ export const ServiceModal = styled(Modal)`
 export const ModalContent = styled.div`
   .ant-modal-body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
     justify-content: space-between;
   }
-
   padding: 20px;
   .ant-input,
   .ant-select {

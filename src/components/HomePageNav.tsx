@@ -1,5 +1,4 @@
-import React from "react"
-import { Drawer, Dropdown } from "antd"
+import Dropdown from "antd/es/dropdown/dropdown"
 import {
   NavButton,
   Navbar,
@@ -33,6 +32,9 @@ export const HomePageNav = () => {
     console.log("modal closed")
   }
 
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev)
+  }
   const showDrawer = () => {
     setDrawerVisible(true)
   }
@@ -70,8 +72,8 @@ export const HomePageNav = () => {
             <a href="/my-profile">
               <NavButton>My profile</NavButton>
             </a>
-            <NavButton onClick={handleOpenModal}>Booking page</NavButton>
-            {isModalOpen && <BookingModal onClose={handleCloseModal} />}
+            <NavButton onClick={toggleModal}>Booking page</NavButton>
+            {isModalOpen && <BookingModal onClose={toggleModal} />}
           </div>
           <div className="push-settings">
             <AiOutlineSetting size={25} color="white" />

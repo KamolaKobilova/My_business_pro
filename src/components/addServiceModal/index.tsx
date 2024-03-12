@@ -1,10 +1,8 @@
 import React from "react"
 import { Modal, Button, Form, Input, Select, message, TimePicker } from "antd"
-import {
-  CustomButton,
-  ModalContent,
-  ServiceModal,
-} from "../AddStaffmodal/stylesForModal"
+import { ModalContent } from "../AddStaffmodal/Style.Modal"
+
+import { CustomButton, ServiceModal } from "../AddStaffmodal/Style.Modal"
 import { useGetStaffQuery } from "../../features/apiSlice"
 import ServiceApi, { StaffType, WorkSpaceTypes } from "../ServiceApi"
 const { Item } = Form
