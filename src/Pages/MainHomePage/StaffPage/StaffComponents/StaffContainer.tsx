@@ -45,7 +45,7 @@ export const StaffContainer = () => {
         </div>
       </ProfileSide>
       {activeTab === "1" && (
-        <StaffInformation staffData={staffData} activeIndex={activeIndex} />
+        <StaffInformation  activeIndex={activeIndex} />
       )}
       {activeTab === "2" && <WorkingHours />}
       {activeTab === "3" && <AssignedServices />}

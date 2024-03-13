@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit"
 import { persistStore, persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import authReducer from "./authSlice"
-import { staffSlice } from "./StaffPageReducer/authSlice"
 import { workspaceSlice } from "./workSpaceReducer"
 import { apiSlice } from "../features/apiSlice"
 import { setupListeners } from "@reduxjs/toolkit/query"
@@ -13,16 +12,6 @@ const persistAuthConfig = {
 }
 
 const persistedAuthReducer = persistReducer(persistAuthConfig, authReducer)
-
-const persistStaffConfig = {
-  key: "staff",
-  storage,
-}
-
-const persistedStaffReducer = persistReducer(
-  persistStaffConfig,
-  staffSlice.reducer
-)
 
 const persistWorkspaceConfig = {
   key: "workspace",
@@ -38,7 +27,6 @@ const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: persistedAuthReducer,
-    staff: persistedStaffReducer,
     workspace: persistedWorkspaceReducer,
   },
   middleware: (getDefaultMiddleware) =>

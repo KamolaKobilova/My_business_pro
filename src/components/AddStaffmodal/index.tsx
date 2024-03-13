@@ -1,6 +1,7 @@
 import React from "react"
 import { Modal, Input, Select, DatePicker, Button, Form } from "antd"
 import { ModalContent } from "./Style.Modal"
+import StaffApi from "./StaffApi"
 
 const { Option } = Select
 const { Item } = Form
@@ -13,9 +14,14 @@ const initialValues = {
 const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
   const [form] = Form.useForm()
 
-  const handleSubmit = (values: any) => {
-    values.dob = values.dob.format("YYYY-MM-DD")
-    onAdd(values)
+   const {handleSubmit, service}  = StaffApi()
+  const onFinish = async (values: any) => {
+    values.datebirth = values.datebirth.format("YYYY-MM-DD" )
+
+ await handleSubmit(values)
+    console.log(values);
+    
+
     form.resetFields()
     onClose()
   }
@@ -34,10 +40,10 @@ const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
         </Button>,
       ]}
     >
-      <Form form={form} onFinish={handleSubmit} initialValues={initialValues}>
+      <Form form={form} onFinish={onFinish} initialValues={initialValues}>
         <ModalContent>
           <Item
-            name="name"
+            name="firstName"
             rules={[{ required: true, message: "Please enter name" }]}
           >
             <Input placeholder="Name" />
@@ -48,22 +54,29 @@ const AddStaffModal = ({ isOpen, onClose, onAdd }: any) => {
           >
             <Input placeholder="Email" />
           </Item>
-          <Item name="phoneNumber">
+          <Item name="phone">
             <Input placeholder="Phone Number" />
           </Item>
           <Item name="role">
             <Select placeholder="Role">
-              <Option value="staff">Staff</Option>
-              <Option value="manager">Manager</Option>
+              <Option value="superadmin">Super Admin</Option>
+              <Option value="doctor">Doctor</Option>
             </Select>
           </Item>
-          <Item name="dob">
+          <Item name="datebirth">
             <DatePicker placeholder="Date of Birth" />
           </Item>
-          <Item name="gender">
+          <Item name="foor">
             <Select placeholder="Gender">
               <Option value="male">Male</Option>
               <Option value="female">Female</Option>
+            </Select>
+          </Item>
+          <Item name="service">
+            <Select placeholder="Service">
+              {service.map((service: any, index: number) => (
+                <Option key={`${service?._id ?? index}`}>{service?.name}</Option>
+              ))}
             </Select>
           </Item>
         </ModalContent>
