@@ -62,7 +62,7 @@ const MenuWithDrawer = () => {
   const [visible, setVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState('');
 
-  const handleMenuClick = (e:any) => {
+  const handleMenuClick = (e) => {
     setSelectedMenuItem(e.key);
     setVisible(true);
   };
@@ -91,12 +91,11 @@ const MenuWithDrawer = () => {
         </div> }
         placement="right"
         closable={true}
-        closeIcon={<div className="custom-close-icon">X</div>}
+        onClose={onClose}
         visible={visible}
         width={800}
       >
-        {<AppointDrawer/>}
-        {selectedMenuItem === '1' }
+        {selectedMenuItem === '1' && <AppointDrawer/>}
       </Drawer>
     </>
   );
