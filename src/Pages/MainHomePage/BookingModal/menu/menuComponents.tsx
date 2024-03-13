@@ -62,7 +62,7 @@ const MenuWithDrawer = () => {
   const [visible, setVisible] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState('');
 
-  const handleMenuClick = (e) => {
+  const handleMenuClick = (e: any) => {
     setSelectedMenuItem(e.key);
     setVisible(true);
   };
