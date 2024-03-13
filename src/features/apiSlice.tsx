@@ -48,6 +48,19 @@ export const apiSlice = createApi({
         url: "appointments",
       }),
     }),
+    createUsers: builder.mutation({
+      query: (userData) => ({
+        url: "users",
+        method: "POST",
+        body: userData,
+      }),
+    }),
+    getUsers: builder.query({
+      query: () => ({
+        url: "users",
+        method: "GET",
+      }),
+    }),
     createService: builder.mutation({
       query: (serviceData) => ({
         url: "service",
@@ -99,6 +112,8 @@ export const apiSlice = createApi({
 export const {
   useSignInMutation,
   useSignUpMutation,
+  useCreateUsersMutation,
+  useGetUsersQuery,
   useGetAppointmentsQuery,
   useCreateServiceMutation,
   useGetServiceQuery,

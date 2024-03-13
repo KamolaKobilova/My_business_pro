@@ -4,8 +4,12 @@ import { useDispatch } from "react-redux"
 import { Drawer } from "antd"
 import { logout } from "../../redux/authSlice"
 import { LogOutButton, DrawerContent } from "./BookingModal/Style.Booking"
+import { useGetUsersQuery } from "../../features/apiSlice"
 
 export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
+  const { data: userData } = useGetUsersQuery("")
+  const user = userData ?? []
+
   const dispatch = useDispatch()
 
   const onCloseDrawer = () => {
@@ -28,9 +32,12 @@ export const ProfileDrawer = ({ isDrawerVisible, setDrawerVisible }: any) => {
         <div className="user">
           <img alt="user" src="" />
         </div>
-        <p>Dinora</p>
-        <p>email</p>
-        <p>time</p>
+        <React.Fragment>
+          <p>{user.firstName}</p>
+          <p>{user.email}</p>
+          <p>{user.phone}</p>
+        </React.Fragment>
+
         <LogOutButton onClick={handleLogout}>Log out</LogOutButton>
       </DrawerContent>
     </Drawer>
