@@ -44,7 +44,7 @@ export const BookingModal: React.FC<BookingPageProps> = ({ onClose }) => {
   const onFinish = async () => {
     await handleSubmit(formData)
 
-    // onClose()
+    onClose()
   }
 
   const handleDayClick = (day: string) => {

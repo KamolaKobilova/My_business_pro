@@ -1,4 +1,5 @@
 import React from "react"
+import { useGetUsersQuery } from "../../../../features/apiSlice"
 import {
   ScrollingBlockWrp,
   ScrollingBlock,
@@ -6,6 +7,8 @@ import {
 } from "../MyProfile.styles"
 
 export const GeneralInformation = () => {
+  const { data: userData } = useGetUsersQuery("")
+  const user = userData ?? []
   return (
     <>
       <ScrollingBlockWrp variant="little">
@@ -15,15 +18,16 @@ export const GeneralInformation = () => {
         <ScrollingBlock>
           <ScrollingBlockContent>
             <h3>Name</h3>
+            <p>{user.firstName}</p>
             <p></p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Email</h3>
-            <p></p>
+            <p>{user.email}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Contact number</h3>
-            <p>Dinora</p>
+            <p>{user.phone}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Primary work space</h3>
@@ -31,11 +35,7 @@ export const GeneralInformation = () => {
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Role</h3>
-            <p></p>
-          </ScrollingBlockContent>
-          <ScrollingBlockContent>
-            <h3>Status</h3>
-            <p></p>
+            <p>{user.isAdmin}</p>
           </ScrollingBlockContent>
           <ScrollingBlockContent>
             <h3>Birth date</h3>
