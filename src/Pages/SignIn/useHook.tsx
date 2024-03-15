@@ -1,9 +1,9 @@
 import { FormEventHandler, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useGetAppointmentsQuery, useSignInMutation } from "../../features/apiSlice";
-// import { changeStatus, getChatList } from "./redux/chatListReducer";
+import {  useSignInMutation } from "../../features/apiSlice";
 import { setToken } from "../../redux/authSlice";
+
 interface SignInFormData {
     token: string,
     user: any
@@ -11,12 +11,10 @@ interface SignInFormData {
 export const useHook = () => {
     const [signIn, { data, error, isLoading }] = useSignInMutation();
 
-    // let cachedChat = useSelector((state) => state.chatAndMessages);
-    // let activeChatId = useSelector((state) => state.activeChat);
+
 
     const dispatch = useDispatch();
-    // let getChatTab = useGetChatTabQuery();
-    // const { data, isLoading, refetch } = useChat();
+   
     const handleSignIn = async (formData: FormEventHandler<HTMLFormElement>) => {
         signIn(formData);
     }

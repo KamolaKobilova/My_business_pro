@@ -1,0 +1,37 @@
+.plusOutLined {
+    color: #D3D3D3;
+ }
+ .plusOutLined:hover {
+     color: #F8F8F8;
+     
+ }
+ .airOut {
+    color: #D3D3D3;
+ }
+ .airOut:hover {
+     color: #F8F8F8;
+ }
+ .bell {
+    color: #D3D3D3;
+ }
+ .bell:hover {
+     color: #F8F8F8;
+ }
+ .navItem {
+    color: #D3D3D3;
+ }
+ .navItem:hover {
+     color: #F8F8F8;
+ }
+ .custom-close-icon {
+   position: relative;
+   left: 820px;
+ }
+ .plusSquare {
+    margin-right: 10px;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: orange
+ }
